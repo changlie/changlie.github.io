@@ -13,7 +13,10 @@
             <div class="motto">墨空的一切，世界的尽头</div>
         </div>
         <div class="content">
-            <div class="tag" onclick="toQkdoc()">Quick 文档</div>
+            <div class="nav-block">
+                <div class="tag-fisrt" onclick="toQkdoc()">Quick 文档</div>
+                <div class="tag" onclick="toBlog()">X Blog</div>
+            </div>
         </div>
         <div class="footer">
             <p>
@@ -28,6 +31,9 @@
 
 <script>
 function toQkdoc() {
+    window.open("http://www.chenlh.cn/qk-doc/index.html", "_blank")
+}
+function toBlog() {
     window.open("http://www.chenlh.cn/qk-doc/index.html", "_blank")
 }
 </script>
@@ -96,7 +102,26 @@ function toQkdoc() {
         margin-top: 15px;
         font-size: 25px;
     }
-
+    .nav-block {
+        margin-left: auto;
+        margin-right: auto;
+        width: 460px;
+        height: 400px;
+    }
+    .tag-fisrt {
+        width: 210px;
+        height: 110px;
+        line-height: 110px;
+        font-size: 1.5rem;
+        color: #fff;
+        border-radius: 25px;
+        float: left;
+        text-align: center;
+        background-color: royalblue;
+        animation: tagAni 10s linear;
+        cursor: pointer;
+        box-shadow:12px 12px 25px #000;
+    }
     .tag {
         width: 210px;
         height: 110px;
@@ -104,11 +129,13 @@ function toQkdoc() {
         font-size: 1.5rem;
         color: #fff;
         border-radius: 25px;
-        margin: 0 auto;
+        float: left;
+        margin-left: 40px;
         text-align: center;
         background-color: royalblue;
-        animation: tagAni 10s linear infinite;
+        animation: tagAni 10s linear;
         cursor: pointer;
+        box-shadow:12px 12px 25px #000;
     }
 
     @keyframes tagAni{
