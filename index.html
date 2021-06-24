@@ -14,7 +14,7 @@
         </div>
         <div class="content">
             <div class="nav-block">
-                <div class="tag-fisrt" onclick="toQkdoc()">Quick 文档</div>
+                <div class="tag" style="margin-left: 0px;" onclick="toQkdoc()">Quick 文档</div>
                 <div class="tag" onclick="toBlog()">X Blog</div>
             </div>
         </div>
@@ -108,20 +108,6 @@ function toBlog() {
         width: 460px;
         height: 400px;
     }
-    .tag-fisrt {
-        width: 210px;
-        height: 110px;
-        line-height: 110px;
-        font-size: 1.5rem;
-        color: #fff;
-        border-radius: 25px;
-        float: left;
-        text-align: center;
-        background-color: royalblue;
-        animation: tagAni 10s linear;
-        cursor: pointer;
-        box-shadow:12px 12px 25px #000;
-    }
     .tag {
         width: 210px;
         height: 110px;
@@ -136,6 +122,9 @@ function toBlog() {
         animation: tagAni 10s linear;
         cursor: pointer;
         box-shadow:12px 12px 25px #000;
+    }
+    .tag:hover {
+        background-color: #fc5531;
     }
 
     @keyframes tagAni{
