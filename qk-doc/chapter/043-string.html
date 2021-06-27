@@ -237,10 +237,81 @@
             
 
             
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.3.1" data-path="051-if-statement.html">
+            
+                <a href="051-if-statement.html">
+            
+                    
+                    if语句
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.2" data-path="052-loop-statement.html">
+            
+                <a href="052-loop-statement.html">
+            
+                    
+                    循环遍历
+            
+                </a>
+            
+
+            
         </li>
     
 
             </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="060-function.html">
+            
+                <a href="060-function.html">
+            
+                    
+                    自定义函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="070-regular-expression.html">
+            
+                <a href="070-regular-expression.html">
+            
+                    
+                    正则表达式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="080-file.html">
+            
+                <a href="080-file.html">
+            
+                    
+                    文件操作
+            
+                </a>
+            
+
             
         </li>
     
@@ -289,7 +360,102 @@
     
                                 <section class="normal markdown-section">
                                 
-                                
+                                <h2 id="&#x5B57;&#x7B26;&#x4E32;&#x7C7B;&#x578B;">&#x5B57;&#x7B26;&#x4E32;&#x7C7B;&#x578B;</h2>
+<h3 id="&#x5E38;&#x7528;&#x51FD;&#x6570;">&#x5E38;&#x7528;&#x51FD;&#x6570;</h3>
+<table>
+<thead>
+<tr>
+<th>&#x51FD;&#x6570;</th>
+<th>&#x63CF;&#x8FF0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>size()</td>
+<td>&#x5B57;&#x7B26;&#x4E32;&#x957F;&#x5EA6;</td>
+</tr>
+<tr>
+<td>trim()</td>
+<td>&#x6E05;&#x9664;&#x5B57;&#x7B26;&#x4E32;&#x4E24;&#x8FB9;&#x7684;&#x7A7A;&#x767D;&#x7B26;</td>
+</tr>
+<tr>
+<td>split(string)</td>
+<td>&#x6839;&#x636E;&#x6307;&#x5B9A;&#x5B57;&#x7B26;&#x5BF9;&#x5B57;&#x7B26;&#x4E32;&#x8FDB;&#x5165;&#x5207;&#x5272;</td>
+</tr>
+<tr>
+<td>replace(old, new)</td>
+<td>&#x5B57;&#x7B26;&#x4E32;&#x66FF;&#x6362;</td>
+</tr>
+<tr>
+<td>upper()</td>
+<td>&#x5B57;&#x7B26;&#x4E32;&#x8F6C;&#x5927;&#x5199;</td>
+</tr>
+<tr>
+<td>title()</td>
+<td>&#x5355;&#x8BCD;&#x9996;&#x5B57;&#x6BCD;&#x8F6C;&#x5927;&#x5199;</td>
+</tr>
+<tr>
+<td>upperFirst()</td>
+<td>&#x9996;&#x5B57;&#x7B26;&#x8F6C;&#x5927;&#x5199;</td>
+</tr>
+<tr>
+<td>sub(start[, end])</td>
+<td>&#x6839;&#x636E;&#x7D22;&#x5F15;&#x83B7;&#x53D6;&#x5B50;&#x5B57;&#x7B26;&#x4E32;</td>
+</tr>
+<tr>
+<td>contain(str)</td>
+<td>&#x662F;&#x5426;&#x5305;&#x542B;&#x6307;&#x5B9A;&#x5B57;&#x7B26;&#x4E32;</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-js">s = <span class="hljs-string">&quot;hello world    &quot;</span>
+println(<span class="hljs-string">&quot;size: &quot;</span>, s.size()) <span class="hljs-comment">// size:  15</span>
+
+printf(<span class="hljs-string">&quot;trim: -%v-; %v\n&quot;</span>, s.trim(), s.size()) <span class="hljs-comment">// trim: -hello world-; 15</span>
+println(<span class="hljs-string">&quot;split: &quot;</span>, s.split(<span class="hljs-string">&quot; &quot;</span>)) <span class="hljs-comment">// split:  [&quot;hello&quot;, &quot;world&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;]</span>
+println(<span class="hljs-string">&quot;replace: &quot;</span>, s.replace(<span class="hljs-string">&quot;he&quot;</span>, <span class="hljs-string">&quot;wc&quot;</span>)) <span class="hljs-comment">// replace:  wcllo world    </span>
+println(<span class="hljs-string">&quot;upper: &quot;</span>, s.upper()) <span class="hljs-comment">// upper:  HELLO WORLD    </span>
+println(<span class="hljs-string">&quot;title: &quot;</span>, s.title()) <span class="hljs-comment">// title:  Hello World    </span>
+println(<span class="hljs-string">&quot;upperFirst: &quot;</span>, s.upperFirst()) <span class="hljs-comment">// upperFirst:  Hello world    </span>
+println(<span class="hljs-string">&quot;sub: &quot;</span>, s.sub(<span class="hljs-number">2</span>), <span class="hljs-string">&quot;; &quot;</span>, s.sub(<span class="hljs-number">3</span>, <span class="hljs-number">7</span>)) <span class="hljs-comment">// sub:  llo world     ;  lo w</span>
+println(<span class="hljs-string">&quot;contain: &quot;</span>, s.contain(<span class="hljs-string">&quot;wo&quot;</span>), s.contain(<span class="hljs-string">&quot;jk&quot;</span>)) <span class="hljs-comment">// contain:  true false</span>
+</code></pre>
+<h3 id="&#x5176;&#x4ED6;&#x51FD;&#x6570;">&#x5176;&#x4ED6;&#x51FD;&#x6570;</h3>
+<table>
+<thead>
+<tr>
+<th>&#x51FD;&#x6570;</th>
+<th>&#x63CF;&#x8FF0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>str_uuid()</td>
+<td>32&#x4F4D;&#x968F;&#x673A;&#x5B57;&#x7B26;</td>
+</tr>
+<tr>
+<td>str_rawUUID()</td>
+<td>&#x539F;&#x59CB;uuid</td>
+</tr>
+<tr>
+<td>str_format(fmt, args...)</td>
+<td>&#x5B57;&#x7B26;&#x4E32;&#x683C;&#x5F0F;&#x5316;</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-js">
+s = str_uuid()
+println(<span class="hljs-string">&quot;uuid:&quot;</span>, s) <span class="hljs-comment">// uuid: 10795f4d31032b44a65bb1905c140cb3</span>
+
+s1 = str_rawUUID()
+println(<span class="hljs-string">&quot;rawuuid:&quot;</span>, s1) <span class="hljs-comment">// rawuuid: 0eb9b200-9841-d514-f185-102320132bd4</span>
+
+println(<span class="hljs-string">&quot;string format testing=============&quot;</span>)
+println(str_format(<span class="hljs-string">&quot;He is %v, a blue %v&quot;</span>, <span class="hljs-string">&quot;tom&quot;</span>, <span class="hljs-string">&quot;cat&quot;</span>)) <span class="hljs-comment">// He is tom, a blue cat</span>
+println(str_format(<span class="hljs-string">&quot;number format: %.3f&quot;</span>, <span class="hljs-number">9.3126789</span>)) <span class="hljs-comment">// number format: 9.313</span>
+println(str_format(<span class="hljs-string">&quot;number format: %.3f&quot;</span>, <span class="hljs-number">3.14</span>)) <span class="hljs-comment">// number format: 3.140</span>
+</code></pre>
+
                                 
                                 </section>
                             
@@ -332,7 +498,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"String","level":"1.3.2.3","depth":3,"next":{"title":"Json Array","level":"1.3.2.4","depth":3,"path":"chapter/044-json-array.md","ref":"chapter/044-json-array.md","articles":[]},"previous":{"title":"Boolean","level":"1.3.2.2","depth":3,"path":"chapter/042-boolean.md","ref":"chapter/042-boolean.md","articles":[]},"dir":"neutral"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter/043-string.md","mtime":"2021-06-25T09:11:47.379Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-26T02:08:43.357Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"String","level":"1.3.2.3","depth":3,"next":{"title":"Json Array","level":"1.3.2.4","depth":3,"path":"chapter/044-json-array.md","ref":"chapter/044-json-array.md","articles":[]},"previous":{"title":"Boolean","level":"1.3.2.2","depth":3,"path":"chapter/042-boolean.md","ref":"chapter/042-boolean.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter/043-string.md","mtime":"2021-06-26T08:34:08.833Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-27T07:30:25.678Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

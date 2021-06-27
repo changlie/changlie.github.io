@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Json Array · GitBook</title>
+        <title>if语句 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="045-json-object.html" />
+    <link rel="next" href="052-loop-statement.html" />
     
     
-    <link rel="prev" href="043-string.html" />
+    <link rel="prev" href="050-contral-statement.html" />
     
 
     </head>
@@ -195,7 +195,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.2.4" data-path="044-json-array.html">
+        <li class="chapter " data-level="1.3.2.4" data-path="044-json-array.html">
             
                 <a href="044-json-array.html">
             
@@ -240,7 +240,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.3.3.1" data-path="051-if-statement.html">
+        <li class="chapter active" data-level="1.3.3.1" data-path="051-if-statement.html">
             
                 <a href="051-if-statement.html">
             
@@ -345,7 +345,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Json Array</a>
+        <a href=".." >if语句</a>
     </h1>
 </div>
 
@@ -360,50 +360,40 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x6570;&#x7EC4;&#x7C7B;&#x578B;">&#x6570;&#x7EC4;&#x7C7B;&#x578B;</h1>
-<table>
-<thead>
-<tr>
-<th>&#x65B9;&#x6CD5;</th>
-<th>&#x63CF;&#x8FF0;</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>size()</td>
-<td>&#x6570;&#x7EC4;&#x5143;&#x7D20;&#x6570;&#x91CF;</td>
-</tr>
-<tr>
-<td>add(elem)</td>
-<td>&#x6DFB;&#x52A0;&#x5143;&#x7D20;</td>
-</tr>
-<tr>
-<td>remove(index)</td>
-<td>&#x79FB;&#x9664;&#x5143;&#x7D20;</td>
-</tr>
-<tr>
-<td>join(string)</td>
-<td>&#x6839;&#x636E;&#x6307;&#x5B9A;&#x5B57;&#x7B26;&#xFF0C;&#x5C06;&#x6570;&#x7EC4;&#x6240;&#x6709;&#x5143;&#x7D20;&#x62FC;&#x63A5;&#x6210;&#x5B57;&#x7B26;&#x4E32;</td>
-</tr>
-</tbody>
-</table>
-<pre><code class="lang-js"><span class="hljs-comment">// &#x521D;&#x59CB;&#x5316;</span>
-arr = []
-<span class="hljs-comment">// &#x6253;&#x5370;&#x6570;&#x7EC4;&#x5927;&#x5C0F;&#x53CA;&#x6240;&#x6709;&#x5143;&#x7D20;</span>
-printf(<span class="hljs-string">&quot;size: %v, values: %v \n&quot;</span>, arr.size(), arr) <span class="hljs-comment">// size: 0, values: []</span>
+                                <h1 id="if&#x8BED;&#x53E5;">if&#x8BED;&#x53E5;</h1>
+<p>&#x793A;&#x4F8B;&#x4E00;&#xFF1A;</p>
+<pre><code class="lang-js">animal = <span class="hljs-string">&quot;cat&quot;</span>
+<span class="hljs-keyword">if</span> animal == <span class="hljs-string">&quot;cat&quot;</span> {
+    println(<span class="hljs-string">&quot;this animal is cat!&quot;</span>)
+}
 
-<span class="hljs-comment">// &#x6DFB;&#x52A0;&#x6570;&#x7EC4;&#x5143;&#x7D20;</span>
-arr.add(<span class="hljs-number">1</span>, <span class="hljs-literal">false</span>, <span class="hljs-string">&quot;D&quot;</span>)
-printf(<span class="hljs-string">&quot;size: %v, values: %v \n&quot;</span>, arr.size(), arr) <span class="hljs-comment">// size: 3, values: [1, false, &quot;D&quot;]</span>
+ifTest1(x) {
+    <span class="hljs-keyword">if</span> x {
+        println(<span class="hljs-string">&quot;x is true&quot;</span>)
+    } <span class="hljs-keyword">else</span> {
+        println(<span class="hljs-string">&quot;x is false&quot;</span>)
+    }
+}
+ifTest1(<span class="hljs-literal">true</span>)
+ifTest1(<span class="hljs-literal">false</span>)
+</code></pre>
+<p>&#x793A;&#x4F8B;&#x4E8C;&#xFF1A;</p>
+<pre><code class="lang-js">ifTest(a) {
+    <span class="hljs-keyword">if</span> a&gt;<span class="hljs-number">1</span> &amp;&amp; a&lt;<span class="hljs-number">100</span> {
+        println(<span class="hljs-string">&quot;a greater than 1.&quot;</span>)
+    } elif a==<span class="hljs-number">0</span> || a==<span class="hljs-number">1</span> {
+        println(<span class="hljs-string">&quot;elif test...&quot;</span>)
+    } elif a == <span class="hljs-number">100</span> {
+        println(<span class="hljs-string">&quot;Good job!&quot;</span>)
+    } <span class="hljs-keyword">else</span> {
+        println(<span class="hljs-string">&quot;a &lt; 0 and a &gt; 100&quot;</span>)
+    }
+}
 
-<span class="hljs-comment">// &#x6839;&#x636E;&#x6307;&#x5B9A;&#x5B57;&#x7B26;&#xFF0C;&#x5C06;&#x6570;&#x7EC4;&#x6240;&#x6709;&#x5143;&#x7D20;&#x62FC;&#x63A5;&#x6210;&#x5B57;&#x7B26;&#x4E32;</span>
-printf(<span class="hljs-string">&quot;join test:%v \n&quot;</span>, arr.join(<span class="hljs-string">&quot;,&quot;</span>)) <span class="hljs-comment">// join test:1,false,D</span>
-printf(<span class="hljs-string">&quot;join test:%v \n&quot;</span>, arr.join(<span class="hljs-string">&quot;, &quot;</span>)) <span class="hljs-comment">// join test:1, false, D</span>
-printf(<span class="hljs-string">&quot;join test:%v \n&quot;</span>, arr.join(<span class="hljs-string">&quot;#&quot;</span>)) <span class="hljs-comment">// join test:1#false#D</span>
-
-<span class="hljs-comment">// &#x6839;&#x636E;&#x7D22;&#x5F15;&#x5220;&#x9664;&#x5B57;&#x7B26;</span>
-arr.remove(<span class="hljs-number">1</span>)
-printf(<span class="hljs-string">&quot;size: %v, values: %v \n&quot;</span>, arr.size(), arr) <span class="hljs-comment">// size: 2, values: [1, &quot;D&quot;]</span>
+ifTest(<span class="hljs-number">1</span>)
+ifTest(<span class="hljs-number">-1</span>)
+ifTest(<span class="hljs-number">99</span>)
+ifTest(<span class="hljs-number">100</span>)
 </code></pre>
 
                                 
@@ -432,12 +422,12 @@ printf(<span class="hljs-string">&quot;size: %v, values: %v \n&quot;</span>, arr
 
             
                 
-                <a href="043-string.html" class="navigation navigation-prev " aria-label="Previous page: String">
+                <a href="050-contral-statement.html" class="navigation navigation-prev " aria-label="Previous page: 控制语句">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="045-json-object.html" class="navigation navigation-next " aria-label="Next page: Json Object">
+                <a href="052-loop-statement.html" class="navigation navigation-next " aria-label="Next page: 循环遍历">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -448,7 +438,7 @@ printf(<span class="hljs-string">&quot;size: %v, values: %v \n&quot;</span>, arr
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Json Array","level":"1.3.2.4","depth":3,"next":{"title":"Json Object","level":"1.3.2.5","depth":3,"path":"chapter/045-json-object.md","ref":"chapter/045-json-object.md","articles":[]},"previous":{"title":"String","level":"1.3.2.3","depth":3,"path":"chapter/043-string.md","ref":"chapter/043-string.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter/044-json-array.md","mtime":"2021-06-26T08:50:03.012Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-27T07:30:25.678Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"if语句","level":"1.3.3.1","depth":3,"next":{"title":"循环遍历","level":"1.3.3.2","depth":3,"path":"chapter/052-loop-statement.md","ref":"chapter/052-loop-statement.md","articles":[]},"previous":{"title":"控制语句","level":"1.3.3","depth":2,"path":"chapter/050-contral-statement.md","ref":"chapter/050-contral-statement.md","articles":[{"title":"if语句","level":"1.3.3.1","depth":3,"path":"chapter/051-if-statement.md","ref":"chapter/051-if-statement.md","articles":[]},{"title":"循环遍历","level":"1.3.3.2","depth":3,"path":"chapter/052-loop-statement.md","ref":"chapter/052-loop-statement.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter/051-if-statement.md","mtime":"2021-06-26T12:24:49.310Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-27T07:30:25.678Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
