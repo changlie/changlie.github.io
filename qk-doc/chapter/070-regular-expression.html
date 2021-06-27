@@ -361,6 +361,16 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;">&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;</h1>
+<p>&#x793A;&#x4F8B;</p>
+<pre><code class="lang-js">res = reg_match(<span class="hljs-string">&quot;Go\\w{2}&quot;</span>, <span class="hljs-string">&quot;Hello Gopher&#xFF0C;Hello GoLang&quot;</span>)
+println(res) <span class="hljs-comment">// [[&quot;Goph&quot;], [&quot;GoLa&quot;]]</span>
+
+println(reg_match(<span class="hljs-string">&quot;Go\\w+&quot;</span>, <span class="hljs-string">&quot;Hello Gopher&#xFF0C;Hello GoLang&quot;</span>)) <span class="hljs-comment">// [[&quot;Gopher&quot;], [&quot;GoLang&quot;]]</span>
+
+println(reg_match(<span class="hljs-string">&quot;Go(\\w+)&quot;</span>, <span class="hljs-string">&quot;Hello Gopher&#xFF0C;Hello GoLang&quot;</span>)) <span class="hljs-comment">// [[&quot;Gopher&quot;, &quot;pher&quot;], [&quot;GoLang&quot;, &quot;Lang&quot;]]</span>
+
+println(reg_match(<span class="hljs-string">&quot;Gx&quot;</span>, <span class="hljs-string">&quot;Hello Gopher&#xFF0C;Hello GoLang&quot;</span>)) <span class="hljs-comment">// []</span>
+</code></pre>
 
                                 
                                 </section>
@@ -404,7 +414,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"正则表达式","level":"1.4","depth":1,"next":{"title":"文件操作","level":"1.5","depth":1,"path":"chapter/080-file.md","ref":"chapter/080-file.md","articles":[]},"previous":{"title":"自定义函数","level":"1.3.4","depth":2,"path":"chapter/060-function.md","ref":"chapter/060-function.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter/070-regular-expression.md","mtime":"2021-06-26T12:08:31.237Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-27T07:30:25.678Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"正则表达式","level":"1.4","depth":1,"next":{"title":"文件操作","level":"1.5","depth":1,"path":"chapter/080-file.md","ref":"chapter/080-file.md","articles":[]},"previous":{"title":"自定义函数","level":"1.3.4","depth":2,"path":"chapter/060-function.md","ref":"chapter/060-function.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter/070-regular-expression.md","mtime":"2021-06-27T08:46:08.373Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-27T09:19:58.014Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
