@@ -1,0 +1,542 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Expression · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="qk023-syntax-analysis-primary-expression.html" />
+    
+    
+    <link rel="prev" href="qk021-syntax-analysis-statement.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="qk000-dev-log.html">
+            
+                <a href="qk000-dev-log.html">
+            
+                    
+                    Quick制作日志 － 开篇
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="qk010-lexical-analysis.html">
+            
+                <a href="qk010-lexical-analysis.html">
+            
+                    
+                    Quick制作日志 － 词法分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="qk020-syntax-analysis.html">
+            
+                <a href="qk020-syntax-analysis.html">
+            
+                    
+                    Quick制作日志 － 语法分析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="qk021-syntax-analysis-statement.html">
+            
+                <a href="qk021-syntax-analysis-statement.html">
+            
+                    
+                    Statement
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.2" data-path="qk022-syntax-analysis-expression.html">
+            
+                <a href="qk022-syntax-analysis-expression.html">
+            
+                    
+                    Expression
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="qk023-syntax-analysis-primary-expression.html">
+            
+                <a href="qk023-syntax-analysis-primary-expression.html">
+            
+                    
+                    Primary Expression
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="qk024-syntax-analysis-constant.html">
+            
+                <a href="qk024-syntax-analysis-constant.html">
+            
+                    
+                    Constant Value
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="qk030-program-execute.html">
+            
+                <a href="qk030-program-execute.html">
+            
+                    
+                    Quick制作日志 － 程序执行
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Expression</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x8BED;&#x6CD5;&#x5206;&#x6790;-expression">&#x8BED;&#x6CD5;&#x5206;&#x6790; Expression</h1>
+<p>expression&#x662F;Statement&#x7EC4;&#x6210;&#x90E8;&#x5206;, </p>
+<p>&#x4E0A;&#x4E00;&#x6B65;Statement&#x5206;&#x6790;&#xFF0C;&#x51FD;&#x6570;&#xFF0C;&#x5404;&#x79CD;Statement&#x90FD;&#x89E3;&#x6790;&#x51FA;&#x4E86;ExpressionStatement<br>ExpressionStatement &#x5C31;&#x662F;&#x53EA;&#x5305;&#x542B;&#x4E00;&#x4E2A;expression&#x7684;Statement<br>&#x7136;&#x540E;, &#x6211;&#x4EEC;&#x7EE7;&#x7EED;&#x89E3;&#x6790;Expression  </p>
+<p>Expression&#x6211;&#x4EEC;&#x5206;&#x4E3A;&#x4E09;&#x79CD;&#x7C7B;&#x578B;&#xFF1A;  </p>
+<ol>
+<li>&#x4E00;&#x5143;&#x8868;&#x8FBE;&#x5F0F;&#xFF1A; &#x53EA;&#x5305;&#x542B;&#x4E00;&#x4E2A;Primary Expression&#xFF08;&#x662F;Expression&#x81F3;Primary Expression&#x7684;&#x8FC7;&#x6E21;&#xFF09;</li>
+<li>&#x4E8C;&#x5143;&#x8868;&#x8FBE;&#x5F0F;&#xFF1A; &#x5305;&#x542B;&#x64CD;&#x4F5C;&#x7B26;&#x53CA;&#x4E24;&#x4E2A;Primary Expression</li>
+<li>&#x591A;&#x5143;&#x8868;&#x8FBE;&#x5F0F;&#xFF1A; &#x542B;&#x591A;&#x4E2A;Primary Expression&#x53CA;&#x64CD;&#x4F5C;&#x7B26;</li>
+</ol>
+<p>&#x591A;&#x5143;&#x8868;&#x8FBE;&#x5F0F;&#x6700;&#x7EC8;&#x8F6C;&#x5316;&#x6210;&#x4E8C;&#x5143;&#x8868;&#x8FBE;&#x5F0F;&#x5904;&#x7406;</p>
+<p>&#x5173;&#x952E;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> extractExpression(ts []Token) *Expression {
+    <span class="hljs-keyword">var</span> expr *Expression
+
+    <span class="hljs-comment">// &#x53BB;&#x62EC;&#x53F7;</span>
+    ts = clearParentheses(ts)
+
+    tlen := <span class="hljs-built_in">len</span>(ts)
+
+    <span class="hljs-keyword">if</span> tlen%<span class="hljs-number">2</span> == <span class="hljs-number">0</span> {
+        runtimeExcption(<span class="hljs-string">&quot;error expression:&quot;</span>, tokensString(ts))
+    }
+
+    <span class="hljs-keyword">if</span> tlen &lt; <span class="hljs-number">1</span> {
+        <span class="hljs-keyword">return</span> expr
+    }
+    <span class="hljs-keyword">switch</span> {
+    <span class="hljs-keyword">case</span> tlen == <span class="hljs-number">1</span>:
+        <span class="hljs-keyword">return</span> parseUnaryExpression(ts)
+
+    <span class="hljs-keyword">case</span> tlen == <span class="hljs-number">3</span>:
+        expr = parseBinaryExpression(ts)
+
+    <span class="hljs-keyword">default</span>:
+        <span class="hljs-comment">// &#x5904;&#x7406;&#x591A;&#x5143;&#x8868;&#x8FBE;&#x5F0F;</span>
+        expr = parseMultivariateExpression(ts)
+    }
+    <span class="hljs-keyword">if</span> expr == <span class="hljs-literal">nil</span> {
+        runtimeExcption(<span class="hljs-string">&quot;parseExpressionStatement Exception:&quot;</span>, tokensString(ts))
+    } <span class="hljs-keyword">else</span> {
+        expr.raw = ts
+    }
+    <span class="hljs-keyword">return</span> expr
+}
+</code></pre>
+<p>&#x901A;&#x8FC7;&#x9012;&#x5F52;&#x4E0E;&#x7A77;&#x4E3E;&#x6CD5;&#x5C06;&#x591A;&#x5143;&#x8868;&#x8FBE;&#x5F0F;&#x8F6C;&#x5316;&#x4E8C;&#x5143;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C; &#x5173;&#x952E;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> parseMultivariateExpression(ts []Token) (expr *Expression) {
+    <span class="hljs-keyword">var</span> resVarToken *Token
+    <span class="hljs-keyword">var</span> multiExprTokens []Token
+    <span class="hljs-keyword">if</span> ts[<span class="hljs-number">1</span>].assertSymbol(<span class="hljs-string">&quot;=&quot;</span>) {
+        resVarToken = &amp;(ts[<span class="hljs-number">0</span>])
+        multiExprTokens = ts[<span class="hljs-number">2</span>:]
+    } <span class="hljs-keyword">else</span> {
+        multiExprTokens = ts
+    }
+    <span class="hljs-keyword">var</span> exprTokensList [][]Token
+    reduceTokensForExpression(resVarToken, multiExprTokens, &amp;exprTokensList)
+    <span class="hljs-comment">//printExprTokens(exprTokensList)</span>
+
+    exprs := generateBinaryExprs(exprTokensList)
+    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(exprs) == <span class="hljs-number">1</span> {
+        <span class="hljs-comment">// &#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x8868;&#x8FBE;&#x5F0F;&#x65F6;,&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x4E8C;&#x5143;&#x8868;&#x8FBE;&#x5F0F;</span>
+        <span class="hljs-keyword">return</span> exprs[<span class="hljs-number">0</span>]
+    }
+
+    finalExpr := getFinalExpr(exprs, resVarToken)
+
+    expr = &amp;Expression{
+        t:         MultiExpression,
+        list:      exprs,
+        finalExpr: finalExpr,
+    }
+    <span class="hljs-keyword">return</span> expr
+}
+
+<span class="hljs-comment">// &#x5206;&#x89E3;&#x591A;&#x5143;&#x8868;&#x8FBE;&#x5F0F;, &#x5E76;&#x628A;&#x7ED3;&#x679C;&#x4FDD;&#x5B58;&#x81F3;exprTokensList *[][]Token</span>
+<span class="hljs-keyword">func</span> reduceTokensForExpression(res *Token, ts []Token, exprTokensList *[][]Token) {
+    <span class="hljs-keyword">var</span> exprTokens []Token
+
+    ts = clearParentheses(ts)
+
+    size := <span class="hljs-built_in">len</span>(ts)
+    <span class="hljs-keyword">if</span> size &lt; <span class="hljs-number">3</span> {
+        runtimeExcption(<span class="hljs-string">&quot;reduceTokensForExpression Exception:&quot;</span>, tokensString(ts))
+    }
+
+    <span class="hljs-comment">// &#x5904;&#x7406;&#x62EC;&#x53F7;&#x662F;&#x7B2C;&#x4E00;&#x4E2A;token&#x7684;&#x60C5;&#x51B5;</span>
+    <span class="hljs-keyword">if</span> ts[<span class="hljs-number">0</span>].assertSymbol(<span class="hljs-string">&quot;(&quot;</span>) {
+        leftTokens, nextIndex := extractTokensByParentheses(ts)
+        tmpvarToken := getTmpVarToken()
+        <span class="hljs-keyword">if</span> !hasSymbol(leftTokens, <span class="hljs-string">&quot;(&quot;</span>) &amp;&amp; <span class="hljs-built_in">len</span>(leftTokens) == <span class="hljs-number">3</span> {
+            <span class="hljs-comment">// e.g. (a + b) / 5</span>
+            <span class="hljs-comment">// &#x5DE6;&#x5904;&#x7406;</span>
+            exprTokens = <span class="hljs-built_in">append</span>(leftTokens, tmpvarToken)
+            *exprTokensList = <span class="hljs-built_in">append</span>(*exprTokensList, exprTokens)
+
+            <span class="hljs-comment">// &#x53F3;&#x5904;&#x7406;</span>
+            nextTokens := insert(tmpvarToken, ts[nextIndex:])
+            reduceTokensForExpression(res, nextTokens, exprTokensList)
+            <span class="hljs-keyword">return</span>
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-comment">// e.g. (d + (f - c)) * e</span>
+            <span class="hljs-comment">// &#x5DE6;&#x5904;&#x7406;</span>
+            reduceTokensForExpression(&amp;tmpvarToken, leftTokens, exprTokensList)
+
+            <span class="hljs-comment">// &#x53F3;&#x5904;&#x7406;</span>
+            nextTokens := insert(tmpvarToken, ts[nextIndex:])
+            reduceTokensForExpression(res, nextTokens, exprTokensList)
+            <span class="hljs-keyword">return</span>
+        }
+    }
+
+    <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; size; i++ {
+        tmpSize := <span class="hljs-built_in">len</span>(exprTokens)
+        token := ts[i]
+
+        condBoundry := tmpSize == <span class="hljs-number">2</span>
+        condFinish := condBoundry &amp;&amp; i == size<span class="hljs-number">-1</span>
+        preCond1 := condBoundry &amp;&amp; i &lt; size<span class="hljs-number">-1</span>
+        <span class="hljs-comment">// &#x5904;&#x7406;&#x6839;&#x636E;&#x8FD0;&#x7B97;&#x7B26;&#x4F18;&#x5148;&#x7EA7;, &#x5DE6;&#x5411;&#x5F52;&#x7EA6;&#x7684;&#x60C5;&#x51B5;</span>
+        condShiftLeft1 := preCond1 &amp;&amp; last(exprTokens).equal(next(ts, i))
+        condShiftLeft2 := preCond1 &amp;&amp; last(exprTokens).lower(next(ts, i))
+        <span class="hljs-keyword">if</span> condShiftLeft1 || condShiftLeft2 || condFinish {
+            <span class="hljs-comment">// e.g. c + 7</span>
+            <span class="hljs-comment">// a = 23</span>
+            exprTokens = <span class="hljs-built_in">append</span>(exprTokens, token)
+            <span class="hljs-keyword">if</span> !condFinish {
+                <span class="hljs-comment">// e.g. a + 9 + c</span>
+                tmpVarToken := getTmpVarToken()
+                nextTokens := insert(tmpVarToken, ts[i+<span class="hljs-number">1</span>:])
+                exprTokens = <span class="hljs-built_in">append</span>(exprTokens, tmpVarToken)
+                reduceTokensForExpression(res, nextTokens, exprTokensList)
+            }
+            <span class="hljs-keyword">break</span>
+        }
+
+        <span class="hljs-comment">// &#x5904;&#x7406;&#x62EC;&#x53F7;&#x4E0D;&#x662F;&#x7B2C;&#x4E00;&#x4E2A;token&#x7684;&#x60C5;&#x51B5;</span>
+        condRightParentheses := preCond1 &amp;&amp; token.assertSymbol(<span class="hljs-string">&quot;(&quot;</span>)
+        <span class="hljs-keyword">if</span> condRightParentheses {
+            rightTokens, nextIndex := extractTokensByParentheses(ts[i:])
+            nextIndex = i + nextIndex <span class="hljs-comment">// &#x8F6C;&#x6362;&#x56DE;&#x5207;&#x7247;ts&#x7684;&#x76F8;&#x5E94;&#x7D22;&#x5F15;</span>
+            <span class="hljs-keyword">if</span> nextIndex &lt; size<span class="hljs-number">-1</span> {
+                <span class="hljs-comment">// e.g. a + (9 * d) - 3; rightTokens -&gt; 9 * d; 9 * d =&gt; tmpVarToken1</span>
+                <span class="hljs-comment">// &#x56E0;&#x4E3A;&#x62EC;&#x53F7;&#x5708;&#x7684;&#x4E0D;&#x662F;&#x53F3;&#x8FB9;&#x6574;&#x4E2A;&#x8868;&#x8FBE;&#x5F0F;, &#x6545;&#x5148;&#x6C42;&#x62EC;&#x53F7;&#x503C;, &#x518D;&#x901A;&#x8FC7;&#x8FD0;&#x7B97;&#x7B26;&#x4F18;&#x5148;&#x7EA7;&#x6C42;&#x503C;</span>
+                tmpVarToken1 := getTmpVarToken() <span class="hljs-comment">// &#x62EC;&#x53F7;&#x5185;&#x7684;&#x4E2D;&#x95F4;&#x4E34;&#x65F6;&#x503C;</span>
+                reduceTokensForExpression(&amp;tmpVarToken1, rightTokens, exprTokensList)
+
+                <span class="hljs-comment">// &#x6839;&#x636E;&#x8FD0;&#x7B97;&#x7B26;&#x4F18;&#x5148;&#x7EA7;&#x7684;&#x4E0D;&#x540C;, tmpVarToken2&#x53EF;&#x80FD;&#x662F;&#x5DE6;&#x8FB9;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x6216;&#x8005;&#x53F3;&#x8FB9;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x4E2D;&#x95F4;&#x4E34;&#x65F6;&#x503C;</span>
+                tmpVarToken2 := getTmpVarToken()
+
+                nextToken := ts[nextIndex]
+                <span class="hljs-keyword">if</span> last(exprTokens).equal(&amp;nextToken) || last(exprTokens).lower(&amp;nextToken) {
+                    <span class="hljs-comment">// e.g. d * tmp + c / 2</span>
+                    <span class="hljs-comment">// &#x5DE6;&#x4F18;&#x5148;</span>
+                    exprTokens = <span class="hljs-built_in">append</span>(exprTokens, tmpVarToken1) <span class="hljs-comment">// middle tmp result</span>
+                    exprTokens = <span class="hljs-built_in">append</span>(exprTokens, tmpVarToken2) <span class="hljs-comment">// left expr result.</span>
+
+                    nextTokens2 := insert(tmpVarToken2, ts[nextIndex:]) <span class="hljs-comment">//</span>
+                    reduceTokensForExpression(res, nextTokens2, exprTokensList)
+                } <span class="hljs-keyword">else</span> {
+                    <span class="hljs-comment">// e.g. e + tmp * f</span>
+                    <span class="hljs-comment">// &#x53F3;&#x4F18;&#x5148;</span>
+                    exprTokens = <span class="hljs-built_in">append</span>(exprTokens, tmpVarToken2) <span class="hljs-comment">// rigtht expr result.</span>
+
+                    nextTokens3 := insert(tmpVarToken1, ts[nextIndex:])
+                    reduceTokensForExpression(&amp;tmpVarToken2, nextTokens3, exprTokensList)
+                }
+                <span class="hljs-keyword">break</span>
+            }
+
+            <span class="hljs-comment">// e.g. a * (b + 3)</span>
+            <span class="hljs-comment">// &#x56E0;&#x4E3A;&#x62EC;&#x53F7;&#x5708;&#x7684;&#x662F;&#x53F3;&#x8FB9;&#x6574;&#x4E2A;&#x8868;&#x8FBE;&#x5F0F;&#x65F6;</span>
+            tmpVarToken3 := getTmpVarToken()
+            exprTokens = <span class="hljs-built_in">append</span>(exprTokens, tmpVarToken3)
+
+            nextTokens := ts[i:]
+            reduceTokensForExpression(&amp;tmpVarToken3, nextTokens, exprTokensList)
+            <span class="hljs-keyword">break</span>
+        }
+
+        <span class="hljs-comment">// e.g. </span>
+        <span class="hljs-comment">// a + b * c</span>
+        <span class="hljs-comment">// a * b - 3</span>
+        <span class="hljs-comment">// &#x5904;&#x7406;&#x6839;&#x636E;&#x8FD0;&#x7B97;&#x7B26;&#x4F18;&#x5148;&#x7EA7;, &#x53F3;&#x5411;&#x5F52;&#x7EA6;&#x7684;&#x60C5;&#x51B5;</span>
+        condShiftRight1 := preCond1 &amp;&amp; last(exprTokens).upper(next(ts, i))
+        <span class="hljs-keyword">if</span> condShiftRight1 {
+            tmpVarToken := getTmpVarToken()
+            nextTokens := ts[i:]
+            exprTokens = <span class="hljs-built_in">append</span>(exprTokens, tmpVarToken)
+            reduceTokensForExpression(&amp;tmpVarToken, nextTokens, exprTokensList)
+            <span class="hljs-keyword">break</span>
+        }
+
+        exprTokens = <span class="hljs-built_in">append</span>(exprTokens, token)
+    }
+
+    <span class="hljs-keyword">if</span> res != <span class="hljs-literal">nil</span> &amp;&amp; <span class="hljs-built_in">len</span>(exprTokens) == <span class="hljs-number">3</span> {
+        exprTokens = <span class="hljs-built_in">append</span>(exprTokens, *res)
+    }
+
+    *exprTokensList = <span class="hljs-built_in">append</span>(*exprTokensList, exprTokens)
+}
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="qk021-syntax-analysis-statement.html" class="navigation navigation-prev " aria-label="Previous page: Statement">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="qk023-syntax-analysis-primary-expression.html" class="navigation navigation-next " aria-label="Next page: Primary Expression">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Expression","level":"1.4.2","depth":2,"next":{"title":"Primary Expression","level":"1.4.3","depth":2,"path":"chapter/qk023-syntax-analysis-primary-expression.md","ref":"chapter/qk023-syntax-analysis-primary-expression.md","articles":[]},"previous":{"title":"Statement","level":"1.4.1","depth":2,"path":"chapter/qk021-syntax-analysis-statement.md","ref":"chapter/qk021-syntax-analysis-statement.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter/qk022-syntax-analysis-expression.md","mtime":"2021-06-30T07:26:19.408Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-30T14:05:37.704Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
