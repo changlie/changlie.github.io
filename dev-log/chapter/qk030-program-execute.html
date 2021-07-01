@@ -262,6 +262,188 @@
 <li>return, continue, break&#x7684;&#x5B9E;&#x73B0;</li>
 <li>&#x53D8;&#x91CF;&#x7684;&#x4F20;&#x9012;</li>
 </ol>
+<p>Expression&#x662F;&#x6700;&#x5C0F;&#x7684;&#x6267;&#x884C;&#x5355;&#x5143;&#xFF0C; Primary Expression&#x662F;&#x6700;&#x5C0F;&#x7684;&#x8868;&#x793A;&#x5355;&#x5143;</p>
+<h3 id="&#x53D8;&#x91CF;">&#x53D8;&#x91CF;</h3>
+<p>&#x53D8;&#x91CF;&#x6808;</p>
+<pre><code class="lang-go"><span class="hljs-comment">// &#x53D8;&#x91CF;&#x6808;</span>
+<span class="hljs-keyword">type</span> VariableStack <span class="hljs-keyword">struct</span> {
+    list []Variables
+}
+
+<span class="hljs-keyword">func</span> newVariableStack() *VariableStack {
+    varStack := &amp;VariableStack{}
+    <span class="hljs-keyword">return</span> varStack
+}
+
+<span class="hljs-keyword">func</span> (stack *VariableStack) push() {
+    vars := newVariables()
+    stack.list = <span class="hljs-built_in">append</span>(stack.list, vars)
+}
+
+<span class="hljs-keyword">func</span> (stack *VariableStack) pop() {
+    size := <span class="hljs-built_in">len</span>(stack.list)
+    <span class="hljs-keyword">if</span> size&lt;<span class="hljs-number">1</span> {
+        <span class="hljs-keyword">return</span>
+    }
+    stack.list = stack.list[:size<span class="hljs-number">-1</span>]
+}
+
+<span class="hljs-keyword">func</span> (stack *VariableStack) searchVariable(name <span class="hljs-keyword">string</span>) *Value {
+    <span class="hljs-keyword">for</span> i:=<span class="hljs-built_in">len</span>(stack.list)<span class="hljs-number">-1</span>; i&gt;=<span class="hljs-number">0</span>; i-- {
+        vars := stack.list[i]
+        res := vars.get(name)
+        <span class="hljs-keyword">if</span> res != <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">return</span> res
+        }
+    }
+    runtimeExcption(<span class="hljs-string">&quot;variable&quot;</span>, name, <span class="hljs-string">&quot;is undefined&quot;</span>)
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+}
+
+<span class="hljs-keyword">func</span> (stack *VariableStack) addLocalVariable(name <span class="hljs-keyword">string</span>, val *Value) {
+    size := <span class="hljs-built_in">len</span>(stack.list)
+    <span class="hljs-keyword">if</span> size&lt;<span class="hljs-number">1</span> {
+        runtimeExcption(<span class="hljs-string">&quot;stack is empty!&quot;</span>)
+    }
+
+    stack.list[size<span class="hljs-number">-1</span>].add(name, val)
+}
+</code></pre>
+<p>&#x53D8;&#x91CF;&#x6C60;</p>
+<pre><code class="lang-go"><span class="hljs-comment">// &#x53D8;&#x91CF;&#x6C60;</span>
+<span class="hljs-keyword">type</span> Variables <span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]*Value
+
+<span class="hljs-keyword">func</span> newVariables() Variables {
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]*Value)
+}
+
+<span class="hljs-keyword">func</span> (vs Variables) isEmpty() <span class="hljs-keyword">bool</span> {
+    <span class="hljs-keyword">return</span> vs == <span class="hljs-literal">nil</span> || <span class="hljs-built_in">len</span>(vs) &lt; <span class="hljs-number">1</span>
+}
+
+<span class="hljs-keyword">func</span> (vs Variables) add(name <span class="hljs-keyword">string</span>, v *Value) {
+    vs[name] = v
+}
+
+<span class="hljs-keyword">func</span> (vs Variables) get(name <span class="hljs-keyword">string</span>) *Value {
+    <span class="hljs-keyword">if</span> vs.isEmpty() {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+    }
+    res, ok := vs[name]
+    <span class="hljs-keyword">if</span> ok {
+        <span class="hljs-keyword">return</span> res
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+}
+</code></pre>
+<p>&#x53D8;&#x91CF;&#x4F20;&#x9012;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> Interpret() {
+    stack := newVariableStack()
+    stack.push() <span class="hljs-comment">// &#x6267;&#x884C;&#x65B9;&#x6CD5;&#x524D;&#xFF0C;&#x5411;&#x53D8;&#x91CF;&#x6808;(list)&#x6DFB;&#x52A0;&#x7684;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x6C60;(map)</span>
+    executeFunctionStatementList(mainFunc.block, stack)
+}
+<span class="hljs-comment">// &#x6267;&#x884C;&#x51FD;&#x6570;</span>
+<span class="hljs-keyword">func</span> executeFunctionStatementList(stmts []*Statement, stack *VariableStack) *Value {
+    <span class="hljs-keyword">defer</span> stack.pop() <span class="hljs-comment">// &#x51FD;&#x6570;&#x6267;&#x884C;&#x7ED3;&#x675F;&#x540E;&#xFF0C; &#x5220;&#x9664;&#x53D8;&#x91CF;&#x6808;(list)&#x6700;&#x65B0;&#x6DFB;&#x52A0;&#x7684;&#x53D8;&#x91CF;&#x6C60;(map)</span>
+
+    executeStatementList(stmts, stack, StmtListTypeFunc)
+    res := stack.searchVariable(funcResultName)
+    <span class="hljs-keyword">return</span> res
+}
+</code></pre>
+<h3 id="return-continue-break&#x7684;&#x5B9E;&#x73B0;&#x76F8;&#x5173;&#x4EE3;&#x7801;">return, continue, break&#x7684;&#x5B9E;&#x73B0;&#x76F8;&#x5173;&#x4EE3;&#x7801;</h3>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> executeStatementList(stmts []*Statement, stack *VariableStack, t StmtListType) *StatementResult {
+    <span class="hljs-keyword">if</span> t == StmtListTypeFunc {
+        stack.addLocalVariable(funcResultName, NULL)
+    }
+    <span class="hljs-keyword">var</span> res *StatementResult
+    <span class="hljs-keyword">for</span> _, stmt := <span class="hljs-keyword">range</span> stmts {
+        res = executeStatement(stmt, stack)
+        <span class="hljs-keyword">if</span> res == <span class="hljs-literal">nil</span> {
+            <span class="hljs-built_in">println</span>(<span class="hljs-string">&quot;executeStatement return error&quot;</span>, tokensString(stmt.raw))
+            <span class="hljs-keyword">break</span>
+        }
+
+        <span class="hljs-keyword">if</span> res.isContinue() {
+            <span class="hljs-keyword">if</span> t == StmtListTypeFor {
+                res.t = StatementNormal
+            }
+            <span class="hljs-keyword">break</span>
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> res.isReturn() || res.isBreak() {
+            <span class="hljs-keyword">break</span>
+        }
+
+    }
+    <span class="hljs-comment">// &#x4FEE;&#x590D;&#x7A7A;&#x8BED;&#x53E5;&#x5F02;&#x5E38;</span>
+    <span class="hljs-keyword">if</span> res == <span class="hljs-literal">nil</span> {
+        res = newStatementResult(StatementNormal, NULL)
+    }
+    <span class="hljs-keyword">return</span> res
+}
+
+<span class="hljs-keyword">func</span> executeForStatement(stmt *Statement, stack *VariableStack) (res *StatementResult) {
+    <span class="hljs-keyword">if</span> stmt.preExpr != <span class="hljs-literal">nil</span> {
+        executeExpression(stmt.preExpr, stack)
+    }
+    <span class="hljs-keyword">var</span> flag <span class="hljs-keyword">bool</span>
+    <span class="hljs-keyword">if</span> stmt.condExpr != <span class="hljs-literal">nil</span> {
+        flag = evalBoolExpression(stmt.condExpr, stack)
+    }
+    <span class="hljs-keyword">for</span> flag {
+
+        res = executeStatementList(stmt.block, stack, StmtListTypeFor)
+
+
+        <span class="hljs-keyword">if</span> res.isBreak() {
+            res.t = StatementNormal
+            <span class="hljs-keyword">return</span>
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> res.isReturn() {
+            <span class="hljs-keyword">return</span>
+        }
+
+        <span class="hljs-keyword">if</span> stmt.postExpr != <span class="hljs-literal">nil</span> {
+            executeExpression(stmt.postExpr, stack)
+        }
+        <span class="hljs-keyword">if</span> stmt.condExpr != <span class="hljs-literal">nil</span> {
+            flag = evalBoolExpression(stmt.condExpr, stack)
+        }
+    }
+    <span class="hljs-keyword">return</span> res
+}
+
+<span class="hljs-keyword">func</span> executeForeachStatement(stmt *Statement, stack *VariableStack) (res *StatementResult) {
+    fpi := stmt.fpi
+    varVal := stack.searchVariable(fpi.iterator)
+    itr := toIterator(varVal)
+    <span class="hljs-keyword">if</span> itr == <span class="hljs-literal">nil</span> {
+        runtimeExcption(fpi.iterator, <span class="hljs-string">&quot;is not iterator!&quot;</span>)
+        <span class="hljs-keyword">return</span>
+    }
+
+    indexs := itr.indexs()
+    <span class="hljs-keyword">for</span> _, index := <span class="hljs-keyword">range</span> indexs {
+
+        <span class="hljs-keyword">if</span> !stmt.isForItemStatement() {
+            i := newQkValue(index)
+            stack.addLocalVariable(fpi.indexName, i)
+        }
+        <span class="hljs-keyword">if</span> !stmt.isForIndexStatement() {
+            item := itr.getItem(index)
+            stack.addLocalVariable(fpi.itemName, item)
+        }
+
+        res = executeStatementList(stmt.block, stack, StmtListTypeFor)
+
+        <span class="hljs-keyword">if</span> res.isBreak() {
+            res.t = StatementNormal
+            <span class="hljs-keyword">return</span>
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> res.isReturn() {
+            <span class="hljs-keyword">return</span>
+        }
+    }
+    <span class="hljs-keyword">return</span> res
+}
+</code></pre>
 
                                 
                                 </section>
@@ -301,7 +483,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Quick制作日志 － 程序执行","level":"1.5","depth":1,"previous":{"title":"Constant Value","level":"1.4.4","depth":2,"path":"chapter/qk024-syntax-analysis-constant.md","ref":"chapter/qk024-syntax-analysis-constant.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter/qk030-program-execute.md","mtime":"2021-06-30T09:53:21.662Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-30T14:05:37.704Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Quick制作日志 － 程序执行","level":"1.5","depth":1,"previous":{"title":"Constant Value","level":"1.4.4","depth":2,"path":"chapter/qk024-syntax-analysis-constant.md","ref":"chapter/qk024-syntax-analysis-constant.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter/qk030-program-execute.md","mtime":"2021-07-01T02:39:47.792Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-01T03:36:21.948Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
