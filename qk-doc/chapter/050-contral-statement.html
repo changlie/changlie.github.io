@@ -289,9 +289,22 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4" data-path="070-regular-expression.html">
+        <li class="chapter " data-level="1.4" data-path="070-standard-output.html">
             
-                <a href="070-regular-expression.html">
+                <a href="070-standard-output.html">
+            
+                    
+                    标准输出
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="080-regular-expression.html">
+            
+                <a href="080-regular-expression.html">
             
                     
                     正则表达式
@@ -302,12 +315,77 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5" data-path="080-file.html">
+        <li class="chapter " data-level="1.6" data-path="090-file.html">
             
-                <a href="080-file.html">
+                <a href="090-file.html">
             
                     
                     文件操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="150-date-time.html">
+            
+                <a href="150-date-time.html">
+            
+                    
+                    日期时间
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="200-excel.html">
+            
+                <a href="200-excel.html">
+            
+                    
+                    Excel操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="250-db.html">
+            
+                <a href="250-db.html">
+            
+                    
+                    数据库操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="300-http-client.html">
+            
+                <a href="300-http-client.html">
+            
+                    
+                    Http Client
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="350-http-server.html">
+            
+                <a href="350-http-server.html">
+            
+                    
+                    Http Server
             
                 </a>
             
@@ -368,8 +446,159 @@
 <li>foreach &#x7D22;&#x5F15;&#xFF0C;&#x503C;&#x904D;&#x5386;</li>
 <li>fori &#x7D22;&#x5F15;&#x904D;&#x5386;</li>
 <li>forv &#x503C;&#x904D;&#x5386;</li>
+<li>break &#x4E2D;&#x6B62;&#x6574;&#x4E2A;&#x5FAA;&#x73AF;&#xFF0F;&#x904D;&#x5386;</li>
+<li>continue &#x4E2D;&#x6B62;&#x5FAA;&#x73AF;&#xFF0F;&#x904D;&#x5386;&#x7684;&#x5F53;&#x524D;&#x8F6E;&#x7684;&#x7A0B;&#x5E8F;&#x6267;&#x884C;</li>
+<li>return &#x51FD;&#x6570;&#x8FD4;&#x56DE;</li>
 </ul>
+<h4 id="&#x793A;&#x4F8B;&#x4E00;">&#x793A;&#x4F8B;&#x4E00;</h4>
+<pre><code class="lang-js">arr = [<span class="hljs-number">1</span>, <span class="hljs-literal">false</span>, <span class="hljs-literal">true</span>, <span class="hljs-number">3.14</span>, <span class="hljs-string">&quot;changlie&quot;</span>]
+println(<span class="hljs-string">&quot;### normal: &quot;</span>)
+foreach i, item : arr {
+    println(<span class="hljs-string">&quot;index:&quot;</span>, i, <span class="hljs-string">&quot;; item:&quot;</span>, item)
+}
+println(<span class="hljs-string">&quot;### abnormal: &quot;</span>)
+foreach i, item : arr {
+    <span class="hljs-keyword">if</span> i == <span class="hljs-number">1</span> {
+        println(<span class="hljs-string">&quot;index:&quot;</span>, i, <span class="hljs-string">&quot;; item:&quot;</span>, item, <span class="hljs-string">&quot; #continue&quot;</span>)
+        <span class="hljs-keyword">continue</span>
+    }
+    <span class="hljs-keyword">if</span> i == <span class="hljs-number">3</span> {
+        println(<span class="hljs-string">&quot;index:&quot;</span>, i, <span class="hljs-string">&quot;; item:&quot;</span>, item, <span class="hljs-string">&quot; #break&quot;</span>)
+        <span class="hljs-keyword">break</span>
+    }
+    println(<span class="hljs-string">&quot;index:&quot;</span>, i, <span class="hljs-string">&quot;; item:&quot;</span>, item)
+}
+</code></pre>
+<p>&#x8F93;&#x51FA;</p>
+<pre><code>### normal: 
+index: 0 ; item: 1
+index: 1 ; item: false
+index: 2 ; item: true
+index: 3 ; item: 3.14
+index: 4 ; item: changlie
+### abnormal: 
+index: 0 ; item: 1
+index: 1 ; item: false  #continue
+index: 2 ; item: true
+index: 3 ; item: 3.14  #break
+</code></pre><h4 id="&#x793A;&#x4F8B;&#x4E8C;">&#x793A;&#x4F8B;&#x4E8C;</h4>
+<pre><code class="lang-js">println(<span class="hljs-string">&quot;2 -&gt; &quot;</span>, fprint(<span class="hljs-number">2</span>))
+println(<span class="hljs-string">&quot;===================&quot;</span>)
+println(<span class="hljs-string">&quot;4 -&gt; &quot;</span>, fprint(<span class="hljs-number">4</span>))
 
+fprint(flag) {
+    sum = <span class="hljs-number">0</span>
+    <span class="hljs-keyword">for</span> i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-number">10</span>; i++ {
+        sum += i
+        <span class="hljs-keyword">if</span> flag == i {
+            <span class="hljs-keyword">return</span> sum
+        }
+    }
+    <span class="hljs-keyword">return</span> sum
+}
+</code></pre>
+<p>&#x8F93;&#x51FA;</p>
+<pre><code>2 -&gt;  3
+===================
+4 -&gt;  10
+</code></pre><h4 id="&#x793A;&#x4F8B;&#x4E09;">&#x793A;&#x4F8B;&#x4E09;</h4>
+<pre><code class="lang-js">println(<span class="hljs-string">&quot;ftest below -----------------&quot;</span>)
+ftest(<span class="hljs-number">3</span>, <span class="hljs-literal">false</span>)
+println(<span class="hljs-string">&quot;===================&quot;</span>)
+ftest(<span class="hljs-number">4</span>, <span class="hljs-literal">true</span>)
+
+ftest(flag, exit) {
+    <span class="hljs-keyword">for</span> i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-number">20</span>; i++ {
+
+        <span class="hljs-keyword">if</span> i%flag == <span class="hljs-number">2</span> {
+            println(i, <span class="hljs-string">&quot; -&gt; execute continue&quot;</span>)
+            <span class="hljs-keyword">continue</span>
+        }
+        <span class="hljs-keyword">if</span> exit &amp;&amp; i == <span class="hljs-number">4</span>  {
+            println(i, <span class="hljs-string">&quot; -&gt; execute return&quot;</span>)
+            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>
+        }
+        <span class="hljs-keyword">if</span> i &gt; <span class="hljs-number">9</span> {
+            println(i, <span class="hljs-string">&quot; -&gt; execute break&quot;</span>)
+            <span class="hljs-keyword">break</span>
+        }
+        println(<span class="hljs-string">&quot;row -&gt; &quot;</span>, i)
+    }
+    println(<span class="hljs-string">&quot;func over!&quot;</span>)
+}
+</code></pre>
+<p>&#x8F93;&#x51FA;</p>
+<pre><code>ftest below -----------------
+row -&gt;  0
+row -&gt;  1
+2  -&gt; execute continue
+row -&gt;  3
+row -&gt;  4
+5  -&gt; execute continue
+row -&gt;  6
+row -&gt;  7
+8  -&gt; execute continue
+row -&gt;  9
+10  -&gt; execute break
+func over!
+===================
+row -&gt;  0
+row -&gt;  1
+2  -&gt; execute continue
+row -&gt;  3
+4  -&gt; execute return
+</code></pre><h4 id="&#x793A;&#x4F8B;&#x56DB;">&#x793A;&#x4F8B;&#x56DB;</h4>
+<pre><code class="lang-js">println(<span class="hljs-string">&quot;doubleLoopTest below----------------&quot;</span>)
+doubleLoopTest(<span class="hljs-number">4</span>, <span class="hljs-literal">false</span>)
+println(<span class="hljs-string">&quot;=========================&quot;</span>)
+doubleLoopTest(<span class="hljs-number">4</span>, <span class="hljs-literal">true</span>)
+
+doubleLoopTest(num, flag) {
+    <span class="hljs-keyword">for</span> i=<span class="hljs-number">1</span>; i&lt;<span class="hljs-number">5</span>; i++ {
+        <span class="hljs-keyword">for</span> j=<span class="hljs-number">1</span>; j&lt;<span class="hljs-number">12</span>; j++ {
+            <span class="hljs-keyword">if</span> i*j == <span class="hljs-number">9</span> {
+                println(i, j, <span class="hljs-string">&quot;-&gt; continue&quot;</span>)
+                <span class="hljs-keyword">continue</span>
+            }
+            <span class="hljs-keyword">if</span> flag &amp;&amp; j == <span class="hljs-number">4</span> {
+                println(i, j, <span class="hljs-string">&quot;-&gt; return 0&quot;</span>)
+                <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>
+            }
+            <span class="hljs-keyword">if</span> j == num {
+                println(i, j, <span class="hljs-string">&quot;-&gt; break&quot;</span>)
+                <span class="hljs-keyword">break</span>
+            }
+            println(i, j, <span class="hljs-string">&quot;-&gt; normal&quot;</span>)
+        }
+    }
+    println(<span class="hljs-string">&quot;func over!&quot;</span>)
+}
+</code></pre>
+<p>&#x8F93;&#x51FA;</p>
+<pre><code>doubleLoopTest below----------------
+1 1 -&gt; normal
+1 2 -&gt; normal
+1 3 -&gt; normal
+1 4 -&gt; break
+2 1 -&gt; normal
+2 2 -&gt; normal
+2 3 -&gt; normal
+2 4 -&gt; break
+3 1 -&gt; normal
+3 2 -&gt; normal
+3 3 -&gt; continue
+3 4 -&gt; break
+4 1 -&gt; normal
+4 2 -&gt; normal
+4 3 -&gt; normal
+4 4 -&gt; break
+func over!
+=========================
+1 1 -&gt; normal
+1 2 -&gt; normal
+1 3 -&gt; normal
+1 4 -&gt; return 0
+</code></pre>
                                 
                                 </section>
                             
@@ -412,7 +641,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"控制语句","level":"1.3.3","depth":2,"next":{"title":"if语句","level":"1.3.3.1","depth":3,"path":"chapter/051-if-statement.md","ref":"chapter/051-if-statement.md","articles":[]},"previous":{"title":"Json Object","level":"1.3.2.5","depth":3,"path":"chapter/045-json-object.md","ref":"chapter/045-json-object.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter/050-contral-statement.md","mtime":"2021-06-25T09:09:03.777Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-27T09:19:58.014Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"控制语句","level":"1.3.3","depth":2,"next":{"title":"if语句","level":"1.3.3.1","depth":3,"path":"chapter/051-if-statement.md","ref":"chapter/051-if-statement.md","articles":[]},"previous":{"title":"Json Object","level":"1.3.2.5","depth":3,"path":"chapter/045-json-object.md","ref":"chapter/045-json-object.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter/050-contral-statement.md","mtime":"2021-06-29T04:18:08.615Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-01T03:36:05.405Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

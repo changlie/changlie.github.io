@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>文件操作 · GitBook</title>
+        <title>数据库操作 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="300-http-client.html" />
     
-    <link rel="prev" href="070-regular-expression.html" />
+    
+    <link rel="prev" href="200-excel.html" />
     
 
     </head>
@@ -287,9 +289,22 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4" data-path="070-regular-expression.html">
+        <li class="chapter " data-level="1.4" data-path="070-standard-output.html">
             
-                <a href="070-regular-expression.html">
+                <a href="070-standard-output.html">
+            
+                    
+                    标准输出
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="080-regular-expression.html">
+            
+                <a href="080-regular-expression.html">
             
                     
                     正则表达式
@@ -300,12 +315,77 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.5" data-path="080-file.html">
+        <li class="chapter " data-level="1.6" data-path="090-file.html">
             
-                <a href="080-file.html">
+                <a href="090-file.html">
             
                     
                     文件操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="150-date-time.html">
+            
+                <a href="150-date-time.html">
+            
+                    
+                    日期时间
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="200-excel.html">
+            
+                <a href="200-excel.html">
+            
+                    
+                    Excel操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.9" data-path="250-db.html">
+            
+                <a href="250-db.html">
+            
+                    
+                    数据库操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="300-http-client.html">
+            
+                <a href="300-http-client.html">
+            
+                    
+                    Http Client
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="350-http-server.html">
+            
+                <a href="350-http-server.html">
+            
+                    
+                    Http Server
             
                 </a>
             
@@ -343,7 +423,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >文件操作</a>
+        <a href=".." >数据库操作</a>
     </h1>
 </div>
 
@@ -358,63 +438,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x6587;&#x4EF6;&#x64CD;&#x4F5C;">&#x6587;&#x4EF6;&#x64CD;&#x4F5C;</h1>
-<h2 id="&#x6587;&#x4EF6;&#x64CD;&#x4F5C;&#x51FD;&#x6570;">&#x6587;&#x4EF6;&#x64CD;&#x4F5C;&#x51FD;&#x6570;</h2>
-<table>
-<thead>
-<tr>
-<th>&#x51FD;&#x6570;</th>
-<th>&#x63CF;&#x8FF0;</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>file_content(path)</td>
-<td>&#x8BFB;&#x53D6;&#x6574;&#x4E2A;&#x6587;&#x672C;&#x6587;&#x4EF6;&#x7684;&#x5185;&#x5BB9;</td>
-</tr>
-<tr>
-<td>file_lines(path))</td>
-<td>&#x9010;&#x884C;&#x8BFB;&#x53D6;&#x6574;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x6570;&#x7EC4;</td>
-</tr>
-<tr>
-<td>file_json(path)</td>
-<td>&#x8BFB;&#x53D6;&#x6574;&#x4E2A;json&#x6587;&#x4EF6;, &#x8FD4;&#x56DE;&#x4E00;&#x4E2A;json&#x5BF9;&#x8C61;</td>
-</tr>
-<tr>
-<td>file_out(path, content)</td>
-<td>&#x6E05;&#x7A7A;&#x6307;&#x5B9A;&#x6587;&#x4EF6;&#xFF0C;&#x5E76;&#x5199;&#x5165;&#x6570;&#x636E;</td>
-</tr>
-<tr>
-<td>file_append(path, content)</td>
-<td>&#x5411;&#x6307;&#x5B9A;&#x6587;&#x4EF6;&#x4EE5;&#x8FFD;&#x52A0;&#x7684;&#x65B9;&#x5F0F;&#x5199;&#x5165;&#x6570;&#x636E;</td>
-</tr>
-<tr>
-<td>file_args(path)</td>
-<td>&#x4ECE;&#x53C2;&#x6570;&#x6587;&#x4EF6;&#x4E2D;&#x83B7;&#x53D6;&#x53C2;&#x6570;</td>
-</tr>
-<tr>
-<td>file_scan(path)</td>
-<td>&#x83B7;&#x53D6;&#x6307;&#x5B9A;&#x76EE;&#x5F55;&#x4E0B;&#x6240;&#x6709;&#x6587;&#x4EF6;&#x7684;&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84;</td>
-</tr>
-</tbody>
-</table>
-<h3 id="&#x51FD;&#x6570;-fileargspath">&#x51FD;&#x6570; file_args(path)</h3>
-<p>&#x53C2;&#x6570;&#x6587;&#x4EF6; <code>/home/xp/ws/test/inputFile</code> &#x5185;&#x5BB9;&#x4E3A;</p>
-<pre><code>name age salary
-tom  9   1000
-jerry 5  5000
-</code></pre><p>&#x53C2;&#x6570;&#x6587;&#x4EF6; <code>/home/xp/ws/test/inputFile2</code> &#x5185;&#x5BB9;&#x4E3A;</p>
-<pre><code>chenlh.cn, 192.1.1.1
-github.com, 192.168.0.1
-</code></pre><p>&#x5BF9;&#x4EE5;&#x4E0A;&#x4E24;&#x4E2A;&#x6587;&#x4EF6;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x83B7;&#x53D6;</p>
-<pre><code class="lang-js">
-args = file_args(<span class="hljs-string">&quot;/home/xp/ws/test/inputFile&quot;</span>)
-println(args) <span class="hljs-comment">// [[&quot;name&quot;, &quot;age&quot;, &quot;salary&quot;], [&quot;tom&quot;, &quot;9&quot;, &quot;1000&quot;], [&quot;jerry&quot;, &quot;5&quot;, &quot;5000&quot;]]</span>
-
-
-args = file_args(<span class="hljs-string">&quot;/home/xp/ws/test/inputFile2&quot;</span>)
-println(args) <span class="hljs-comment">// [[&quot;chenlh.cn&quot;, &quot;192.1.1.1&quot;], [&quot;github.com&quot;, &quot;192.168.0.1&quot;]]</span>
-</code></pre>
+                                <h1 id="&#x6570;&#x636E;&#x5E93;&#x64CD;&#x4F5C;">&#x6570;&#x636E;&#x5E93;&#x64CD;&#x4F5C;</h1>
 
                                 
                                 </section>
@@ -442,10 +466,14 @@ println(args) <span class="hljs-comment">// [[&quot;chenlh.cn&quot;, &quot;192.1
 
             
                 
-                <a href="070-regular-expression.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 正则表达式">
+                <a href="200-excel.html" class="navigation navigation-prev " aria-label="Previous page: Excel操作">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
+                
+                <a href="300-http-client.html" class="navigation navigation-next " aria-label="Next page: Http Client">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -454,7 +482,7 @@ println(args) <span class="hljs-comment">// [[&quot;chenlh.cn&quot;, &quot;192.1
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"文件操作","level":"1.5","depth":1,"previous":{"title":"正则表达式","level":"1.4","depth":1,"path":"chapter/070-regular-expression.md","ref":"chapter/070-regular-expression.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter/080-file.md","mtime":"2021-06-27T09:18:45.916Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-27T09:19:58.014Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"数据库操作","level":"1.9","depth":1,"next":{"title":"Http Client","level":"1.10","depth":1,"path":"chapter/300-http-client.md","ref":"chapter/300-http-client.md","articles":[]},"previous":{"title":"Excel操作","level":"1.8","depth":1,"path":"chapter/200-excel.md","ref":"chapter/200-excel.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter/250-db.md","mtime":"2021-06-29T04:38:50.011Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-01T03:36:05.405Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
