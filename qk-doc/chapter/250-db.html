@@ -447,16 +447,42 @@ db = oracle(<span class="hljs-string">&quot;system&quot;</span>, <span class="hl
 <span class="hljs-comment">// mysql connection</span>
 db = mysql(<span class="hljs-string">&quot;root&quot;</span>, <span class="hljs-string">&quot;123456&quot;</span>, <span class="hljs-string">&quot;192.168.1.103:3306/iot&quot;</span>)
 </code></pre>
-<p>db&#x5BF9;&#x8C61;&#x5E38;&#x7528;&#x65B9;&#x6CD5;
-| &#x65B9;&#x6CD5;&#x540D;  |    &#x63CF;&#x8FF0;   |
-|  ----  | ----  |
-|  exec(sql, args...)  | &#x6267;&#x884C;&#x5EFA;&#x8868;&#xFF0C;&#x5220;&#x8868;&#x7B49;sql |
-|  insert(sql, args...)  | &#x8BB0;&#x5F55;&#x65B0;&#x589E;  |
-|  update(sql, args...)  | &#x8BB0;&#x5F55;&#x66F4;&#x65B0;  |
-|  getRows(sql, args...)  |  &#x83B7;&#x53D6;&#x591A;&#x884C;&#x8BB0;&#x5F55;&#x6570;&#x636E; |
-|  getRow(sql, args...)  |  &#x83B7;&#x53D6;&#x5355;&#x884C;&#x8BB0;&#x5F55;&#x6570;&#x636E; |
-|  getValue(sql, args...)  | &#x83B7;&#x53D6;&#x5355;&#x4E2A;&#x503C;&#x3002;e.g. &#x67E5;&#x8BE2;&#x8BB0;&#x5F55;&#x6570;&#x91CF;  |</p>
-<p>&#x793A;&#x4F8B;&#xFF1A;</p>
+<h3 id="db&#x5BF9;&#x8C61;&#x5E38;&#x7528;&#x65B9;&#x6CD5;">db&#x5BF9;&#x8C61;&#x5E38;&#x7528;&#x65B9;&#x6CD5;</h3>
+<table>
+<thead>
+<tr>
+<th>&#x65B9;&#x6CD5;&#x540D;</th>
+<th>&#x63CF;&#x8FF0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>exec(sql, args...)</td>
+<td>&#x6267;&#x884C;&#x5EFA;&#x8868;&#xFF0C;&#x5220;&#x8868;&#x7B49;sql</td>
+</tr>
+<tr>
+<td>insert(sql, args...)</td>
+<td>&#x8BB0;&#x5F55;&#x65B0;&#x589E;</td>
+</tr>
+<tr>
+<td>update(sql, args...)</td>
+<td>&#x8BB0;&#x5F55;&#x66F4;&#x65B0;</td>
+</tr>
+<tr>
+<td>getRows(sql, args...)</td>
+<td>&#x83B7;&#x53D6;&#x591A;&#x884C;&#x8BB0;&#x5F55;&#x6570;&#x636E;</td>
+</tr>
+<tr>
+<td>getRow(sql, args...)</td>
+<td>&#x83B7;&#x53D6;&#x5355;&#x884C;&#x8BB0;&#x5F55;&#x6570;&#x636E;</td>
+</tr>
+<tr>
+<td>getValue(sql, args...)</td>
+<td>&#x83B7;&#x53D6;&#x5355;&#x4E2A;&#x503C;&#x3002;e.g. &#x67E5;&#x8BE2;&#x8BB0;&#x5F55;&#x6570;&#x91CF;</td>
+</tr>
+</tbody>
+</table>
+<h3 id="&#x793A;&#x4F8B;&#xFF1A;">&#x793A;&#x4F8B;&#xFF1A;</h3>
 <pre><code class="lang-js">db = oracle(&quot;system&quot;, &quot;oracle&quot;, &quot;127.0.0.1:1521/xe&quot;)
 
 studentTable = &quot;
@@ -466,7 +492,7 @@ name varchar(50),
 age number
 )
 &quot;
-//db.exec(studentTable)
+db.exec(studentTable)
 
 rows = db.getRows(&quot;select table_name from user_tables&quot;)
 forv row : rows {
@@ -528,7 +554,7 @@ forv row : rows {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"数据库操作","level":"1.9","depth":1,"next":{"title":"Http Client","level":"1.10","depth":1,"path":"chapter/300-http-client.md","ref":"chapter/300-http-client.md","articles":[]},"previous":{"title":"Excel操作","level":"1.8","depth":1,"path":"chapter/200-excel.md","ref":"chapter/200-excel.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter/250-db.md","mtime":"2021-07-23T07:35:08.198Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-23T07:35:25.133Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"数据库操作","level":"1.9","depth":1,"next":{"title":"Http Client","level":"1.10","depth":1,"path":"chapter/300-http-client.md","ref":"chapter/300-http-client.md","articles":[]},"previous":{"title":"Excel操作","level":"1.8","depth":1,"path":"chapter/200-excel.md","ref":"chapter/200-excel.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter/250-db.md","mtime":"2021-07-23T08:13:29.916Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-23T08:14:11.438Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
