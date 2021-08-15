@@ -7,7 +7,7 @@
         <title>文件操作 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="generator" content="GitBook 3.2.2">
         
         
         
@@ -579,40 +579,64 @@
 <thead>
 <tr>
 <th>&#x51FD;&#x6570;</th>
+<th>&#x522B;&#x540D;</th>
 <th>&#x63CF;&#x8FF0;</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>fcontent(path)</td>
+<td>fbytes(path)</td>
+<td>fbs(path)</td>
+<td>&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x4EE5;<code>ByteArray</code>&#x5F62;&#x5F0F;&#x8FD4;&#x56DE;</td>
+</tr>
+<tr>
+<td>fstr(path)</td>
+<td></td>
 <td>&#x8BFB;&#x53D6;&#x6574;&#x4E2A;&#x6587;&#x672C;&#x6587;&#x4EF6;&#x7684;&#x5185;&#x5BB9;</td>
 </tr>
 <tr>
 <td>flines(path))</td>
+<td></td>
 <td>&#x9010;&#x884C;&#x8BFB;&#x53D6;&#x6574;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x6570;&#x7EC4;</td>
 </tr>
 <tr>
 <td>fjson(path)</td>
+<td></td>
 <td>&#x8BFB;&#x53D6;&#x6574;&#x4E2A;json&#x6587;&#x4EF6;, &#x8FD4;&#x56DE;&#x4E00;&#x4E2A;json&#x5BF9;&#x8C61;</td>
 </tr>
 <tr>
 <td>fout(path, content)</td>
+<td></td>
 <td>&#x6E05;&#x7A7A;&#x6307;&#x5B9A;&#x6587;&#x4EF6;&#xFF0C;&#x5E76;&#x5199;&#x5165;&#x6570;&#x636E;</td>
 </tr>
 <tr>
 <td>fappend(path, content)</td>
+<td></td>
 <td>&#x5411;&#x6307;&#x5B9A;&#x6587;&#x4EF6;&#x4EE5;&#x8FFD;&#x52A0;&#x7684;&#x65B9;&#x5F0F;&#x5199;&#x5165;&#x6570;&#x636E;</td>
 </tr>
 <tr>
+<td>fsave(path, bytes)</td>
+<td></td>
+<td>&#x5C06;<code>ByteArray</code>&#x6570;&#x636E;&#x4FDD;&#x5B58;&#x81F3;&#x6587;&#x4EF6;</td>
+</tr>
+<tr>
+<td>fappendBytes(path, bytes)</td>
+<td></td>
+<td>&#x5C06;<code>ByteArray</code>&#x6570;&#x636E;&#x8FFD;&#x52A0;&#x81F3;&#x6587;&#x4EF6;</td>
+</tr>
+<tr>
 <td>fargs(path)</td>
+<td></td>
 <td>&#x4ECE;&#x53C2;&#x6570;&#x6587;&#x4EF6;&#x4E2D;&#x83B7;&#x53D6;&#x53C2;&#x6570;</td>
 </tr>
 <tr>
 <td>fprops(path)</td>
+<td></td>
 <td>&#x8BFB;&#x53D6;&#x914D;&#x7F6E;&#x6587;&#x4EF6;, &#x8FD4;&#x56DE;&#x4E00;&#x4E2A;json&#x5BF9;&#x8C61;</td>
 </tr>
 <tr>
 <td>fscan(path)</td>
+<td></td>
 <td>&#x83B7;&#x53D6;&#x6307;&#x5B9A;&#x76EE;&#x5F55;&#x4E0B;&#x6240;&#x6709;&#x6587;&#x4EF6;&#x7684;&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84;</td>
 </tr>
 </tbody>
@@ -690,7 +714,7 @@ println(<span class="hljs-string">&quot;config -&gt; &quot;</span>, props) <span
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"文件操作","level":"1.7","depth":1,"next":{"title":"日期时间","level":"1.8","depth":1,"path":"chapter/150-date-time.md","ref":"chapter/150-date-time.md","articles":[]},"previous":{"title":"正则表达式","level":"1.6","depth":1,"path":"chapter/080-regular-expression.md","ref":"chapter/080-regular-expression.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter/090-file.md","mtime":"2021-08-13T01:58:37.016Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-13T02:21:05.260Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"文件操作","level":"1.7","depth":1,"next":{"title":"日期时间","level":"1.8","depth":1,"path":"chapter/150-date-time.md","ref":"chapter/150-date-time.md","articles":[]},"previous":{"title":"正则表达式","level":"1.6","depth":1,"path":"chapter/080-regular-expression.md","ref":"chapter/080-regular-expression.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter/090-file.md","mtime":"2021-08-15T02:11:02.368Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2021-08-15T06:10:41.397Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

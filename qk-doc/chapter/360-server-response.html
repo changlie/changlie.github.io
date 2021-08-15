@@ -7,7 +7,7 @@
         <title>Server Response · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="generator" content="GitBook 3.2.2">
         
         
         
@@ -571,7 +571,59 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="server-response">Server Response</h1>
+                                <h1 id="serverresponse">ServerResponse</h1>
+<p><code>HttpResponse</code> &#x662F; <code>HttpServer</code>&#x670D;&#x52A1;&#x51FD;&#x6570;&#x7B2C;&#x4E8C;&#x4E2A;&#x5F62;&#x53C2;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x7528;&#x4E8E;&#x54CD;&#x5E94;http&#x8BF7;&#x6C42;&#x3002;</p>
+<table>
+<thead>
+<tr>
+<th>&#x65B9;&#x6CD5;</th>
+<th>&#x522B;&#x540D;</th>
+<th>&#x63CF;&#x8FF0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>redirect(url)</td>
+<td></td>
+<td>&#x91CD;&#x5B9A;&#x5411;</td>
+</tr>
+<tr>
+<td>txt(content)</td>
+<td></td>
+<td>&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x6587;&#x672C;&#x5185;&#x5BB9;</td>
+</tr>
+<tr>
+<td>html(content)</td>
+<td></td>
+<td>&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;html</td>
+</tr>
+<tr>
+<td>json(content)</td>
+<td></td>
+<td>&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;json</td>
+</tr>
+<tr>
+<td>file(bytes)</td>
+<td></td>
+<td>&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x901A;&#x5E38;&#x7528;&#x4E8E;&#x6587;&#x4EF6;&#x6587;&#x4EF6;&#x9884;&#x89C8;</td>
+</tr>
+<tr>
+<td>fileForDownload(fileName, bytes)</td>
+<td>dl(fileName, bytes)</td>
+<td>&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x7528;&#x4E8E;&#x4E0B;&#x8F7D;&#x7684;&#x6587;&#x4EF6;</td>
+</tr>
+<tr>
+<td>setHeader(name, value)</td>
+<td>seth(name, value)</td>
+<td>&#x8BBE;&#x7F6E;&#x54CD;&#x5E94;&#x5934;</td>
+</tr>
+<tr>
+<td>setContentType(value)</td>
+<td>setType(value)</td>
+<td>&#x8BBE;&#x7F6E;&#x54CD;&#x5E94;&#x4F53;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;</td>
+</tr>
+</tbody>
+</table>
 
                                 
                                 </section>
@@ -611,7 +663,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Server Response","level":"1.12.2","depth":2,"previous":{"title":"Http Request","level":"1.12.1","depth":2,"path":"chapter/355-http-request.md","ref":"chapter/355-http-request.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter/360-server-response.md","mtime":"2021-08-13T01:58:37.019Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-13T02:21:05.260Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Server Response","level":"1.12.2","depth":2,"previous":{"title":"Http Request","level":"1.12.1","depth":2,"path":"chapter/355-http-request.md","ref":"chapter/355-http-request.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter/360-server-response.md","mtime":"2021-08-15T02:13:09.500Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2021-08-15T06:10:41.397Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
