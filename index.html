@@ -4,136 +4,373 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>尘墨似金</title>
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="resource/favicon.ico" type="image/x-icon">
+    <style id="indexPageStyle">
+        *{padding:0px;margin:0px; }
+        html, body, .main {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+        body {
+            background: #000;
+        }
+        .main {
+            z-index: 0;
+        }
+        .header {
+            position: relative;
+            height: 300px;
+            width: 100%;
+            color: white;
+        }
+        .content {
+           width: 100%;
+        }
+        .footer {
+            opacity: 0.5;
+            color: white;
+            font-weight:bolder;
+            padding-top: 4px;
+            padding-left: 300px;
+            width: 100%;
+            height: 30px;
+            background-color: #999;
+            position: fixed;
+            bottom: 0px;
+        }
+    
+        .logo {
+            display: block;
+            width: 140px;
+            height: 140px;
+            margin: 0 auto;
+            position: absolute;
+            top: 8px;
+            left: calc(100vw/2 - 70px);
+            border-radius:50%;
+            animation: rotateLogo 1s;
+            cursor: pointer;
+            z-index: 2;
+        }
+        
+        .logo:hover {
+            animation: afterLogoHover 1s;
+        }
+        
+        @keyframes afterLogoHover {
+            0% {transform: rotate(0deg);}
+            100% {transform: rotate(720deg);}
+        }
+        @keyframes rotateLogo {
+            0%{
+                transform: rotateZ(0deg);/*从0度开始*/
+                top: 74px;
+                left: 0px;
+                width: 0px;
+                height: 0px;
+                border-radius:50%;
+            }
+            100%{
+                transform: rotateZ(720deg);/*360度结束*/
+                left: calc(100vw/2 - 70px);
+                width: 140px;
+                height: 140px;
+                border-radius:50%;
+            }
+        }
+
+        @font-face {
+            font-family: 'broFont';
+            src: url('font/bro.eot');
+            src:
+                url('font/bro.eot?#font-spider') format('embedded-opentype'),
+                url('font/bro.woff') format('woff'),
+                url('font/bro.ttf') format('truetype'),
+                url('font/bro.svg') format('svg');
+            font-weight: normal;
+            font-style: normal;
+        }
+        .motto {
+            font-family: broFont;
+            text-align: center;
+            width: 100%;
+            position: absolute;
+            top: 155px;
+            font-size: 48px;
+            animation-name: mottoShow;
+            animation-duration: 1s;
+            text-shadow: 0 0 8px rgba(182, 211, 207, 1),
+                0 0 30px rgba(182, 211, 207, 0.4), 0 0 12px rgba(15, 115, 223, 0.6),
+                0 0 22px rgba(15, 115, 223, 0.8), 0 0 38px rgba(15, 115, 223, 0.9),
+                0 0 60px rgba(15, 115, 223, 1);
+        }
+
+        @keyframes mottoShow {
+            0% {font-size: 1px; top: -1px;}
+            100% {font-size: 48px; top: 155px;}
+        }
+
+        .nav-block {
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            align-content: flex-start;
+            box-sizing: border-box;
+            width: 1050px;
+            min-height: 300px;
+            max-height: 360px;
+            overflow-y: scroll;
+        }
+        .nav-block::-webkit-scrollbar {
+            width: 0px; /*　隐藏滚动条　*/
+            height: 0px;
+        }
+        .tag {
+            width: 200px;
+            height: 100px;
+            box-sizing: border-box;
+            line-height: 100px;
+            margin-top: 8px;
+            margin-left: 3px;
+            margin-right: 4px;
+            font-size: 28px;
+            color: #fff;
+            border-radius: 13px;
+            text-align: center;
+            background-color: royalblue;
+            user-select: none;
+            cursor: pointer;
+        }
+        .tag:hover {
+            background-color: #fc5531;
+        }
+
+        .click-tip {
+            width: 140px;
+            height: 140px;
+            position: absolute;
+            top: 8px;
+            left: calc(100vw/2 - 70px);
+            background-color: #0f52ba;
+            border-radius:50%;
+            z-index: 0;
+            
+            visibility: hidden;
+            animation: wave 0s ease-out 0.2s infinite;
+        }
+        @keyframes wave {
+            50%,
+            70% {transform: scale(2.5);}
+
+            80%,
+            100% {opacity: 0;}
+        }
+    
+    </style>
 </head>
 <body>
+    <div id="snow-container"></div>
     <div class="main">
         <div class="header">
-            <img src="img/logo.jpg" class="logo">
+            <img src="resource/logo.jpg" class="logo" id="logo">
+            <div class="click-tip"></div>
             <div class="motto">墨空的一切，世界的尽头</div>
         </div>
         <div class="content">
-            <div class="nav-block">
-                <div class="tag" style="margin-left: 0px;" onclick="toQkdoc()">Quick 文档</div>
-                <div class="tag" onclick="toBlog()">X Blog</div>
-            </div>
+            <div id="nav-panel" class="nav-block"></div>
         </div>
         <div class="footer">
-            <p>
+            <p style="opacity: 1;">
             Powered by Changlie
             &copy; <a href="https://beian.miit.gov.cn/" target="_blank">ICP主体备案号: 粤ICP备17158628号</a><br>
             </p>
         </div>
     </div>
-    
+    <script>
+        function initNavPanel()　{
+            var links = [
+                {name:"Quick 文档", url:"/qk-doc/"},
+                {name:"Golang", url:""},
+                {name:"JAVA", url:""},
+                {name:"Git", url:""},
+                {name:"Linux", url:""},
+                {name:"X Blog", url:"/dev-log/"},
+                {name:"JavaScript", url:""},
+                {name:"CSS", url:""},
+                {name:"HTML", url:""},
+                {name:"HTTP", url:""},
+            ]
+            var panel = document.getElementById("nav-panel")
+
+            for (var link of links) {
+                var navElem = document.createElement("div")
+                navElem.setAttribute("class", "tag")
+                navElem.setAttribute("target", link.url)
+                navElem.addEventListener("click", function(event) {
+                    var url = this.getAttribute("target")
+                    if (!url) {
+                        dialogOpen()
+                        return
+                    }
+                    window.open(url, "_blank")
+                })
+                navElem.innerText = link.name
+
+                panel.appendChild(navElem)
+            }
+        }
+        initNavPanel()
+    </script>
+    <script src="resource/dialog.js"></script>
 </body>
 </html>
 
 <script>
-function toQkdoc() {
-    window.open("//www.chenlh.cn/qk-doc/index.html", "_blank")
-}
-function toBlog() {
-    window.open("//www.chenlh.cn/dev-log/index.html", "_blank")
-}
+    function modifyStyle(styleId, cssSelector, attrName, attrVal) {
+        var styleElem = document.getElementById(styleId)
+        if (!styleElem) {
+            console.log(`styleElem ${styleId} is not found`)
+            return 
+        }
+        var sheet = styleElem.sheet
+        var cssRules = sheet.cssRules
+        var cssRule
+        for (var i=0; i<cssRules.length; i++) {
+            if (cssRules[i].selectorText == cssSelector) {
+                cssRule = cssRules[i]
+                break
+            }
+        }
+        if (!cssRule) {
+            console.log(`cssSelector ${cssSelector} is not found`)
+            return
+        }
+
+        cssRule.style[attrName] = attrVal
+    }
+
+    setTimeout(function() {
+        modifyStyle("indexPageStyle", ".logo", "animationDuration", "0s")
+        modifyStyle("indexPageStyle", ".click-tip", "visibility", "visible")
+        modifyStyle("indexPageStyle", ".click-tip", "animationDuration", "2s")
+    }, 1000)
+    function toQkdoc() {
+        window.open("/qk-doc/index.html", "_blank")
+    }
+    function toBlog() {
+        window.open("/dev-log/index.html", "_blank")
+    }
 </script>
 
-<style>
-    html, body, .main {
-        margin: 0px;
-        height: 100%;
-        position: relative;
-    }
-    body {
-        background-color: #abc;
-    }
-    .main {
-        /* background-color: darkseagreen; */
-        margin: 0px;
-        padding: 0px;
-    }
-    .header {
-        /* background-color: deeppink; */
-        position: relative;
-        height: 300px;
-        padding-top: 10px;
-    }
-    .content {
-        position: relative;
-        /* background-color: green; */
-    }
-    .footer {
-        padding-left: 300px;
-        width: 100%;
-        height: 70px;
-        background-color: #999;
-        position: fixed;
-        bottom: 0px;
-    }
+<script>
+    function generateSnow() {
+        window.onload = function() {
+            // 添加200个　<div class="snow"></div>
+            for (var i=0; i<200; i++) {
+                var div = document.createElement("div")
+                div.setAttribute("class", "snow")
+                document.getElementById("snow-container").appendChild(div)
+            }
+        }
 
-    .logo {
-        display: block;
-        margin: 0 auto;
-        position: relative;
-        border-radius:50%;
-        animation: rotateLogo 2s linear;
-    }
-    @keyframes rotateLogo{
-        0%{
-            transform: rotateZ(0deg);/*从0度开始*/
-            left: -900px;
-            top: 140px;
-            width: 0px;
-            height: 0px;
-            border-radius:0px;
+        function percentage(raw) {
+            if (!raw) {
+                return
+            }
+            pr = parseInt(raw * 100)
+            return `${pr}%`
         }
-        100%{
-            transform: rotateZ(360deg);/*360度结束*/
-            left: 0px;
-            top: 0px;
-            width: 140px;
-            height: 140px;
-            border-radius:50%
+        function random(max) {
+            if (!max) {
+                return Math.random()
+            }
+            return parseInt(Math.random() * max)
         }
-    }
-    .motto {
-        /* background-color: #abc; */
-        text-align: center;
-        margin-top: 15px;
-        font-size: 25px;
-    }
-    .nav-block {
-        margin-left: auto;
-        margin-right: auto;
-        width: 460px;
-        height: 400px;
-    }
-    .tag {
-        width: 210px;
-        height: 110px;
-        line-height: 110px;
-        font-size: 1.5rem;
-        color: #fff;
-        border-radius: 25px;
-        float: left;
-        margin-left: 40px;
-        text-align: center;
-        background-color: royalblue;
-        animation: tagAni 10s linear;
-        cursor: pointer;
-        box-shadow:12px 12px 25px #000;
-    }
-    .tag:hover {
-        background-color: #fc5531;
-    }
+        function randomRange(min, max) {
+            var rd = random()
+            var res = min + Math.floor(rd * ((max - min) + 1))
+            // debugger
+            return res
+        }
+        function createStyleSheet() {
+            var style = document.createElement('style');
+            style.appendChild(document.createTextNode(""));
+            document.head.appendChild(style);
 
-    @keyframes tagAni{
-        0%{
-            box-shadow: none;
+            var styleObj = {
+                index: 0,
+                raw: style.sheet
+            }
+            styleObj.addRule = function(cssRule) {
+                this.raw.insertRule(cssRule, this.index)
+                this.index++
+            }
+            return styleObj;
         }
-        100%{
-            box-shadow:12px 12px 25px #000;
+        var stylesheet = createStyleSheet();
+
+        var total = 200
+        var snowCss = `
+            .snow {
+                position: absolute;
+                width: 10px;
+                height: 10px;
+                background: white;
+                border-radius: 50%;
+                z-index: -1;
+            }
+        `
+        stylesheet.addRule(snowCss);  //添加原始雪花样式
+
+        function getDropX(start, randomOffset) {
+            // 防止雪花轨迹落出屏幕
+            var axisX
+            if (start + randomOffset >= 100) {
+                axisX = 99
+            } else if (start + randomOffset <= 0) {
+                axisX = 1
+            } else {
+                axisX = start + randomOffset
+            }
+            return axisX
+        }
+        for (var i =1; i <=total; i++) {
+            var randomX =  random(100);
+            var randomOffset = randomRange(-100000, 100000) * 0.0001;
+            var randomXEnd = getDropX(randomX, randomOffset);
+            var randomXEndYoyo = getDropX(randomX, (randomOffset / 2));
+            var randomYoyoTime = randomRange(30000, 80000) / 100000;
+            var randomYoyoY = randomYoyoTime * 100;
+            var randomScale = random(10000) * 0.0001;
+            var fallDuration = randomRange(10, 30) * 1 + "s";
+            var fallDelay = (random(30) * (-1)) + "s";
+            var opacityVal = random(10000) * 0.0001;
+            
+            var snowZeroCss = `
+                .snow:nth-child(${i}) {
+                    opacity: ${opacityVal};
+                    transform: translate(${randomX}vw, -10px) scale(${randomScale});
+                    animation: fall-${i} ${fallDuration} ${fallDelay} linear infinite;
+                }
+            `
+            var startPercent = percentage(randomYoyoTime)
+            var aniCss = `
+                @keyframes fall-${i} {
+                    ${startPercent} {
+                        transform: translate(${randomXEnd}vw, ${randomYoyoY}vh) scale(${randomScale});
+                    }
+
+                    to {
+                        transform: translate(${randomXEndYoyo}vw, 100vh) scale(${randomScale});
+                    }
+                }
+            `
+            stylesheet.addRule(aniCss);  //给每个雪花写个动画轨迹
+            stylesheet.addRule(snowZeroCss);  // 给每一个雪花设置开始位置及动画
         }
     }
+    generateSnow()
+</script>
 
-</style>
