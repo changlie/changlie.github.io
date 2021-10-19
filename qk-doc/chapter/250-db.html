@@ -471,6 +471,32 @@
             
         </li>
     
+        <li class="chapter " data-level="1.15" data-path="990-crontab.html">
+            
+                <a href="990-crontab.html">
+            
+                    
+                    任务调度
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16" data-path="990-mail.html">
+            
+                <a href="990-mail.html">
+            
+                    
+                    邮件发送
+            
+                </a>
+            
+
+            
+        </li>
+    
 
     
 
@@ -517,13 +543,49 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="&#x6570;&#x636E;&#x5E93;&#x64CD;&#x4F5C;">&#x6570;&#x636E;&#x5E93;&#x64CD;&#x4F5C;</h1>
-<p>Quick&#x8BED;&#x8A00;&#x4E2D;&#xFF0C;&#x6570;&#x636E;&#x5E93;&#x64CD;&#x4F5C;&#x76F8;&#x5F53;&#x7B80;&#x5355;&#xFF0C;&#x53EA;&#x9700;&#x83B7;&#x53D6;&#x5230;db&#x5BF9;&#x8C61;&#x5373;&#x53EF;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x5E93;&#x64CD;&#x4F5C;&#x3002;<br>&#x83B7;&#x53D6;&#x65B9;&#x5F0F;&#x5982;&#x4E0B;&#xFF1A;</p>
-<pre><code class="lang-js"><span class="hljs-comment">// sqlite connection</span>
-db = sqlite(<span class="hljs-string">&quot;dump&quot;</span>)
-<span class="hljs-comment">// oracle connection</span>
-db = oracle(<span class="hljs-string">&quot;system&quot;</span>, <span class="hljs-string">&quot;oracle&quot;</span>, <span class="hljs-string">&quot;127.0.0.1:1521/xe&quot;</span>)
-<span class="hljs-comment">// mysql connection</span>
-db = mysql(<span class="hljs-string">&quot;root&quot;</span>, <span class="hljs-string">&quot;123456&quot;</span>, <span class="hljs-string">&quot;192.168.1.103:3306/iot&quot;</span>)
+<p><code>Quick</code>&#x8BED;&#x8A00;&#x4E2D;&#xFF0C;&#x6570;&#x636E;&#x5E93;&#x64CD;&#x4F5C;&#x76F8;&#x5F53;&#x7B80;&#x5355;&#xFF0C;&#x53EA;&#x9700;&#x83B7;&#x53D6;&#x5230;<code>DB</code>&#x5BF9;&#x8C61;&#x5373;&#x53EF;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x5E93;&#x64CD;&#x4F5C;&#x3002;  </p>
+<h3 id="&#x521B;&#x5EFA;db&#x7684;&#x76F8;&#x5173;&#x51FD;&#x6570;">&#x521B;&#x5EFA;DB&#x7684;&#x76F8;&#x5173;&#x51FD;&#x6570;</h3>
+<table>
+<thead>
+<tr>
+<th>&#x51FD;&#x6570;</th>
+<th>&#x63CF;&#x8FF0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sqlite</td>
+<td>&#x521B;&#x5EFA;&#x64CD;&#x4F5C;Sqlite&#x7684;DB&#x5BF9;&#x8C61;</td>
+</tr>
+<tr>
+<td>mysql</td>
+<td>&#x521B;&#x5EFA;&#x64CD;&#x4F5C;Mysql&#x7684;DB&#x5BF9;&#x8C61;</td>
+</tr>
+<tr>
+<td>sqlserver</td>
+<td>&#x521B;&#x5EFA;&#x64CD;&#x4F5C;SqlServer&#x7684;DB&#x5BF9;&#x8C61;</td>
+</tr>
+<tr>
+<td>pg</td>
+<td>&#x521B;&#x5EFA;&#x64CD;&#x4F5C;Postgres&#x7684;DB&#x5BF9;&#x8C61;</td>
+</tr>
+<tr>
+<td>oracle</td>
+<td>&#x521B;&#x5EFA;&#x64CD;&#x4F5C;Oracle&#x7684;DB&#x5BF9;&#x8C61;</td>
+</tr>
+</tbody>
+</table>
+<p>&#x793A;&#x4F8B;</p>
+<pre><code class="lang-js"><span class="hljs-comment">// &#x6570;&#x636E;&#x5E93;&#x6587;&#x4EF6;&#x540D;</span>
+db = sqlite(<span class="hljs-string">&quot;d:/db3&quot;</span>)
+<span class="hljs-comment">// &#x7528;&#x6237;&#x540D;&#xFF0C; &#x5BC6;&#x7801;&#xFF0C;(ip/&#x57DF;&#x540D;):&#x7AEF;&#x53E3;/&#x6570;&#x636E;&#x5E93;&#x540D;</span>
+db = mysql(<span class="hljs-string">&quot;root&quot;</span>, <span class="hljs-string">&quot;123456&quot;</span>, <span class="hljs-string">&quot;192.168.1.101:3306/iot&quot;</span>)
+<span class="hljs-comment">// &#x7528;&#x6237;&#x540D;&#xFF0C; &#x5BC6;&#x7801;&#xFF0C;(ip/&#x57DF;&#x540D;):&#x7AEF;&#x53E3;/&#x6570;&#x636E;&#x5E93;&#x540D;</span>
+db = sqlserver(<span class="hljs-string">&quot;SA&quot;</span>, <span class="hljs-string">&quot;root@123&quot;</span>, <span class="hljs-string">&quot;192.168.1.101:1433/STG&quot;</span>)
+<span class="hljs-comment">// &#x7528;&#x6237;&#x540D;&#xFF0C; &#x5BC6;&#x7801;&#xFF0C;(ip/&#x57DF;&#x540D;):&#x7AEF;&#x53E3;/&#x6570;&#x636E;&#x5E93;&#x540D;</span>
+db = pg(<span class="hljs-string">&quot;postgres&quot;</span>, <span class="hljs-string">&quot;123456&quot;</span>, <span class="hljs-string">&quot;192.168.1.101:5432/postgres?sslmode=disable&quot;</span>)
+<span class="hljs-comment">// &#x7528;&#x6237;&#x540D;&#xFF0C; &#x5BC6;&#x7801;&#xFF0C;(ip/&#x57DF;&#x540D;):&#x7AEF;&#x53E3;/&#x6570;&#x636E;&#x5E93;&#x540D;</span>
+db = oracle(<span class="hljs-string">&quot;system&quot;</span>, <span class="hljs-string">&quot;oracle&quot;</span>, <span class="hljs-string">&quot;192.168.1.101:1521/xe&quot;</span>)
 </code></pre>
 <h3 id="db&#x5BF9;&#x8C61;&#x5E38;&#x7528;&#x65B9;&#x6CD5;">db&#x5BF9;&#x8C61;&#x5E38;&#x7528;&#x65B9;&#x6CD5;</h3>
 <table>
@@ -534,6 +596,22 @@ db = mysql(<span class="hljs-string">&quot;root&quot;</span>, <span class="hljs-
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>tables()</td>
+<td>&#x67E5;&#x627E;&#x5F53;&#x524D;&#x6570;&#x636E;&#x5E93;&#x7684;&#x6240;&#x6709;&#x8868;&#x540D;&#x79F0;</td>
+</tr>
+<tr>
+<td>exists(tableName)</td>
+<td>&#x5224;&#x65AD;&#x67D0;&#x4E2A;&#x8868;&#x662F;&#x5426;&#x5B58;&#x5728;</td>
+</tr>
+<tr>
+<td>fields(tableName)</td>
+<td>&#x67E5;&#x627E;&#x6307;&#x5B9A;&#x8868;&#x7684;&#x6240;&#x6709;&#x5B57;&#x6BB5;&#x540D;&#x79F0;</td>
+</tr>
+<tr>
+<td>count(tableName)</td>
+<td>&#x7EDF;&#x8BA1;&#x8868;&#x7684;&#x603B;&#x8BB0;&#x5F55;&#x6570;</td>
+</tr>
 <tr>
 <td>exec(sql, args...)</td>
 <td>&#x6267;&#x884C;&#x5EFA;&#x8868;&#xFF0C;&#x5220;&#x8868;&#x7B49;sql</td>
@@ -561,32 +639,32 @@ db = mysql(<span class="hljs-string">&quot;root&quot;</span>, <span class="hljs-
 </tbody>
 </table>
 <h3 id="&#x793A;&#x4F8B;&#xFF1A;">&#x793A;&#x4F8B;&#xFF1A;</h3>
-<pre><code class="lang-js">db = oracle(&quot;system&quot;, &quot;oracle&quot;, &quot;127.0.0.1:1521/xe&quot;)
+<pre><code class="lang-js">db = oracle(<span class="hljs-string">&quot;system&quot;</span>, <span class="hljs-string">&quot;oracle&quot;</span>, <span class="hljs-string">&quot;127.0.0.1:1521/xe&quot;</span>)
 
-studentTable = &quot;
+studentTable = <span class="hljs-string">`
 create table student (
 id number,
 name varchar(50),
 age number
 )
-&quot;
+`</span>
 db.exec(studentTable)
 
-rows = db.getRows(&quot;select table_name from user_tables&quot;)
+rows = db.getRows(<span class="hljs-string">&quot;select table_name from user_tables&quot;</span>)
 forv row : rows {
-  println(&quot;name -&gt; &quot;, row)
+  println(<span class="hljs-string">&quot;name -&gt; &quot;</span>, row)
 }
-println(&quot;total -&gt; &quot;, rows.size())
+println(<span class="hljs-string">&quot;total -&gt; &quot;</span>, rows.size())
 
-println(&quot;--------------------&quot;)
+println(<span class="hljs-string">&quot;--------------------&quot;</span>)
 
-db.insert(&quot;insert into student values(64, &apos;lisi&apos;, 123)&quot;)
-db.insert(&quot;insert into student values(23, &apos;zhangsan&apos;, 56)&quot;)
-db.insert(&quot;insert into student values(11, &apos;changlie&apos;, 9)&quot;)
+db.insert(<span class="hljs-string">&quot;insert into student values(64, &apos;lisi&apos;, 123)&quot;</span>)
+db.insert(<span class="hljs-string">&quot;insert into student values(23, &apos;zhangsan&apos;, 56)&quot;</span>)
+db.insert(<span class="hljs-string">&quot;insert into student values(11, &apos;changlie&apos;, 9)&quot;</span>)
 
-rows = db.getRows(&quot;select * from student&quot;)
+rows = db.getRows(<span class="hljs-string">&quot;select * from student&quot;</span>)
 forv row : rows {
-  println(&quot;stu =&gt; &quot;, row)
+  println(<span class="hljs-string">&quot;stu =&gt; &quot;</span>, row)
 }
 </code></pre>
 
@@ -632,7 +710,7 @@ forv row : rows {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"数据库操作","level":"1.10","depth":1,"next":{"title":"Http Client","level":"1.11","depth":1,"path":"chapter/300-http-client.md","ref":"chapter/300-http-client.md","articles":[]},"previous":{"title":"Excel操作","level":"1.9","depth":1,"path":"chapter/200-excel.md","ref":"chapter/200-excel.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter/250-db.md","mtime":"2021-08-13T14:22:50.654Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2021-09-27T03:23:29.124Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"数据库操作","level":"1.10","depth":1,"next":{"title":"Http Client","level":"1.11","depth":1,"path":"chapter/300-http-client.md","ref":"chapter/300-http-client.md","articles":[]},"previous":{"title":"Excel操作","level":"1.9","depth":1,"path":"chapter/200-excel.md","ref":"chapter/200-excel.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter/250-db.md","mtime":"2021-10-19T10:30:12.437Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2021-10-19T10:35:36.634Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

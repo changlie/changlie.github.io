@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Boolean · GitBook</title>
+        <title>邮件发送 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="043-string.html" />
     
-    
-    <link rel="prev" href="041-number.html" />
+    <link rel="prev" href="990-crontab.html" />
     
 
     </head>
@@ -182,7 +180,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.2.3" data-path="042-boolean.html">
+        <li class="chapter " data-level="1.3.2.3" data-path="042-boolean.html">
             
                 <a href="042-boolean.html">
             
@@ -484,7 +482,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.16" data-path="990-mail.html">
+        <li class="chapter active" data-level="1.16" data-path="990-mail.html">
             
                 <a href="990-mail.html">
             
@@ -527,7 +525,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Boolean</a>
+        <a href=".." >邮件发送</a>
     </h1>
 </div>
 
@@ -542,19 +540,25 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="&#x5E03;&#x5C14;&#x7C7B;&#x578B;">&#x5E03;&#x5C14;&#x7C7B;&#x578B;</h2>
-<p>&#x5E03;&#x5C14;&#x7C7B;&#x578B;&#x53EA;&#x6709;&#x4E24;&#x79CD;&#x503C;&#xFF1A;true, false&#x3002;&#x4E00;&#x822C;&#x7528;&#x4E8E;&#x6761;&#x4EF6;&#x5224;&#x65AD;</p>
-<p>Quick &#x7684;&#x5224;&#x7A7A;&#x673A;&#x5236;&#x548C;js&#x662F;&#x4E00;&#x81F4;&#x7684;&#xFF1A;<br>&#x53D8;&#x91CF;&#x503C;&#x4E3A;false, null &#x6216; &#x76F8;&#x5E94;&#x7C7B;&#x578B;&#x9ED8;&#x8BA4;&#x503C;&#x65F6;, &#x6761;&#x4EF6;&#x5224;&#x65AD;&#x4F1A;&#x5C06;&#x5B83;&#x4EEC;&#x7B49;&#x540C;&#x4E8E;false,&#x53CD;&#x4E4B;&#x4E3A;true  </p>
-<p>&#x76F8;&#x5E94;&#x7C7B;&#x578B;&#x9ED8;&#x8BA4;&#x503C;: </p>
-<ul>
-<li>Byte Array =&gt; null</li>
-<li>Number =&gt; 0</li>
-<li>Boolean =&gt; false</li>
-<li>String =&gt; &quot;&quot;</li>
-<li>JSON Array =&gt; null</li>
-<li>JSON Object =&gt; null</li>
-<li>&#x5176;&#x4ED6;&#x5185;&#x7F6E;&#x7C7B;&#x578B; =&gt; null</li>
-</ul>
+                                <h1 id="&#x90AE;&#x4EF6;&#x53D1;&#x9001;">&#x90AE;&#x4EF6;&#x53D1;&#x9001;</h1>
+<p>&#x90AE;&#x4EF6;&#x6BCF;&#x6B21;&#x53D1;&#x9001;&#xFF0C;&#x53EA;&#x80FD;&#x6709;&#x4E00;&#x4E2A;&#x63A5;&#x9001;&#x4EBA;&#x4E0E;&#x6284;&#x9001;&#x4EBA;</p>
+<pre><code class="lang-js">m = mailer()
+m.from(<span class="hljs-string">&quot;xxx@sohu.com&quot;</span>) <span class="hljs-comment">// &#x53D1;&#x9001;&#x4EBA;</span>
+m.to(<span class="hljs-string">&quot;xxxx@qq.com&quot;</span>) <span class="hljs-comment">// &#x6536;&#x4EF6;&#x4EBA;</span>
+<span class="hljs-comment">// m.cc(&quot;xxxx@163.com&quot;) // &#x6284;&#x9001;</span>
+
+m.subject(<span class="hljs-string">&quot;TurboX v11&quot;</span>) <span class="hljs-comment">// &#x4E3B;&#x9898;</span>
+m.body(<span class="hljs-string">&quot;congratulation for you!&quot;</span>) <span class="hljs-comment">// &#x90AE;&#x4EF6;&#x5185;&#x5BB9;</span>
+<span class="hljs-comment">// m.attach(&quot;/home/xp/xxx.txt&quot;) // &#x90AE;&#x4EF6;&#x9644;&#x4EF6;&#x672C;&#x5730;&#x8DEF;&#x5F84;</span>
+
+m.host(<span class="hljs-string">&quot;smtp.sohu.com&quot;</span>) <span class="hljs-comment">// &#x90AE;&#x7BB1;&#x7528;&#x6237;&#x6240;&#x5728;&#x7684;&#x90AE;&#x4EF6;&#x670D;&#x52A1;&#x5668;&#x57DF;&#x540D;&#x6216;IP</span>
+m.port(<span class="hljs-number">25</span>) <span class="hljs-comment">// &#x90AE;&#x7BB1;&#x7528;&#x6237;&#x6240;&#x5728;&#x7684;&#x90AE;&#x4EF6;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x53E3;</span>
+
+m.username(<span class="hljs-string">&quot;xxxx@sohu.com&quot;</span>) <span class="hljs-comment">// &#x90AE;&#x7BB1;&#x7528;&#x6237;&#x540D;</span>
+m.password(<span class="hljs-string">&quot;xxxx&quot;</span>) <span class="hljs-comment">// &#x90AE;&#x7BB1;token, &#x9700;&#x5F00;&#x542F;pop3/smtp</span>
+
+m.send()
+</code></pre>
 
                                 
                                 </section>
@@ -582,14 +586,10 @@
 
             
                 
-                <a href="041-number.html" class="navigation navigation-prev " aria-label="Previous page: Number">
+                <a href="990-crontab.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 任务调度">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="043-string.html" class="navigation navigation-next " aria-label="Next page: String">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -598,7 +598,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Boolean","level":"1.3.2.3","depth":3,"next":{"title":"String","level":"1.3.2.4","depth":3,"path":"chapter/043-string.md","ref":"chapter/043-string.md","articles":[]},"previous":{"title":"Number","level":"1.3.2.2","depth":3,"path":"chapter/041-number.md","ref":"chapter/041-number.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter/042-boolean.md","mtime":"2021-08-13T14:22:50.654Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2021-10-19T10:35:36.634Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"邮件发送","level":"1.16","depth":1,"previous":{"title":"任务调度","level":"1.15","depth":1,"path":"chapter/990-crontab.md","ref":"chapter/990-crontab.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter/990-mail.md","mtime":"2021-09-29T15:02:00.058Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2021-10-19T10:35:36.634Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

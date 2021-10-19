@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Boolean · GitBook</title>
+        <title>任务调度 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="043-string.html" />
+    <link rel="next" href="990-mail.html" />
     
     
-    <link rel="prev" href="041-number.html" />
+    <link rel="prev" href="953-internal-funcs.html" />
     
 
     </head>
@@ -182,7 +182,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.2.3" data-path="042-boolean.html">
+        <li class="chapter " data-level="1.3.2.3" data-path="042-boolean.html">
             
                 <a href="042-boolean.html">
             
@@ -471,7 +471,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.15" data-path="990-crontab.html">
+        <li class="chapter active" data-level="1.15" data-path="990-crontab.html">
             
                 <a href="990-crontab.html">
             
@@ -527,7 +527,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Boolean</a>
+        <a href=".." >任务调度</a>
     </h1>
 </div>
 
@@ -542,19 +542,155 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="&#x5E03;&#x5C14;&#x7C7B;&#x578B;">&#x5E03;&#x5C14;&#x7C7B;&#x578B;</h2>
-<p>&#x5E03;&#x5C14;&#x7C7B;&#x578B;&#x53EA;&#x6709;&#x4E24;&#x79CD;&#x503C;&#xFF1A;true, false&#x3002;&#x4E00;&#x822C;&#x7528;&#x4E8E;&#x6761;&#x4EF6;&#x5224;&#x65AD;</p>
-<p>Quick &#x7684;&#x5224;&#x7A7A;&#x673A;&#x5236;&#x548C;js&#x662F;&#x4E00;&#x81F4;&#x7684;&#xFF1A;<br>&#x53D8;&#x91CF;&#x503C;&#x4E3A;false, null &#x6216; &#x76F8;&#x5E94;&#x7C7B;&#x578B;&#x9ED8;&#x8BA4;&#x503C;&#x65F6;, &#x6761;&#x4EF6;&#x5224;&#x65AD;&#x4F1A;&#x5C06;&#x5B83;&#x4EEC;&#x7B49;&#x540C;&#x4E8E;false,&#x53CD;&#x4E4B;&#x4E3A;true  </p>
-<p>&#x76F8;&#x5E94;&#x7C7B;&#x578B;&#x9ED8;&#x8BA4;&#x503C;: </p>
-<ul>
-<li>Byte Array =&gt; null</li>
-<li>Number =&gt; 0</li>
-<li>Boolean =&gt; false</li>
-<li>String =&gt; &quot;&quot;</li>
-<li>JSON Array =&gt; null</li>
-<li>JSON Object =&gt; null</li>
-<li>&#x5176;&#x4ED6;&#x5185;&#x7F6E;&#x7C7B;&#x578B; =&gt; null</li>
-</ul>
+                                <h1 id="&#x4EFB;&#x52A1;&#x8C03;&#x5EA6;">&#x4EFB;&#x52A1;&#x8C03;&#x5EA6;</h1>
+<h3 id="delayinterval">delay/interval</h3>
+<pre><code class="lang-js">println(<span class="hljs-string">&quot;start at&quot;</span>, now())
+delay(${
+    println(<span class="hljs-string">&quot;&#x5EF6;&#x8FDF;&#x4E24;&#x79D2;&#x6267;&#x884C;&quot;</span>, now())
+}, <span class="hljs-number">2000</span>)
+
+
+interval(${
+    println(<span class="hljs-string">&quot;&#x6BCF;1.5&#x79D2;&#x6267;&#x884C;&#x4E00;&#x6B21;&quot;</span>, now())
+}, <span class="hljs-number">1500</span>)
+</code></pre>
+<h3 id="crontab&#x793A;&#x4F8B;">crontab&#x793A;&#x4F8B;</h3>
+<pre><code class="lang-js">cron(<span class="hljs-string">&quot;* * * * *&quot;</span>, ${
+    println(<span class="hljs-string">&quot;&#x6BCF;&#x79D2;&#x6267;&#x884C;&#x4E00;&#x6B21;&quot;</span>, now())
+})
+
+cron(<span class="hljs-string">&quot;3/4 * * * *&quot;</span>, ${
+    println(<span class="hljs-string">&quot;&#x6BCF;4&#x79D2;&#x6267;&#x884C;&#x4E00;&#x6B21;&#xFF0C;3&#x79D2;&#x540E;&#x5F00;&#x59CB;&#x6267;&#x884C;&quot;</span>, now())
+})
+</code></pre>
+<h3 id="crontab&#x76F8;&#x5173;&#x77E5;&#x8BC6;">crontab&#x76F8;&#x5173;&#x77E5;&#x8BC6;</h3>
+<h5 id="&#x4E2D;&#x6587;&#x7248;">&#x4E2D;&#x6587;&#x7248;</h5>
+<h6 id="cron-&#x8868;&#x8FBE;&#x5F0F;&#x4EE3;&#x8868;&#x4E86;&#x4E00;&#x4E2A;&#x65F6;&#x95F4;&#x96C6;&#x5408;&#xFF0C;&#x4F7F;&#x7528;-6-&#x4E2A;&#x7A7A;&#x683C;&#x5206;&#x9694;&#x7684;&#x5B57;&#x6BB5;&#x8868;&#x793A;&#x3002;">cron &#x8868;&#x8FBE;&#x5F0F;&#x4EE3;&#x8868;&#x4E86;&#x4E00;&#x4E2A;&#x65F6;&#x95F4;&#x96C6;&#x5408;&#xFF0C;&#x4F7F;&#x7528; 6 &#x4E2A;&#x7A7A;&#x683C;&#x5206;&#x9694;&#x7684;&#x5B57;&#x6BB5;&#x8868;&#x793A;&#x3002;</h6>
+<table>
+<thead>
+<tr>
+<th>&#x5B57;&#x6BB5;&#x540D;</th>
+<th>&#x662F;&#x5426;&#x5FC5;&#x987B;</th>
+<th>&#x5141;&#x8BB8;&#x7684;&#x503C;</th>
+<th>&#x5141;&#x8BB8;&#x7684;&#x7279;&#x5B9A;&#x5B57;&#x7B26;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#x79D2;(Seconds)</td>
+<td>&#x662F;</td>
+<td>0-59</td>
+<td>* / , &#x2013;</td>
+</tr>
+<tr>
+<td>&#x5206;(Minutes)</td>
+<td>&#x662F;</td>
+<td>0-59</td>
+<td>* / , &#x2013;</td>
+</tr>
+<tr>
+<td>&#x65F6;(Hours)</td>
+<td>&#x662F;</td>
+<td>0-23</td>
+<td>* / , &#x2013;</td>
+</tr>
+<tr>
+<td>&#x65E5;(Day of month)</td>
+<td>&#x662F;</td>
+<td>1-31</td>
+<td>* / , &#x2013; ?</td>
+</tr>
+<tr>
+<td>&#x6708;(Month)</td>
+<td>&#x662F;</td>
+<td>1-12 or JAN-DEC</td>
+<td>* / , &#x2013;</td>
+</tr>
+<tr>
+<td>&#x661F;&#x671F;(Day of week)</td>
+<td>&#x5426;</td>
+<td>0-6 or SUM-SAT</td>
+<td>* / , &#x2013; ?</td>
+</tr>
+</tbody>
+</table>
+<p>&#x6CE8;&#xFF1A;  </p>
+<pre><code>1&#xFF09;&#x6708;(Month)&#x548C;&#x661F;&#x671F;(Day of week)&#x5B57;&#x6BB5;&#x7684;&#x503C;&#x4E0D;&#x533A;&#x5206;&#x5927;&#x5C0F;&#x5199;&#xFF0C;&#x5982;&#xFF1A;SUN&#x3001;Sun &#x548C; sun &#x662F;&#x4E00;&#x6837;&#x7684;&#x3002;
+2&#xFF09;&#x661F;&#x671F;(Day of week)&#x5B57;&#x6BB5;&#x5982;&#x679C;&#x6CA1;&#x63D0;&#x4F9B;&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;&#x662F; *
+</code></pre><h6 id="&#x7279;&#x6B8A;&#x5B57;&#x7B26;&#x8BF4;&#x660E;">&#x7279;&#x6B8A;&#x5B57;&#x7B26;&#x8BF4;&#x660E;</h6>
+<p>1&#xFF09;&#x661F;&#x53F7;(*)
+&#x8868;&#x793A; cron &#x8868;&#x8FBE;&#x5F0F;&#x80FD;&#x5339;&#x914D;&#x8BE5;&#x5B57;&#x6BB5;&#x7684;&#x6240;&#x6709;&#x503C;&#x3002;&#x5982;&#x5728;&#x7B2C;5&#x4E2A;&#x5B57;&#x6BB5;&#x4F7F;&#x7528;&#x661F;&#x53F7;(month)&#xFF0C;&#x8868;&#x793A;&#x6BCF;&#x4E2A;&#x6708;</p>
+<p>2&#xFF09;&#x659C;&#x7EBF;(/)
+&#x8868;&#x793A;&#x589E;&#x957F;&#x95F4;&#x9694;&#xFF0C;&#x5982;&#x7B2C;1&#x4E2A;&#x5B57;&#x6BB5;(minutes) &#x503C;&#x662F; 3-59/15&#xFF0C;&#x8868;&#x793A;&#x6BCF;&#x5C0F;&#x65F6;&#x7684;&#x7B2C;3&#x5206;&#x949F;&#x5F00;&#x59CB;&#x6267;&#x884C;&#x4E00;&#x6B21;&#xFF0C;&#x4E4B;&#x540E;&#x6BCF;&#x9694; 15 &#x5206;&#x949F;&#x6267;&#x884C;&#x4E00;&#x6B21;&#xFF08;&#x5373; 3&#x3001;18&#x3001;33&#x3001;48 &#x8FD9;&#x4E9B;&#x65F6;&#x95F4;&#x70B9;&#x6267;&#x884C;&#xFF09;&#xFF0C;&#x8FD9;&#x91CC;&#x4E5F;&#x53EF;&#x4EE5;&#x8868;&#x793A;&#x4E3A;&#xFF1A;3/15</p>
+<p>3&#xFF09;&#x9017;&#x53F7;(,)
+&#x7528;&#x4E8E;&#x679A;&#x4E3E;&#x503C;&#xFF0C;&#x5982;&#x7B2C;6&#x4E2A;&#x5B57;&#x6BB5;&#x503C;&#x662F; MON,WED,FRI&#xFF0C;&#x8868;&#x793A; &#x661F;&#x671F;&#x4E00;&#x3001;&#x4E09;&#x3001;&#x4E94; &#x6267;&#x884C;</p>
+<p>4&#xFF09;&#x8FDE;&#x5B57;&#x53F7;(-)
+&#x8868;&#x793A;&#x4E00;&#x4E2A;&#x8303;&#x56F4;&#xFF0C;&#x5982;&#x7B2C;3&#x4E2A;&#x5B57;&#x6BB5;&#x7684;&#x503C;&#x4E3A; 9-17 &#x8868;&#x793A; 9am &#x5230; 5pm &#x76F4;&#x63A5;&#x6BCF;&#x4E2A;&#x5C0F;&#x65F6;&#xFF08;&#x5305;&#x62EC;9&#x548C;17&#xFF09;</p>
+<p>5&#xFF09;&#x95EE;&#x53F7;(?)
+&#x53EA;&#x7528;&#x4E8E; &#x65E5;(Day of month) &#x548C; &#x661F;&#x671F;(Day of week)&#xFF0C;&#x8868;&#x793A;&#x4E0D;&#x6307;&#x5B9A;&#x503C;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x4EE3;&#x66FF; *</p>
+<h5 id="&#x82F1;&#x6587;&#x7248;">&#x82F1;&#x6587;&#x7248;</h5>
+<p>CRON Expression Format &#xB6;</p>
+<p>A cron expression represents a set of times, using 6 space-separated fields.</p>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Mandatory?</th>
+<th>Allowed values</th>
+<th>Allowed special characters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Seconds</td>
+<td>Yes</td>
+<td>0-59</td>
+<td>* / , -</td>
+</tr>
+<tr>
+<td>Minutes</td>
+<td>Yes</td>
+<td>0-59</td>
+<td>* / , -</td>
+</tr>
+<tr>
+<td>Hours</td>
+<td>Yes</td>
+<td>0-23</td>
+<td>* / , -</td>
+</tr>
+<tr>
+<td>Day of month</td>
+<td>Yes</td>
+<td>1-31</td>
+<td>* / , - ?</td>
+</tr>
+<tr>
+<td>Month</td>
+<td>Yes</td>
+<td>1-12 or JAN-DEC</td>
+<td>* / , -</td>
+</tr>
+<tr>
+<td>Day of week</td>
+<td>Yes</td>
+<td>0-6 or SUN-SAT</td>
+<td>* / , - ?</td>
+</tr>
+</tbody>
+</table>
+<p>Note: Month and Day-of-week field values are case insensitive. &quot;SUN&quot;, &quot;Sun&quot;, and &quot;sun&quot; are equally accepted.
+Special Characters &#xB6;</p>
+<p>Asterisk ( * )</p>
+<p>The asterisk indicates that the cron expression will match for all values of the field; e.g., using an asterisk in the 5th field (month) would indicate every month.</p>
+<p>Slash ( / )</p>
+<p>Slashes are used to describe increments of ranges. For example 3-59/15 in the 1st field (minutes) would indicate the 3rd minute of the hour and every 15 minutes thereafter. The form &quot;*\/...&quot; is equivalent to the form &quot;first-last/...&quot;, that is, an increment over the largest possible range of the field. The form &quot;N/...&quot; is accepted as meaning &quot;N-MAX/...&quot;, that is, starting at N, use the increment until the end of that specific range. It does not wrap around.</p>
+<p>Comma ( , )</p>
+<p>Commas are used to separate items of a list. For example, using &quot;MON,WED,FRI&quot; in the 5th field (day of week) would mean Mondays, Wednesdays and Fridays.</p>
+<p>Hyphen ( - )</p>
+<p>Hyphens are used to define ranges. For example, 9-17 would indicate every hour between 9am and 5pm inclusive.</p>
+<p>Question mark ( ? )</p>
+<p>Question mark may be used instead of &apos;*&apos; for leaving either day-of-month or day-of-week blank. </p>
 
                                 
                                 </section>
@@ -582,12 +718,12 @@
 
             
                 
-                <a href="041-number.html" class="navigation navigation-prev " aria-label="Previous page: Number">
+                <a href="953-internal-funcs.html" class="navigation navigation-prev " aria-label="Previous page: 内置函数">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="043-string.html" class="navigation navigation-next " aria-label="Next page: String">
+                <a href="990-mail.html" class="navigation navigation-next " aria-label="Next page: 邮件发送">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -598,7 +734,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Boolean","level":"1.3.2.3","depth":3,"next":{"title":"String","level":"1.3.2.4","depth":3,"path":"chapter/043-string.md","ref":"chapter/043-string.md","articles":[]},"previous":{"title":"Number","level":"1.3.2.2","depth":3,"path":"chapter/041-number.md","ref":"chapter/041-number.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter/042-boolean.md","mtime":"2021-08-13T14:22:50.654Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2021-10-19T10:35:36.634Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"任务调度","level":"1.15","depth":1,"next":{"title":"邮件发送","level":"1.16","depth":1,"path":"chapter/990-mail.md","ref":"chapter/990-mail.md","articles":[]},"previous":{"title":"内置函数","level":"1.14","depth":1,"path":"chapter/953-internal-funcs.md","ref":"chapter/953-internal-funcs.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter/990-crontab.md","mtime":"2021-09-29T16:55:46.731Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2021-10-19T10:35:36.634Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
