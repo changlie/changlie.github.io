@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Number · GitBook</title>
+        <title>Integer/Float · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -174,7 +174,7 @@
                 <a href="041-number.html">
             
                     
-                    Number
+                    Integer/Float
             
                 </a>
             
@@ -310,7 +310,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.5" data-path="065-higher-function.html">
+        <li class="chapter " data-level="1.3.5" data-path="061-var-scope.html">
+            
+                <a href="061-var-scope.html">
+            
+                    
+                    变量作用域
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="065-higher-function.html">
             
                 <a href="065-higher-function.html">
             
@@ -527,7 +540,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Number</a>
+        <a href=".." >Integer/Float</a>
     </h1>
 </div>
 
@@ -543,7 +556,7 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="&#x6570;&#x503C;&#x7C7B;&#x578B;">&#x6570;&#x503C;&#x7C7B;&#x578B;</h1>
-<p>&#x6570;&#x503C;&#x7C7B;&#x578B;&#x5305;&#x542B;&#x6574;&#x578B;&#xFF0C;&#x6D6E;&#x70B9;&#x578B;</p>
+<p>&#x6570;&#x503C;&#x7C7B;&#x578B;&#x5305;&#x542B;&#x6574;&#x578B;<code>Integer</code>&#xFF0C;&#x6D6E;&#x70B9;&#x578B;<code>Float</code>, &#x5B83;&#x4EEC;&#x7686;&#x5360;64&#x4E2A;&#x6BD4;&#x7279;</p>
 <p>&#x5B9E;&#x4F8B;</p>
 <pre><code class="lang-js">println(<span class="hljs-number">3.14</span> * <span class="hljs-number">3</span>) <span class="hljs-comment">// 9.42</span>
 println(<span class="hljs-number">10</span> / <span class="hljs-number">3.0</span>) <span class="hljs-comment">// 3.33333</span>
@@ -553,87 +566,35 @@ println(<span class="hljs-number">24</span> / <span class="hljs-number">6</span>
 <span class="hljs-comment">// &#x8D1F;&#x6570;</span>
 println(<span class="hljs-number">10</span> + <span class="hljs-number">-5.5</span>) <span class="hljs-comment">// 4.5</span>
 println(<span class="hljs-number">-3.14</span> + <span class="hljs-number">2</span>) <span class="hljs-comment">// -1.1400000000000001</span>
+echo(<span class="hljs-number">-1</span> + <span class="hljs-number">9.8</span>, <span class="hljs-number">7.3</span> + - <span class="hljs-number">1.1</span>)
 </code></pre>
-<h2 id="&#x5B57;&#x7B26;&#x4E32;&#x8F6C;&#x6570;&#x503C;&#x7C7B;&#x578B;">&#x5B57;&#x7B26;&#x4E32;&#x8F6C;&#x6570;&#x503C;&#x7C7B;&#x578B;</h2>
-<p>&#x4F7F;&#x7528;&#x5185;&#x7F6E;&#x51FD;&#x6570;<code>number(str)</code></p>
-<pre><code class="lang-js">println(fix(number(<span class="hljs-string">&quot;-2.2&quot;</span>)+<span class="hljs-number">1</span>, <span class="hljs-number">3</span>)) <span class="hljs-comment">// -1.2</span>
+<h2 id="string-&#x8F6C;-number">String &#x8F6C; Number</h2>
+<pre><code class="lang-js">echo(<span class="hljs-string">&quot;98&quot;</span>.int(), <span class="hljs-string">&quot;98&quot;</span>.int().type())
+echo(<span class="hljs-string">&quot;0.5&quot;</span>.float(), <span class="hljs-string">&quot;0.5&quot;</span>.float().type())
+echo(<span class="hljs-string">&quot;110&quot;</span>.number(), <span class="hljs-string">&quot;110&quot;</span>.number().type())
+echo(<span class="hljs-string">&quot;6.28&quot;</span>.number(), <span class="hljs-string">&quot;6.28&quot;</span>.number().type())
+echo(<span class="hljs-string">&quot;a&quot;</span>.int(), <span class="hljs-string">&quot;b&quot;</span>.float(), <span class="hljs-string">&quot;c&quot;</span>.number())
 </code></pre>
-<h2 id="&#x6570;&#x503C;&#x7C7B;&#x578B;&#x8F6C;&#x5B57;&#x7B26;&#x4E32;">&#x6570;&#x503C;&#x7C7B;&#x578B;&#x8F6C;&#x5B57;&#x7B26;&#x4E32;</h2>
+<pre><code>98 Int
+0.5 Float
+110 Int
+6.28 Float
+-1 -1 -1
+</code></pre><h2 id="number-&#x8F6C;-string">Number &#x8F6C; String</h2>
 <p>&#x52A0;&#x4E00;&#x4E2A;&#x7A7A;&#x5B57;&#x7B26;&#x4E32;<code>&quot;&quot;</code>&#x5373;&#x53EF;</p>
-<pre><code class="lang-js"><span class="hljs-number">-6.23</span> + <span class="hljs-string">&quot;&quot;</span>
+<pre><code class="lang-js">str = <span class="hljs-number">-6.23</span> + <span class="hljs-string">&quot;&quot;</span>
+echo(str, str.type())
 </code></pre>
-<h2 id="&#x6570;&#x5B66;&#x51FD;&#x6570;">&#x6570;&#x5B66;&#x51FD;&#x6570;</h2>
-<table>
-<thead>
-<tr>
-<th>&#x51FD;&#x6570;</th>
-<th>&#x63CF;&#x8FF0;</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>abs(number)</td>
-<td>&#x53D6;&#x7EDD;&#x5BF9;&#x503C;</td>
-</tr>
-<tr>
-<td>pow(number, int)</td>
-<td>&#x6B21;&#x65B9;&#x8BA1;&#x7B97;</td>
-</tr>
-<tr>
-<td>sqrt(number)</td>
-<td>&#x5E73;&#x65B9;&#x6839;&#x8BA1;&#x7B97;</td>
-</tr>
-<tr>
-<td>round(float)</td>
-<td>&#x56DB;&#x820D;&#x4E94;&#x5165;&#x53D6;&#x6574;</td>
-</tr>
-<tr>
-<td>fix(float, int)</td>
-<td>&#x7CBE;&#x786E;&#x5C0F;&#x6570;&#x4F4D;</td>
-</tr>
-</tbody>
-</table>
-<p>&#x5B9E;&#x4F8B;</p>
-<pre><code class="lang-js">println(abs(<span class="hljs-number">-3.15</span>)) <span class="hljs-comment">// 3.15</span>
-println(pow(<span class="hljs-number">4</span>, <span class="hljs-number">3</span>)) <span class="hljs-comment">// 64</span>
-println(sqrt(<span class="hljs-number">81</span>)) <span class="hljs-comment">// 9</span>
-println(round(<span class="hljs-number">3.14</span>)) <span class="hljs-comment">// 3</span>
-println(round(<span class="hljs-number">6.5</span>)) <span class="hljs-comment">// 7</span>
-println(fix(<span class="hljs-number">3.8213</span>, <span class="hljs-number">2</span>)) <span class="hljs-comment">// 3.82</span>
-println(fix(<span class="hljs-number">2.5591</span>, <span class="hljs-number">2</span>)) <span class="hljs-comment">// 2.56</span>
+<pre><code>-6.23 String
+</code></pre><h2 id="number-&#x8F6C;-bytearray">Number &#x8F6C; ByteArray</h2>
+<pre><code class="lang-js">i = <span class="hljs-number">10086</span>
+f = <span class="hljs-number">3.14</span>
+i.bytes().show()
+f.bytes().show()
 </code></pre>
-<h2 id="&#x968F;&#x673A;&#x6570;">&#x968F;&#x673A;&#x6570;</h2>
-<table>
-<thead>
-<tr>
-<th>&#x51FD;&#x6570;</th>
-<th>&#x63CF;&#x8FF0;</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>random(n)</td>
-<td>&#x4EA7;&#x751F;[0, n)&#x7684;&#x975E;&#x8D1F;&#x968F;&#x673A;&#x6570;</td>
-</tr>
-<tr>
-<td>random(n, m)</td>
-<td>&#x4EA7;&#x751F;[n, m)&#x7684;&#x975E;&#x8D1F;&#x968F;&#x673A;&#x6570;</td>
-</tr>
-</tbody>
-</table>
-<pre><code class="lang-js"><span class="hljs-keyword">for</span> i = <span class="hljs-number">0</span>; i&lt;<span class="hljs-number">20</span>; i++ {
-    println(i, <span class="hljs-string">&quot;-&gt;&quot;</span>, random(<span class="hljs-number">10</span>))
-}
-
-println(<span class="hljs-string">&quot;----------------------&quot;</span>)
-println(<span class="hljs-string">&quot;######################&quot;</span>)
-println(<span class="hljs-string">&quot;----------------------&quot;</span>)
-
-<span class="hljs-keyword">for</span> i = <span class="hljs-number">0</span>; i&lt;<span class="hljs-number">20</span>; i++ {
-    println(i, <span class="hljs-string">&quot;-&gt;&quot;</span>, randomRange(<span class="hljs-number">10</span>, <span class="hljs-number">15</span>))
-}
+<pre><code>00000000 00000000 00000000 00000000 00000000 00000000 00100111 01100110 
+00011111 10000101 11101011 01010001 10111000 00011110 00001001 01000000
 </code></pre>
-
                                 
                                 </section>
                             
@@ -676,7 +637,7 @@ println(<span class="hljs-string">&quot;----------------------&quot;</span>)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Number","level":"1.3.2.2","depth":3,"next":{"title":"Boolean","level":"1.3.2.3","depth":3,"path":"chapter/042-boolean.md","ref":"chapter/042-boolean.md","articles":[]},"previous":{"title":"Byte Array","level":"1.3.2.1","depth":3,"path":"chapter/041-byte-array.md","ref":"chapter/041-byte-array.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter/041-number.md","mtime":"2021-08-13T14:22:50.654Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2021-10-19T10:35:36.634Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Integer/Float","level":"1.3.2.2","depth":3,"next":{"title":"Boolean","level":"1.3.2.3","depth":3,"path":"chapter/042-boolean.md","ref":"chapter/042-boolean.md","articles":[]},"previous":{"title":"Byte Array","level":"1.3.2.1","depth":3,"path":"chapter/041-byte-array.md","ref":"chapter/041-byte-array.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter/041-number.md","mtime":"2021-11-18T02:08:56.089Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2021-12-27T08:49:09.693Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
