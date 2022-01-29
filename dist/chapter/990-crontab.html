@@ -1,0 +1,146 @@
+<h1 id="任务调度">任务调度</h1>
+<h3 id="delayinterval">delay/interval</h3>
+<pre><code class="hljs language-javascript"><span class="hljs-title function_">println</span>(<span class="hljs-string">&quot;start at&quot;</span>, <span class="hljs-title function_">now</span>())
+<span class="hljs-title function_">delay</span>(${
+    <span class="hljs-title function_">println</span>(<span class="hljs-string">&quot;延迟两秒执行&quot;</span>, <span class="hljs-title function_">now</span>())
+}, <span class="hljs-number">2000</span>)
+
+
+<span class="hljs-title function_">interval</span>(${
+    <span class="hljs-title function_">println</span>(<span class="hljs-string">&quot;每1.5秒执行一次&quot;</span>, <span class="hljs-title function_">now</span>())
+}, <span class="hljs-number">1500</span>)
+</code></pre>
+<h3 id="crontab示例">crontab示例</h3>
+<pre><code class="hljs language-javascript"><span class="hljs-title function_">cron</span>(<span class="hljs-string">&quot;* * * * *&quot;</span>, ${
+    <span class="hljs-title function_">println</span>(<span class="hljs-string">&quot;每秒执行一次&quot;</span>, <span class="hljs-title function_">now</span>())
+})
+
+<span class="hljs-title function_">cron</span>(<span class="hljs-string">&quot;3/4 * * * *&quot;</span>, ${
+    <span class="hljs-title function_">println</span>(<span class="hljs-string">&quot;每4秒执行一次，3秒后开始执行&quot;</span>, <span class="hljs-title function_">now</span>())
+})
+</code></pre>
+<h3 id="crontab相关知识">crontab相关知识</h3>
+<h5 id="中文版">中文版</h5>
+<h6 id="cron-表达式代表了一个时间集合，使用-6-个空格分隔的字段表示。">cron 表达式代表了一个时间集合，使用 6 个空格分隔的字段表示。</h6>
+<table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>是否必须</th>
+<th>允许的值</th>
+<th>允许的特定字符</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>秒(Seconds)</td>
+<td>是</td>
+<td>0-59</td>
+<td>* / , –</td>
+</tr>
+<tr>
+<td>分(Minutes)</td>
+<td>是</td>
+<td>0-59</td>
+<td>* / , –</td>
+</tr>
+<tr>
+<td>时(Hours)</td>
+<td>是</td>
+<td>0-23</td>
+<td>* / , –</td>
+</tr>
+<tr>
+<td>日(Day of month)</td>
+<td>是</td>
+<td>1-31</td>
+<td>* / , – ?</td>
+</tr>
+<tr>
+<td>月(Month)</td>
+<td>是</td>
+<td>1-12 or JAN-DEC</td>
+<td>* / , –</td>
+</tr>
+<tr>
+<td>星期(Day of week)</td>
+<td>否</td>
+<td>0-6 or SUM-SAT</td>
+<td>* / , – ?</td>
+</tr>
+</tbody></table>
+<p>注：  </p>
+<pre><code>1）月(Month)和星期(Day of week)字段的值不区分大小写，如：SUN、Sun 和 sun 是一样的。
+2）星期(Day of week)字段如果没提供，相当于是 *
+</code></pre>
+<h6 id="特殊字符说明">特殊字符说明</h6>
+<p>1）星号(*)
+表示 cron 表达式能匹配该字段的所有值。如在第5个字段使用星号(month)，表示每个月</p>
+<p>2）斜线(/)
+表示增长间隔，如第1个字段(minutes) 值是 3-59/15，表示每小时的第3分钟开始执行一次，之后每隔 15 分钟执行一次（即 3、18、33、48 这些时间点执行），这里也可以表示为：3/15</p>
+<p>3）逗号(,)
+用于枚举值，如第6个字段值是 MON,WED,FRI，表示 星期一、三、五 执行</p>
+<p>4）连字号(-)
+表示一个范围，如第3个字段的值为 9-17 表示 9am 到 5pm 直接每个小时（包括9和17）</p>
+<p>5）问号(?)
+只用于 日(Day of month) 和 星期(Day of week)，表示不指定值，可以用于代替 *</p>
+<h5 id="英文版">英文版</h5>
+<p>CRON Expression Format ¶</p>
+<p>A cron expression represents a set of times, using 6 space-separated fields.</p>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Mandatory?</th>
+<th>Allowed values</th>
+<th>Allowed special characters</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Seconds</td>
+<td>Yes</td>
+<td>0-59</td>
+<td>* / , -</td>
+</tr>
+<tr>
+<td>Minutes</td>
+<td>Yes</td>
+<td>0-59</td>
+<td>* / , -</td>
+</tr>
+<tr>
+<td>Hours</td>
+<td>Yes</td>
+<td>0-23</td>
+<td>* / , -</td>
+</tr>
+<tr>
+<td>Day of month</td>
+<td>Yes</td>
+<td>1-31</td>
+<td>* / , - ?</td>
+</tr>
+<tr>
+<td>Month</td>
+<td>Yes</td>
+<td>1-12 or JAN-DEC</td>
+<td>* / , -</td>
+</tr>
+<tr>
+<td>Day of week</td>
+<td>Yes</td>
+<td>0-6 or SUN-SAT</td>
+<td>* / , - ?</td>
+</tr>
+</tbody></table>
+<p>Note: Month and Day-of-week field values are case insensitive. &quot;SUN&quot;, &quot;Sun&quot;, and &quot;sun&quot; are equally accepted.
+Special Characters ¶</p>
+<p>Asterisk ( * )</p>
+<p>The asterisk indicates that the cron expression will match for all values of the field; e.g., using an asterisk in the 5th field (month) would indicate every month.</p>
+<p>Slash ( / )</p>
+<p>Slashes are used to describe increments of ranges. For example 3-59/15 in the 1st field (minutes) would indicate the 3rd minute of the hour and every 15 minutes thereafter. The form &quot;*/...&quot; is equivalent to the form &quot;first-last/...&quot;, that is, an increment over the largest possible range of the field. The form &quot;N/...&quot; is accepted as meaning &quot;N-MAX/...&quot;, that is, starting at N, use the increment until the end of that specific range. It does not wrap around.</p>
+<p>Comma ( , )</p>
+<p>Commas are used to separate items of a list. For example, using &quot;MON,WED,FRI&quot; in the 5th field (day of week) would mean Mondays, Wednesdays and Fridays.</p>
+<p>Hyphen ( - )</p>
+<p>Hyphens are used to define ranges. For example, 9-17 would indicate every hour between 9am and 5pm inclusive.</p>
+<p>Question mark ( ? )</p>
+<p>Question mark may be used instead of &#39;*&#39; for leaving either day-of-month or day-of-week blank. </p>

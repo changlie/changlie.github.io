@@ -1,0 +1,29 @@
+<h1 id="数据类型">数据类型</h1>
+<p>Quick 有7种基本数据类型</p>
+<ul>
+<li>Byte Array 字节数组</li>
+<li>Integer 整型</li>
+<li>Float 浮点数</li>
+<li>Boolean 布尔类型</li>
+<li>String  字符串</li>
+<li>JSON Array 和JS的数组一致</li>
+<li>JSON Object 和JS的JSON Object一致</li>
+</ul>
+<p>所有变量皆可通过方法<code>type()</code>查看变量的类型</p>
+<pre><code class="hljs language-javascript">n = <span class="hljs-literal">null</span>
+bs = <span class="hljs-title function_">newbs</span>()
+i = <span class="hljs-number">23</span>
+f = <span class="hljs-number">3.14</span>
+b = <span class="hljs-literal">false</span>
+s = <span class="hljs-string">&quot;world&quot;</span>
+d = <span class="hljs-title function_">now</span>()
+fn = $ <span class="hljs-title function_">echo</span>(<span class="hljs-string">&quot;type test&quot;</span>)
+arr = []
+obj = {}
+<span class="hljs-title function_">echo</span>(n.<span class="hljs-title function_">type</span>(), bs.<span class="hljs-title function_">type</span>(), i.<span class="hljs-title function_">type</span>(), f.<span class="hljs-title function_">type</span>(), b.<span class="hljs-title function_">type</span>(), s.<span class="hljs-title function_">type</span>(), d.<span class="hljs-title function_">type</span>(), fn.<span class="hljs-title function_">type</span>(), arr.<span class="hljs-title function_">type</span>(), obj.<span class="hljs-title function_">type</span>())
+
+<span class="hljs-title function_">fn</span>()
+</code></pre>
+<pre><code>NULL ByteArray Int Float Boolean String Date Function JSONArray JSONObject
+type test
+</code></pre>

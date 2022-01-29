@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <link rel="stylesheet" href="../lib/highlight.min.css">
+   <link rel="stylesheet" href="../lib/highlight-oceanicnext.css">
+   <link rel="stylesheet" href="../lib/blog.css">
+</head>
+<body>
+    <div id="content-container"></div>
+    <div id="page-nav"></div>
+    <div id="site-nav"></div>
+<script>
+    var page = location.search
+    var arch = location.hash
+    var base = location.pathname
+    console.log('page info -> ', page, pageVar('page'))
+    console.log('arch      -> ', arch)
+    console.log('base      -> ', base, location.href)
+    
+    
+    
+
+    fetch('SUMMARY.html')
+    .then(resp => {
+        if (!resp.ok)  return
+        return resp.text()
+    }).then(txt => {
+        var cc = document.querySelector('#site-nav')
+        cc.innerHTML = txt
+        cc.onload = () => {
+            document.querySelector('#site-nav span').addEventListener('click', function() {
+                console.log(this)
+                if (this && this.getAttribute) {
+                    console.log(this.getAttribute('data-url'))
+                }
+            })
+        }
+    })
+    
+    var pageUrl = ''
+    if (base.endsWith('/')) {
+        pageUrl = base + pageVar('page')
+    } else {
+        pageUrl = base + '/' + pageVar('page')
+    }
+    // 首次加载
+    loadPageContent_Nav('README')
+    
+    
+
+    function gotoPage(pageNum, elem) {
+        // debugger
+        var nextP = ''
+        if (base.endsWith('/')) {
+            nextP = base + pageNum
+        } else {
+            nextP = base + '/' + pageNum
+        }
+        loadPageContent_Nav(nextP)
+
+        var items = document.querySelectorAll("#site-nav span");
+        items.forEach(function(item) {
+            item.setAttribute('class', '')
+        });
+        elem.setAttribute('class', 'current')
+    }
+
+    function loadPageContent_Nav(nextPage) {
+        location.hash = ''
+        // load page content
+        fetch(nextPage+'.html')
+        .then(resp => {
+            if (!resp.ok)  return
+            return resp.text()
+        }).then(txt => {
+            var cc = document.querySelector('#content-container')
+            cc.innerHTML = txt
+        })
+        // load nav
+        fetch(nextPage+"_title.html")
+        .then(resp => {
+            if (!resp.ok)  return
+            return resp.text()
+        }).then(txt => {
+            var cc = document.querySelector('#page-nav')
+            cc.innerHTML = txt
+        })
+    }
+
+    function pageVar (sVar) {
+        return decodeURI(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURI(sVar).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));
+    }
+
+    function showNode (oNode) {
+        var nLeft = 0, nTop = 0;
+        for (var oItNode = oNode; oItNode; nLeft += oItNode.offsetLeft, nTop += oItNode.offsetTop, oItNode = oItNode.offsetParent);   
+        window.scrollTo(nLeft, nTop); 
+    }
+    function showBookmark (sBookmark) {
+        if (!arch) { window.location.hash = sBookmark; return; }
+        var oBookmark = document.querySelector(sBookmark);
+        if (oBookmark) { showNode(oBookmark); }
+    }
+</script>
+</body>
+</html>

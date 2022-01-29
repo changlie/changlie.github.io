@@ -1,0 +1,35 @@
+<h1 id="if语句">if语句</h1>
+<p>示例一：</p>
+<pre><code class="hljs language-javascript">animal = <span class="hljs-string">&quot;cat&quot;</span>
+<span class="hljs-keyword">if</span> animal == <span class="hljs-string">&quot;cat&quot;</span> {
+    <span class="hljs-title function_">println</span>(<span class="hljs-string">&quot;this animal is cat!&quot;</span>)
+}
+
+<span class="hljs-title function_">ifTest1</span>(<span class="hljs-params">x</span>) {
+    <span class="hljs-keyword">if</span> x {
+        <span class="hljs-title function_">println</span>(<span class="hljs-string">&quot;x is true&quot;</span>)
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-title function_">println</span>(<span class="hljs-string">&quot;x is false&quot;</span>)
+    }
+}
+<span class="hljs-title function_">ifTest1</span>(<span class="hljs-literal">true</span>)
+<span class="hljs-title function_">ifTest1</span>(<span class="hljs-literal">false</span>)
+</code></pre>
+<p>示例二：</p>
+<pre><code class="hljs language-javascript"><span class="hljs-title function_">ifTest</span>(<span class="hljs-params">a</span>) {
+    <span class="hljs-keyword">if</span> a&gt;<span class="hljs-number">1</span> &amp;&amp; a&lt;<span class="hljs-number">100</span> {
+        <span class="hljs-title function_">println</span>(<span class="hljs-string">&quot;a greater than 1.&quot;</span>)
+    } elif a==<span class="hljs-number">0</span> || a==<span class="hljs-number">1</span> {
+        <span class="hljs-title function_">println</span>(<span class="hljs-string">&quot;elif test...&quot;</span>)
+    } elif a == <span class="hljs-number">100</span> {
+        <span class="hljs-title function_">println</span>(<span class="hljs-string">&quot;Good job!&quot;</span>)
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-title function_">println</span>(<span class="hljs-string">&quot;a &lt; 0 and a &gt; 100&quot;</span>)
+    }
+}
+
+<span class="hljs-title function_">ifTest</span>(<span class="hljs-number">1</span>)
+<span class="hljs-title function_">ifTest</span>(-<span class="hljs-number">1</span>)
+<span class="hljs-title function_">ifTest</span>(<span class="hljs-number">99</span>)
+<span class="hljs-title function_">ifTest</span>(<span class="hljs-number">100</span>)
+</code></pre>

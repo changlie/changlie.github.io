@@ -1,0 +1,175 @@
+<h2 id="字符串类型">字符串类型</h2>
+<p>Quick支持js那样的动态字符串：</p>
+<pre><code class="hljs language-javascript">rows = [
+{<span class="hljs-attr">name</span>:<span class="hljs-string">&quot;changlie&quot;</span>, <span class="hljs-attr">age</span>:<span class="hljs-number">18</span>},
+{<span class="hljs-attr">name</span>:<span class="hljs-string">&quot;philip&quot;</span>, <span class="hljs-attr">age</span>:<span class="hljs-number">30</span>},
+{<span class="hljs-attr">name</span>:<span class="hljs-string">&quot;baby&quot;</span>, <span class="hljs-attr">age</span>:<span class="hljs-number">1</span>}
+]
+
+forv row : rows {
+    line = <span class="hljs-string">`this age of student <span class="hljs-subst">${row.name}</span> is <span class="hljs-subst">${row.age}</span>`</span>
+    <span class="hljs-title function_">println</span>(line)
+}
+</code></pre>
+<p>输出</p>
+<pre><code>this age of student changlie is 18
+this age of student philip is 30
+this age of student baby is 1
+</code></pre>
+<p>普通字符串与动态字符串的区别：</p>
+<ol>
+<li>动态字符串可以引用变量，普通字符串不行</li>
+<li>普通字符串会对\n, \r, \t等字符进行转义，动态字符串不会</li>
+</ol>
+<p>两者同点是，它们都可以跨行。</p>
+<h4 id="字符串初始化">字符串初始化</h4>
+<pre><code class="hljs language-javascript">s = <span class="hljs-string">``</span>
+s1 = <span class="hljs-string">&quot;&quot;</span>
+
+animal = <span class="hljs-string">&quot;dog&quot;</span>
+number = <span class="hljs-number">23</span>
+s2 = <span class="hljs-string">`the number of <span class="hljs-subst">${animal}</span> is <span class="hljs-subst">${number}</span>`</span>
+s4 = <span class="hljs-string">&quot;China.&quot;</span>
+<span class="hljs-title function_">println</span>(s2)
+<span class="hljs-title function_">println</span>(s4)
+
+s5 = <span class="hljs-string">`++++++++++
+line 1
+line 2
+++++++++++`</span>
+s6 = <span class="hljs-string">&quot;##############
+number one
+number two
+number three
+##############&quot;</span>
+<span class="hljs-title function_">println</span>(s5)
+<span class="hljs-title function_">println</span>(s6)
+</code></pre>
+<p>输出</p>
+<pre><code>the number of dog is 23
+China.
+++++++++++
+line 1
+line 2
+++++++++++
+##############
+number one
+number two
+number three
+##############
+</code></pre>
+<h4 id="字符串长度">字符串长度</h4>
+<pre><code>println(&quot;China&quot;.size()) // 5
+println(&quot;疑是银河落九天&quot;.size()) // 7
+</code></pre>
+<h4 id="字符获取">字符获取</h4>
+<pre><code class="hljs language-javascript">str = <span class="hljs-string">&quot;中华人民共和国Great&quot;</span>
+<span class="hljs-title function_">println</span>(str[<span class="hljs-number">3</span>]) <span class="hljs-comment">// 民</span>
+<span class="hljs-title function_">println</span>(str[<span class="hljs-number">8</span>]) <span class="hljs-comment">// r</span>
+</code></pre>
+<h4 id="字符串截取">字符串截取</h4>
+<pre><code class="hljs language-javascript">str = <span class="hljs-string">&quot;中华人民共和国Great&quot;</span>
+<span class="hljs-title function_">println</span>(str[:<span class="hljs-number">3</span>]) <span class="hljs-comment">// 中华人</span>
+<span class="hljs-title function_">println</span>(str[<span class="hljs-number">4</span>:<span class="hljs-number">7</span>]) <span class="hljs-comment">//共和国</span>
+<span class="hljs-title function_">println</span>(str[<span class="hljs-number">7</span>:]) <span class="hljs-comment">//Great</span>
+</code></pre>
+<h3 id="字符串遍历">字符串遍历</h3>
+<pre><code class="hljs language-javascript">str = <span class="hljs-string">&quot;中华人民共和国Great&quot;</span>
+foreach i, char : str {
+    <span class="hljs-title function_">println</span>(i, char)
+}
+</code></pre>
+<p>输出</p>
+<pre><code>0 中
+1 华
+2 人
+3 民
+4 共
+5 和
+6 国
+7 G
+8 r
+9 e
+10 a
+11 t
+</code></pre>
+<h3 id="字符串方法">字符串方法</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>size()</td>
+<td>字符串长度</td>
+</tr>
+<tr>
+<td>trim()</td>
+<td>清除字符串两边的空白符</td>
+</tr>
+<tr>
+<td>split(string)</td>
+<td>根据指定字符对字符串进入切割</td>
+</tr>
+<tr>
+<td>replace(old, new)</td>
+<td>子字符串替换</td>
+</tr>
+<tr>
+<td>lower()</td>
+<td>字符串转小写</td>
+</tr>
+<tr>
+<td>upper()</td>
+<td>字符串转大写</td>
+</tr>
+<tr>
+<td>title()</td>
+<td>单词首字母转大写</td>
+</tr>
+<tr>
+<td>upperFirst()</td>
+<td>首字符转大写</td>
+</tr>
+<tr>
+<td>contain(str)</td>
+<td>别名: <code>has</code>,是否包含指定字符串</td>
+</tr>
+<tr>
+<td>hasPrefix(str)</td>
+<td>是否包含相应前缀</td>
+</tr>
+<tr>
+<td>hasSuffix(str)</td>
+<td>是否包含相应后缀</td>
+</tr>
+<tr>
+<td>is(str)</td>
+<td>忽略大小写的字符串比较</td>
+</tr>
+</tbody></table>
+<pre><code class="hljs language-javascript">s = <span class="hljs-string">&quot;hello world    &quot;</span>
+<span class="hljs-title function_">println</span>(<span class="hljs-string">&quot;size: &quot;</span>, s.<span class="hljs-title function_">size</span>()) <span class="hljs-comment">// size:  15</span>
+
+<span class="hljs-title function_">printf</span>(<span class="hljs-string">&quot;trim: -%v-; %v\n&quot;</span>, s.<span class="hljs-title function_">trim</span>(), s.<span class="hljs-title function_">size</span>()) <span class="hljs-comment">// trim: -hello world-; 15</span>
+<span class="hljs-title function_">println</span>(<span class="hljs-string">&quot;split: &quot;</span>, s.<span class="hljs-title function_">split</span>(<span class="hljs-string">&quot; &quot;</span>)) <span class="hljs-comment">// split:  [&quot;hello&quot;, &quot;world&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;]</span>
+<span class="hljs-title function_">println</span>(<span class="hljs-string">&quot;replace: &quot;</span>, s.<span class="hljs-title function_">replace</span>(<span class="hljs-string">&quot;he&quot;</span>, <span class="hljs-string">&quot;wc&quot;</span>)) <span class="hljs-comment">// replace:  wcllo world    </span>
+<span class="hljs-title function_">println</span>(<span class="hljs-string">&quot;upper: &quot;</span>, s.<span class="hljs-title function_">upper</span>()) <span class="hljs-comment">// upper:  HELLO WORLD    </span>
+<span class="hljs-title function_">println</span>(<span class="hljs-string">&quot;title: &quot;</span>, s.<span class="hljs-title function_">title</span>()) <span class="hljs-comment">// title:  Hello World    </span>
+<span class="hljs-title function_">println</span>(<span class="hljs-string">&quot;upperFirst: &quot;</span>, s.<span class="hljs-title function_">upperFirst</span>()) <span class="hljs-comment">// upperFirst:  Hello world    </span>
+<span class="hljs-title function_">println</span>(<span class="hljs-string">&quot;contain: &quot;</span>, s.<span class="hljs-title function_">contain</span>(<span class="hljs-string">&quot;wo&quot;</span>), s.<span class="hljs-title function_">contain</span>(<span class="hljs-string">&quot;jk&quot;</span>)) <span class="hljs-comment">// contain:  true false  </span>
+
+s = <span class="hljs-string">&quot;helle&quot;</span>
+<span class="hljs-title function_">println</span>(s.<span class="hljs-title function_">eic</span>(<span class="hljs-string">&quot;helle&quot;</span>)) <span class="hljs-comment">// true</span>
+<span class="hljs-title function_">println</span>(s.<span class="hljs-title function_">eic</span>(<span class="hljs-string">&quot;heLLE&quot;</span>)) <span class="hljs-comment">// true</span>
+<span class="hljs-title function_">println</span>(s.<span class="hljs-title function_">eic</span>(<span class="hljs-string">&quot;heiie&quot;</span>)) <span class="hljs-comment">// false</span>
+<span class="hljs-title function_">println</span>(s.<span class="hljs-title function_">eic</span>(<span class="hljs-string">&quot;hei&quot;</span>)) <span class="hljs-comment">// false</span>
+
+<span class="hljs-title function_">println</span>(<span class="hljs-string">&quot;====================&quot;</span>)
+<span class="hljs-title function_">println</span>(s.<span class="hljs-title function_">hasPrefix</span>(<span class="hljs-string">&quot;he&quot;</span>)) <span class="hljs-comment">// true</span>
+<span class="hljs-title function_">println</span>(s.<span class="hljs-title function_">hasPrefix</span>(<span class="hljs-string">&quot;hx&quot;</span>)) <span class="hljs-comment">// false</span>
+<span class="hljs-title function_">println</span>(s.<span class="hljs-title function_">hasSuffix</span>(<span class="hljs-string">&quot;lO&quot;</span>)) <span class="hljs-comment">// true</span>
+<span class="hljs-title function_">println</span>(s.<span class="hljs-title function_">hasSuffix</span>(<span class="hljs-string">&quot;lo&quot;</span>)) <span class="hljs-comment">// false</span>
+</code></pre>

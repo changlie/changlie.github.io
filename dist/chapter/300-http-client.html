@@ -1,0 +1,142 @@
+<h1 id="http-client">http client</h1>
+<ul>
+<li><a href="#httpresponse">Http Response</a></li>
+</ul>
+<h3 id="get-请求">GET 请求</h3>
+<pre><code class="hljs language-javascript">resp = <span class="hljs-title function_">httpGet</span>(<span class="hljs-string">&quot;http://localhost:12345/hello?from=qk&quot;</span>)
+<span class="hljs-title function_">printf</span>(<span class="hljs-string">&quot;status: %v|%v \n&quot;</span>, resp.<span class="hljs-title function_">status</span>(), resp.<span class="hljs-title function_">statusCode</span>())
+<span class="hljs-title function_">println</span>(resp.<span class="hljs-title function_">string</span>())
+</code></pre>
+<p>添加请求头</p>
+<pre><code class="hljs language-javascript">resp = <span class="hljs-title function_">httpGet</span>(<span class="hljs-string">&quot;http://localhost:12345/hello&quot;</span>, {
+    <span class="hljs-attr">auth</span>: <span class="hljs-string">&quot;rxstXXXX&quot;</span>
+})
+<span class="hljs-title function_">printf</span>(<span class="hljs-string">&quot;status: %v|%v \n&quot;</span>, resp.<span class="hljs-title function_">status</span>(), resp.<span class="hljs-title function_">statusCode</span>())
+<span class="hljs-title function_">println</span>(resp.<span class="hljs-title function_">string</span>())
+</code></pre>
+<h3 id="post-请求">POST 请求</h3>
+<p>Quick专门为POST请求内置了一变量<code>mime</code>, 其包含了POST常用的Content-Type:</p>
+<pre><code>mime.json =&gt; application/json
+mime.form =&gt; application/x-www-form-urlencoded
+mime.data =&gt; multipart/form-data
+</code></pre>
+<ul>
+<li>xhr 传json对象 (Content-Type: application/json)</li>
+</ul>
+<pre><code class="hljs language-javascript">url = <span class="hljs-string">&quot;http://localhost:12345/hello?from=qk&quot;</span>
+resp = <span class="hljs-title function_">httpPost</span>(url, {<span class="hljs-attr">type</span>:mime.<span class="hljs-property">json</span>,
+    <span class="hljs-attr">headers</span>:{<span class="hljs-attr">trace</span>:<span class="hljs-string">&quot;witch&quot;</span>}, <span class="hljs-comment">// 添加头信息</span>
+    <span class="hljs-attr">body</span>:{
+        <span class="hljs-attr">name</span>:<span class="hljs-string">&quot;changlie&quot;</span>,
+        <span class="hljs-attr">age</span>:<span class="hljs-number">18</span>,
+        <span class="hljs-attr">addr</span>:<span class="hljs-string">&quot;中国&quot;</span>
+    }
+})
+</code></pre>
+<ul>
+<li>form表单默认方式 (Content-Type: application/x-www-form-urlencoded)</li>
+</ul>
+<pre><code class="hljs language-javascript">resp = <span class="hljs-title function_">httpPost</span>(url, {<span class="hljs-attr">type</span>:mime.<span class="hljs-property">form</span>,
+    <span class="hljs-attr">headers</span>:{<span class="hljs-attr">trace</span>:<span class="hljs-string">&quot;witch&quot;</span>}, <span class="hljs-comment">// 添加头信息</span>
+    <span class="hljs-attr">body</span>:{
+        <span class="hljs-attr">name</span>:<span class="hljs-string">&quot;changlie&quot;</span>,
+        <span class="hljs-attr">age</span>:<span class="hljs-number">18</span>,
+        <span class="hljs-attr">addr</span>:<span class="hljs-string">&quot;中国&quot;</span>
+    }
+})
+</code></pre>
+<ul>
+<li>文件上传 (Content-Type: multipart/form-data)</li>
+</ul>
+<pre><code class="hljs language-javascript">descBytes = <span class="hljs-title function_">fbytes</span>(<span class="hljs-string">&quot;README.md&quot;</span>)
+versionBytes = <span class="hljs-title function_">fbytes</span>(<span class="hljs-string">&quot;version.go&quot;</span>)
+
+url = <span class="hljs-string">&quot;http://localhost:12345/hello?from=qk&quot;</span>
+resp = <span class="hljs-title function_">httpPost</span>(url, {<span class="hljs-attr">type</span>:mime.<span class="hljs-property">data</span>,
+    <span class="hljs-attr">headers</span>:{<span class="hljs-attr">trace</span>:<span class="hljs-string">&quot;witch&quot;</span>},
+    <span class="hljs-attr">body</span>:{
+        <span class="hljs-attr">name</span>:<span class="hljs-string">&quot;changlie&quot;</span>,
+        <span class="hljs-attr">age</span>:<span class="hljs-number">18</span>,
+        <span class="hljs-attr">addr</span>:<span class="hljs-string">&quot;中国&quot;</span>,
+        <span class="hljs-attr">files</span>: [ <span class="hljs-comment">// 存放上传文件信息列表的key名必须为files</span>
+            <span class="hljs-comment">// field: 指表单字段名</span>
+            {<span class="hljs-attr">field</span>: <span class="hljs-string">&quot;uploadFile&quot;</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;demo.txt&quot;</span>, <span class="hljs-attr">path</span>:<span class="hljs-string">&quot;test.txt&quot;</span>},
+            <span class="hljs-comment">// path: 指待上传的文件路径</span>
+            {<span class="hljs-attr">name</span>: <span class="hljs-string">&quot;qk.txt&quot;</span>, <span class="hljs-attr">path</span>:<span class="hljs-string">&quot;main.go&quot;</span>},
+            <span class="hljs-comment">// data: 指待上传的文件二进制数据</span>
+            {<span class="hljs-attr">name</span>: <span class="hljs-string">&quot;desc.txt&quot;</span>, <span class="hljs-attr">data</span>:descBytes},
+            <span class="hljs-comment">// name: 指文件名</span>
+            {<span class="hljs-attr">field</span>: <span class="hljs-string">&quot;uploadFile&quot;</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;version.txt&quot;</span>, <span class="hljs-attr">data</span>:versionBytes},
+        ]
+    }
+})
+<span class="hljs-title function_">printf</span>(<span class="hljs-string">&quot;status: %v|%v \n&quot;</span>, resp.<span class="hljs-title function_">status</span>(), resp.<span class="hljs-title function_">statusCode</span>())
+<span class="hljs-title function_">println</span>(resp.<span class="hljs-title function_">string</span>())
+</code></pre>
+<h1 id="httpresponse">HttpResponse</h1>
+<p><code>HttpResponse</code> 是内置函数<code>httpGet(url[, headers])</code>, <code>httpPost(url, config)</code>
+的返回值的数据类型</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>别名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>showCookies()</td>
+<td>showck()</td>
+<td>在控制台打印所有cookie信息</td>
+</tr>
+<tr>
+<td>cookies()</td>
+<td></td>
+<td>返回所有cookie信息</td>
+</tr>
+<tr>
+<td>showHeaders()</td>
+<td>showhs()</td>
+<td>在控制台打印所有响应头信息</td>
+</tr>
+<tr>
+<td>headers()</td>
+<td>hs()</td>
+<td>返回所有响应头信息</td>
+</tr>
+<tr>
+<td>status()</td>
+<td></td>
+<td>请求响应状态</td>
+</tr>
+<tr>
+<td>statusCode()</td>
+<td>code()</td>
+<td>响应状态码</td>
+</tr>
+<tr>
+<td>save(path)</td>
+<td></td>
+<td>保存响应体数据至指定文件</td>
+</tr>
+<tr>
+<td>string()</td>
+<td>str()</td>
+<td>响应体数据以string形式返回</td>
+</tr>
+<tr>
+<td>bytes()</td>
+<td></td>
+<td>响应体数据以字节数组形式返回</td>
+</tr>
+<tr>
+<td>pretty()</td>
+<td></td>
+<td>响应体数据如果是json格式的话，可以使用这个方法将json美化输出至控制台</td>
+</tr>
+<tr>
+<td>json()</td>
+<td></td>
+<td>响应体数据以json形式返回</td>
+</tr>
+</tbody></table>

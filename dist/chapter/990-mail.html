@@ -1,0 +1,19 @@
+<h1 id="邮件发送">邮件发送</h1>
+<p>邮件每次发送，只能有一个接送人与抄送人</p>
+<pre><code class="hljs language-javascript">m = <span class="hljs-title function_">mailer</span>()
+m.<span class="hljs-title function_">from</span>(<span class="hljs-string">&quot;xxx@sohu.com&quot;</span>) <span class="hljs-comment">// 发送人</span>
+m.<span class="hljs-title function_">to</span>(<span class="hljs-string">&quot;xxxx@qq.com&quot;</span>) <span class="hljs-comment">// 收件人</span>
+<span class="hljs-comment">// m.cc(&quot;xxxx@163.com&quot;) // 抄送</span>
+
+m.<span class="hljs-title function_">subject</span>(<span class="hljs-string">&quot;TurboX v11&quot;</span>) <span class="hljs-comment">// 主题</span>
+m.<span class="hljs-title function_">body</span>(<span class="hljs-string">&quot;congratulation for you!&quot;</span>) <span class="hljs-comment">// 邮件内容</span>
+<span class="hljs-comment">// m.attach(&quot;/home/xp/xxx.txt&quot;) // 邮件附件本地路径</span>
+
+m.<span class="hljs-title function_">host</span>(<span class="hljs-string">&quot;smtp.sohu.com&quot;</span>) <span class="hljs-comment">// 邮箱用户所在的邮件服务器域名或IP</span>
+m.<span class="hljs-title function_">port</span>(<span class="hljs-number">25</span>) <span class="hljs-comment">// 邮箱用户所在的邮件服务器端口</span>
+
+m.<span class="hljs-title function_">username</span>(<span class="hljs-string">&quot;xxxx@sohu.com&quot;</span>) <span class="hljs-comment">// 邮箱用户名</span>
+m.<span class="hljs-title function_">password</span>(<span class="hljs-string">&quot;xxxx&quot;</span>) <span class="hljs-comment">// 邮箱token, 需开启pop3/smtp</span>
+
+m.<span class="hljs-title function_">send</span>()
+</code></pre>

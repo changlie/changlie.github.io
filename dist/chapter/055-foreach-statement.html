@@ -1,0 +1,44 @@
+<h1 id="foreach-遍历">foreach 遍历</h1>
+<p><code>foreach</code>, <code>fori</code>, <code>forv</code> 同属一个类型，<code>fori</code>, <code>forv</code>为更方便而提供。<br>只有<code>String</code>, <code>JSONObject</code>, <code>JSONArray</code>三种类型可以使用<code>foreach</code></p>
+<h2 id="foreach-键值遍历">foreach 键值遍历</h2>
+<pre><code class="hljs language-javascript"><span class="hljs-title function_">println</span>(<span class="hljs-string">&quot;array test..&quot;</span>)
+arr = [<span class="hljs-number">1</span>, <span class="hljs-literal">false</span>, <span class="hljs-literal">true</span>, <span class="hljs-number">3.14</span>, <span class="hljs-string">&quot;changlie&quot;</span>]
+foreach i, item : arr {
+    <span class="hljs-title function_">println</span>(<span class="hljs-string">&quot;index:&quot;</span>, i, <span class="hljs-string">&quot;; item:&quot;</span>, item)
+}
+
+<span class="hljs-title function_">println</span>(<span class="hljs-string">&quot;=================&quot;</span>)
+<span class="hljs-title function_">println</span>(<span class="hljs-string">&quot;object test:&quot;</span>)
+obj = {<span class="hljs-attr">name</span>:<span class="hljs-string">&quot;changlie&quot;</span>, <span class="hljs-attr">age</span>:<span class="hljs-number">18</span>, <span class="hljs-attr">addr</span>:<span class="hljs-string">&quot;sz&quot;</span>, <span class="hljs-attr">marriage</span>: <span class="hljs-literal">false</span>}
+foreach key, val : obj {
+    <span class="hljs-title function_">println</span>(key, <span class="hljs-string">&quot;-&gt;&quot;</span>, val)
+}
+</code></pre>
+<h2 id="forindex-索引遍历">forindex 索引遍历</h2>
+<pre><code class="hljs language-javascript"><span class="hljs-title function_">println</span>(<span class="hljs-string">&quot;array test..&quot;</span>)
+arr = [<span class="hljs-number">1</span>, <span class="hljs-literal">false</span>, <span class="hljs-literal">true</span>, <span class="hljs-number">3.14</span>, <span class="hljs-string">&quot;changlie&quot;</span>]
+fori i : arr {
+    <span class="hljs-title function_">println</span>(<span class="hljs-string">&quot;index:&quot;</span>, i)
+}
+
+<span class="hljs-title function_">println</span>(<span class="hljs-string">&quot;=================&quot;</span>)
+<span class="hljs-title function_">println</span>(<span class="hljs-string">&quot;object test:&quot;</span>)
+obj = {<span class="hljs-attr">name</span>:<span class="hljs-string">&quot;changlie&quot;</span>, <span class="hljs-attr">age</span>:<span class="hljs-number">18</span>, <span class="hljs-attr">addr</span>:<span class="hljs-string">&quot;sz&quot;</span>}
+fori key : obj {
+    <span class="hljs-title function_">println</span>(<span class="hljs-string">&quot;key:&quot;</span>, key)
+}
+</code></pre>
+<h2 id="forvalue-值遍历">forvalue 值遍历</h2>
+<pre><code class="hljs language-javascript"><span class="hljs-title function_">println</span>(<span class="hljs-string">&quot;array test..&quot;</span>)
+arr = [<span class="hljs-number">1</span>, <span class="hljs-literal">false</span>, <span class="hljs-literal">true</span>, <span class="hljs-number">3.14</span>, <span class="hljs-string">&quot;changlie&quot;</span>]
+forv item : arr {
+    <span class="hljs-title function_">println</span>(<span class="hljs-string">&quot;item:&quot;</span>, item)
+}
+
+<span class="hljs-title function_">println</span>(<span class="hljs-string">&quot;=================&quot;</span>)
+<span class="hljs-title function_">println</span>(<span class="hljs-string">&quot;object test:&quot;</span>)
+obj = {<span class="hljs-attr">name</span>:<span class="hljs-string">&quot;changlie&quot;</span>, <span class="hljs-attr">age</span>:<span class="hljs-number">18</span>, <span class="hljs-attr">addr</span>:<span class="hljs-string">&quot;sz&quot;</span>}
+forv val : obj {
+    <span class="hljs-title function_">println</span>(<span class="hljs-string">&quot;value:&quot;</span>, val)
+}
+</code></pre>

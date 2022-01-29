@@ -1,0 +1,266 @@
+<h1 id="文件操作">文件操作</h1>
+<ul>
+<li><a href="#xml">xml文件操作</a></li>
+</ul>
+<h2 id="一般文件读取">一般文件读取</h2>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>fbytes(path)</td>
+<td>别名<code>fbs</code>， 文件内容以<code>ByteArray</code>形式返回</td>
+</tr>
+<tr>
+<td>fstr(path)</td>
+<td>读取整个文本文件的内容</td>
+</tr>
+<tr>
+<td>flines(path)</td>
+<td>逐行读取整个文件，返回一个字符串数组</td>
+</tr>
+</tbody></table>
+<h2 id="一般文件写入">一般文件写入</h2>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>fsave(path, content)</td>
+<td>别名<code>fsv</code>， 清空指定文件，并写入数据(String/ByteArray)</td>
+</tr>
+<tr>
+<td>fappend(path, content)</td>
+<td>向指定文件以追加的方式写入数据(String/ByteArray)</td>
+</tr>
+</tbody></table>
+<h2 id="常见配置文件读取">常见配置文件读取</h2>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>fjson(path)</td>
+<td>读取整个json文件, 返回一个json对象</td>
+</tr>
+<tr>
+<td>fargs(path)</td>
+<td>从参数文件中获取参数</td>
+</tr>
+<tr>
+<td>fprops(path)</td>
+<td>读取配置文件, 返回一个json对象</td>
+</tr>
+</tbody></table>
+<h2 id="mkdir-ls-rm-mv-cp-fscan">mkdir, ls, rm, mv, cp, fscan</h2>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>mkdir(path)</td>
+<td>创建目录</td>
+</tr>
+<tr>
+<td>ls(path)</td>
+<td>当前目录，文件查看</td>
+</tr>
+<tr>
+<td>rm(path)</td>
+<td>删除文件或目录</td>
+</tr>
+<tr>
+<td>mv(src, dst)</td>
+<td>移动目录，文件； 或重命名目录，文件</td>
+</tr>
+<tr>
+<td>cp(src, dst)</td>
+<td>复制目录，文件</td>
+</tr>
+<tr>
+<td>fscan(dir)</td>
+<td>获取当前路径下的所有子文件/目录的信息</td>
+</tr>
+</tbody></table>
+<h3 id="函数-fargspath">函数 fargs(path)</h3>
+<p>参数文件 <code>/home/xp/ws/test/inputFile</code> 内容为</p>
+<pre><code>name age salary
+tom  9   1000
+jerry 5  5000
+</code></pre>
+<p>参数文件 <code>/home/xp/ws/test/inputFile2</code> 内容为</p>
+<pre><code>chenlh.cn, 192.1.1.1
+github.com, 192.168.0.1
+</code></pre>
+<p>对以上两个文件进行数据获取</p>
+<pre><code class="hljs language-javascript">
+args = <span class="hljs-title function_">fargs</span>(<span class="hljs-string">&quot;/home/xp/ws/test/inputFile&quot;</span>)
+<span class="hljs-title function_">println</span>(args) <span class="hljs-comment">// [[&quot;name&quot;, &quot;age&quot;, &quot;salary&quot;], [&quot;tom&quot;, &quot;9&quot;, &quot;1000&quot;], [&quot;jerry&quot;, &quot;5&quot;, &quot;5000&quot;]]</span>
+
+
+args = <span class="hljs-title function_">fargs</span>(<span class="hljs-string">&quot;/home/xp/ws/test/inputFile2&quot;</span>)
+<span class="hljs-title function_">println</span>(args) <span class="hljs-comment">// [[&quot;chenlh.cn&quot;, &quot;192.1.1.1&quot;], [&quot;github.com&quot;, &quot;192.168.0.1&quot;]]</span>
+</code></pre>
+<h3 id="函数-fpropspath">函数 fprops(path)</h3>
+<p>配置文件 <code>/home/xp/ws/test/aprops</code></p>
+<pre><code># dev mode: true or false
+mode=
+
+# service unique name
+name=changlie server
+
+port=502
+</code></pre>
+<p>配置文件读取</p>
+<pre><code class="hljs language-javascript">props = <span class="hljs-title function_">fprops</span>(<span class="hljs-string">&quot;/home/xp/ws/test/aprops&quot;</span>)
+<span class="hljs-title function_">println</span>(<span class="hljs-string">&quot;config -&gt; &quot;</span>, props) <span class="hljs-comment">// config -&gt;  {&quot;name&quot;:&quot;changlie server&quot;, &quot;port&quot;:&quot;502&quot;, &quot;mode&quot;:&quot;&quot;}</span>
+</code></pre>
+<h3 id="xml">xml</h3>
+<ol>
+<li>写示例</li>
+</ol>
+<pre><code class="hljs language-javascript">doc = <span class="hljs-title function_">xml</span>()
+<span class="hljs-comment">//doc.setHead(&quot;xml&quot;, `version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;`)</span>
+doc.<span class="hljs-title function_">defHead</span>()
+
+root = doc.<span class="hljs-title function_">newElem</span>(<span class="hljs-string">&quot;people&quot;</span>)
+
+p = root.<span class="hljs-title function_">newElem</span>(<span class="hljs-string">&quot;person&quot;</span>)
+p.<span class="hljs-title function_">newAttr</span>(<span class="hljs-string">&quot;type&quot;</span>, <span class="hljs-string">&quot;student&quot;</span>)
+p.<span class="hljs-title function_">newText</span>(<span class="hljs-string">&quot;Joe&quot;</span>)
+
+p = root.<span class="hljs-title function_">newElem</span>(<span class="hljs-string">&quot;person&quot;</span>)
+p.<span class="hljs-title function_">newAttr</span>(<span class="hljs-string">&quot;type&quot;</span>, <span class="hljs-string">&quot;teacher&quot;</span>)
+p.<span class="hljs-title function_">newText</span>(<span class="hljs-string">&quot;Lily&quot;</span>)
+
+p = root.<span class="hljs-title function_">newElem</span>(<span class="hljs-string">&quot;person&quot;</span>)
+p.<span class="hljs-title function_">newAttr</span>(<span class="hljs-string">&quot;type&quot;</span>, <span class="hljs-string">&quot;animal&quot;</span>)
+p.<span class="hljs-title function_">newCData</span>(<span class="hljs-string">&quot;&lt;cheator&gt;&gt;&gt;&quot;</span>)
+<span class="hljs-title function_">echo</span>(<span class="hljs-string">&quot;animal -&gt; &quot;</span>, p.<span class="hljs-title function_">text</span>())
+
+doc.<span class="hljs-title function_">indent</span>(<span class="hljs-number">2</span>)
+<span class="hljs-title function_">echo</span>(doc.<span class="hljs-title function_">str</span>())
+</code></pre>
+<pre><code>animal -&gt;  &lt;cheator&gt;&gt;&gt;
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;people&gt;
+  &lt;person type=&quot;student&quot;&gt;Joe&lt;/person&gt;
+  &lt;person type=&quot;teacher&quot;&gt;Lily&lt;/person&gt;
+  &lt;person type=&quot;animal&quot;&gt;&lt;![CDATA[&lt;cheator&gt;&gt;&gt;]]&gt;&lt;/person&gt;
+&lt;/people&gt;
+</code></pre>
+<ol start="2">
+<li>读示例</li>
+</ol>
+<pre><code class="hljs language-javascript">rawDoc = <span class="hljs-string">`
+&lt;bookstore xmlns:p=&quot;urn:schemas-books-com:prices&quot;&gt;
+
+  &lt;book category=&quot;COOKING&quot;&gt;
+    &lt;title lang=&quot;en&quot;&gt;Everyday Italian&lt;/title&gt;
+    &lt;author&gt;Giada De Laurentiis&lt;/author&gt;
+    &lt;year&gt;2005&lt;/year&gt;
+    &lt;p:price&gt;30.00&lt;/p:price&gt;
+  &lt;/book&gt;
+
+  &lt;book category=&quot;CHILDREN&quot;&gt;
+    &lt;title lang=&quot;en&quot;&gt;Harry Potter&lt;/title&gt;
+    &lt;author&gt;J K. Rowling&lt;/author&gt;
+    &lt;year&gt;2005&lt;/year&gt;
+    &lt;p:price&gt;29.99&lt;/p:price&gt;
+  &lt;/book&gt;
+
+  &lt;book category=&quot;WEB&quot;&gt;
+    &lt;title lang=&quot;en&quot;&gt;XQuery Kick Start&lt;/title&gt;
+    &lt;author&gt;James McGovern&lt;/author&gt;
+    &lt;author&gt;Per Bothner&lt;/author&gt;
+    &lt;author&gt;Kurt Cagle&lt;/author&gt;
+    &lt;author&gt;James Linn&lt;/author&gt;
+    &lt;author&gt;Vaidyanathan Nagarajan&lt;/author&gt;
+    &lt;year&gt;2003&lt;/year&gt;
+    &lt;p:price&gt;49.99&lt;/p:price&gt;
+  &lt;/book&gt;
+
+  &lt;book category=&quot;WEB&quot; id=&quot;9527&quot;&gt;
+    &lt;title lang=&quot;en&quot;&gt;Learning XML&lt;/title&gt;
+    &lt;author&gt;Erik T. Ray&lt;/author&gt;
+    &lt;year&gt;2003&lt;/year&gt;
+    &lt;p:price&gt;39.95&lt;/p:price&gt;
+  &lt;/book&gt;
+
+&lt;/bookstore&gt;
+`</span>
+
+doc = <span class="hljs-title function_">xml</span>().<span class="hljs-title function_">load</span>(rawDoc)
+
+root = doc.<span class="hljs-title function_">root</span>()
+<span class="hljs-title function_">echo</span>(<span class="hljs-string">&quot;root tag -&gt; &quot;</span>, root.<span class="hljs-title function_">name</span>())
+
+forv book : root.<span class="hljs-title function_">elems</span>(<span class="hljs-params"><span class="hljs-string">&quot;book&quot;</span></span>) {
+    <span class="hljs-title function_">echo</span>(<span class="hljs-string">&quot;book: &quot;</span>, book.<span class="hljs-title function_">elem</span>(<span class="hljs-string">&quot;title&quot;</span>).<span class="hljs-title function_">text</span>())
+    <span class="hljs-title function_">echo</span>(<span class="hljs-string">&quot;category: &quot;</span>, book.<span class="hljs-title function_">attr</span>(<span class="hljs-string">&quot;category&quot;</span>))
+    <span class="hljs-title function_">echo</span>(<span class="hljs-string">&quot;-------------&quot;</span>)
+}
+
+<span class="hljs-comment">// 查找</span>
+e = doc.<span class="hljs-title function_">find</span>(<span class="hljs-string">&quot;//book[@category=&#x27;WEB&#x27;]/*&quot;</span>)
+<span class="hljs-title function_">echo</span>(e.<span class="hljs-title function_">name</span>(), e.<span class="hljs-title function_">text</span>())
+<span class="hljs-title function_">echo</span>(<span class="hljs-string">&quot;======================&quot;</span>)
+
+forv e : doc.<span class="hljs-title function_">finds</span>(<span class="hljs-params"><span class="hljs-string">&quot;//book[@category=&#x27;CHILDREN&#x27;]/*&quot;</span></span>) {
+    <span class="hljs-title function_">echo</span>(e.<span class="hljs-title function_">name</span>())
+    <span class="hljs-title function_">echo</span>(<span class="hljs-string">&quot;++++++++++++++&quot;</span>)
+}
+
+<span class="hljs-title function_">echo</span>(<span class="hljs-string">&quot;########################&quot;</span>)
+forv e : doc.<span class="hljs-title function_">finds</span>(<span class="hljs-params"><span class="hljs-string">&quot;./bookstore/book[1]/*&quot;</span></span>) {
+    <span class="hljs-title function_">echof</span>(<span class="hljs-string">&quot;%v &gt; %v&quot;</span>, e.<span class="hljs-title function_">name</span>(), e.<span class="hljs-title function_">text</span>())
+}
+
+<span class="hljs-title function_">echo</span>(<span class="hljs-string">&quot;@@@@@@@@@@@@@&quot;</span>)
+forv e : doc.<span class="hljs-title function_">finds</span>(<span class="hljs-params"><span class="hljs-string">&quot;./bookstore/book[p:price=&#x27;49.99&#x27;]/title&quot;</span></span>) {
+    <span class="hljs-title function_">echof</span>(<span class="hljs-string">&quot;%v : %v&quot;</span>, e.<span class="hljs-title function_">name</span>(), e.<span class="hljs-title function_">text</span>())
+}
+</code></pre>
+<pre><code>root tag -&gt;  bookstore
+book:  Everyday Italian
+category:  COOKING
+-------------
+book:  Harry Potter
+category:  CHILDREN
+-------------
+book:  XQuery Kick Start
+category:  WEB
+-------------
+book:  Learning XML
+category:  WEB
+-------------
+title XQuery Kick Start
+======================
+title
+++++++++++++++
+author
+++++++++++++++
+year
+++++++++++++++
+price
+++++++++++++++
+########################
+title &gt; Everyday Italian
+author &gt; Giada De Laurentiis
+year &gt; 2005
+price &gt; 30.00
+@@@@@@@@@@@@@
+title : XQuery Kick Start
+</code></pre>
