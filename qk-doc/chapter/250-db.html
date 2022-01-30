@@ -1,658 +1,97 @@
-
-<!DOCTYPE HTML>
-<html lang="" >
-    <head>
-        <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>数据库操作 · GitBook</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.2">
-        
-        
-        
-    
-    <link rel="stylesheet" href="../gitbook/style.css">
-
-    
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
-                
-            
-        
-
-    
-
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-
-        
-    
-    
-    <meta name="HandheldFriendly" content="true"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
-    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
-
-    
-    <link rel="next" href="300-http-client.html" />
-    
-    
-    <link rel="prev" href="200-excel.html" />
-    
-
-    </head>
-    <body>
-        
-<div class="book">
-    <div class="book-summary">
-        
-            
-<div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search" />
-</div>
-
-            
-                <nav role="navigation">
-                
-
-
-<ul class="summary">
-    
-    
-
-    
-
-    
-        
-        
-    
-        <li class="chapter " data-level="1.1" data-path="../">
-            
-                <a href="../">
-            
-                    
-                    前言
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2" data-path="010-env.html">
-            
-                <a href="010-env.html">
-            
-                    
-                    开发配置
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3" data-path="020-syntax.html">
-            
-                <a href="020-syntax.html">
-            
-                    
-                    基础语法
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.3.1" data-path="030-operator.html">
-            
-                <a href="030-operator.html">
-            
-                    
-                    运算符
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.2" data-path="040-data-type.html">
-            
-                <a href="040-data-type.html">
-            
-                    
-                    数据类型
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.3.2.1" data-path="041-byte-array.html">
-            
-                <a href="041-byte-array.html">
-            
-                    
-                    Byte Array
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.2.2" data-path="041-number.html">
-            
-                <a href="041-number.html">
-            
-                    
-                    Integer/Float
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.2.3" data-path="042-boolean.html">
-            
-                <a href="042-boolean.html">
-            
-                    
-                    Boolean
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.2.4" data-path="043-string.html">
-            
-                <a href="043-string.html">
-            
-                    
-                    String
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.2.5" data-path="044-json-array.html">
-            
-                <a href="044-json-array.html">
-            
-                    
-                    JSON Array
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.2.6" data-path="045-json-object.html">
-            
-                <a href="045-json-object.html">
-            
-                    
-                    JSON Object
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.3" data-path="050-contral-statement.html">
-            
-                <a href="050-contral-statement.html">
-            
-                    
-                    控制语句
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.3.3.1" data-path="051-if-statement.html">
-            
-                <a href="051-if-statement.html">
-            
-                    
-                    if语句
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.3.2" data-path="052-for-statement.html">
-            
-                <a href="052-for-statement.html">
-            
-                    
-                    for循环
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.3.3" data-path="055-foreach-statement.html">
-            
-                <a href="055-foreach-statement.html">
-            
-                    
-                    foreach遍历
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.4" data-path="060-function.html">
-            
-                <a href="060-function.html">
-            
-                    
-                    自定义函数
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.5" data-path="061-var-scope.html">
-            
-                <a href="061-var-scope.html">
-            
-                    
-                    变量作用域
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.6" data-path="065-higher-function.html">
-            
-                <a href="065-higher-function.html">
-            
-                    
-                    高阶函数
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4" data-path="070-standard-output.html">
-            
-                <a href="070-standard-output.html">
-            
-                    
-                    标准输出
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5" data-path="075-asynchronize.html">
-            
-                <a href="075-asynchronize.html">
-            
-                    
-                    异步编程
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6" data-path="080-regular-expression.html">
-            
-                <a href="080-regular-expression.html">
-            
-                    
-                    正则表达式
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7" data-path="090-file.html">
-            
-                <a href="090-file.html">
-            
-                    
-                    文件操作
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8" data-path="150-date-time.html">
-            
-                <a href="150-date-time.html">
-            
-                    
-                    日期时间
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9" data-path="200-excel.html">
-            
-                <a href="200-excel.html">
-            
-                    
-                    Excel操作
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter active" data-level="1.10" data-path="250-db.html">
-            
-                <a href="250-db.html">
-            
-                    
-                    数据库操作
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.11" data-path="300-http-client.html">
-            
-                <a href="300-http-client.html">
-            
-                    
-                    Http Client
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.12" data-path="350-http-server.html">
-            
-                <a href="350-http-server.html">
-            
-                    
-                    Http Server
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.13" data-path="950-internal-vars.html">
-            
-                <a href="950-internal-vars.html">
-            
-                    
-                    内置变量
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.14" data-path="953-internal-funcs.html">
-            
-                <a href="953-internal-funcs.html">
-            
-                    
-                    内置函数
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.15" data-path="990-crontab.html">
-            
-                <a href="990-crontab.html">
-            
-                    
-                    任务调度
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.16" data-path="990-mail.html">
-            
-                <a href="990-mail.html">
-            
-                    
-                    邮件发送
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-    
-
-    <li class="divider"></li>
-
-    <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            Published with GitBook
-        </a>
-    </li>
-</ul>
-
-
-                </nav>
-            
-        
-    </div>
-
-    <div class="book-body">
-        
-            <div class="body-inner">
-                
-                    
-
-<div class="book-header" role="navigation">
-    
-
-    <!-- Title -->
-    <h1>
-        <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >数据库操作</a>
-    </h1>
-</div>
-
-
-
-
-                    <div class="page-wrapper" tabindex="-1" role="main">
-                        <div class="page-inner">
-                            
-<div id="book-search-results">
-    <div class="search-noresults">
-    
-                                <section class="normal markdown-section">
-                                
-                                <h1 id="&#x6570;&#x636E;&#x5E93;&#x64CD;&#x4F5C;">&#x6570;&#x636E;&#x5E93;&#x64CD;&#x4F5C;</h1>
-<p><code>Quick</code>&#x8BED;&#x8A00;&#x4E2D;&#xFF0C;&#x53EA;&#x9700;&#x83B7;&#x53D6;&#x5230;<code>DB</code>&#x5BF9;&#x8C61;&#x5373;&#x53EF;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x5E93;&#x64CD;&#x4F5C;&#x3002;  </p>
-<h3 id="&#x521B;&#x5EFA;db&#x7684;&#x76F8;&#x5173;&#x51FD;&#x6570;">&#x521B;&#x5EFA;DB&#x7684;&#x76F8;&#x5173;&#x51FD;&#x6570;</h3>
+<h1 id="数据库操作">数据库操作</h1>
+<p><code>Quick</code>语言中，只需获取到<code>DB</code>对象即可进行数据库操作。  </p>
+<h3 id="创建db的相关函数">创建DB的相关函数</h3>
 <table>
 <thead>
 <tr>
-<th>&#x51FD;&#x6570;</th>
-<th>&#x63CF;&#x8FF0;</th>
+<th>函数</th>
+<th>描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>sqlite</td>
-<td>&#x521B;&#x5EFA;&#x64CD;&#x4F5C;Sqlite&#x7684;DB&#x5BF9;&#x8C61;</td>
+<td>创建操作Sqlite的DB对象</td>
 </tr>
 <tr>
 <td>mysql</td>
-<td>&#x521B;&#x5EFA;&#x64CD;&#x4F5C;Mysql&#x7684;DB&#x5BF9;&#x8C61;</td>
+<td>创建操作Mysql的DB对象</td>
 </tr>
 <tr>
 <td>sqlserver</td>
-<td>&#x521B;&#x5EFA;&#x64CD;&#x4F5C;SqlServer&#x7684;DB&#x5BF9;&#x8C61;</td>
+<td>创建操作SqlServer的DB对象</td>
 </tr>
 <tr>
 <td>pg</td>
-<td>&#x521B;&#x5EFA;&#x64CD;&#x4F5C;Postgres&#x7684;DB&#x5BF9;&#x8C61;</td>
+<td>创建操作Postgres的DB对象</td>
 </tr>
 <tr>
 <td>oracle</td>
-<td>&#x521B;&#x5EFA;&#x64CD;&#x4F5C;Oracle&#x7684;DB&#x5BF9;&#x8C61;</td>
+<td>创建操作Oracle的DB对象</td>
 </tr>
-</tbody>
-</table>
-<p>&#x793A;&#x4F8B;</p>
-<pre><code class="lang-js"><span class="hljs-comment">// &#x6570;&#x636E;&#x5E93;&#x6587;&#x4EF6;&#x540D;</span>
-db = sqlite(<span class="hljs-string">&quot;d:/db3&quot;</span>)
-<span class="hljs-comment">// &#x7528;&#x6237;&#x540D;&#xFF0C; &#x5BC6;&#x7801;&#xFF0C;(ip/&#x57DF;&#x540D;):&#x7AEF;&#x53E3;/&#x6570;&#x636E;&#x5E93;&#x540D;</span>
-db = mysql(<span class="hljs-string">&quot;root&quot;</span>, <span class="hljs-string">&quot;123456&quot;</span>, <span class="hljs-string">&quot;192.168.1.101:3306/iot&quot;</span>)
-<span class="hljs-comment">// &#x7528;&#x6237;&#x540D;&#xFF0C; &#x5BC6;&#x7801;&#xFF0C;(ip/&#x57DF;&#x540D;):&#x7AEF;&#x53E3;/&#x6570;&#x636E;&#x5E93;&#x540D;</span>
-db = sqlserver(<span class="hljs-string">&quot;SA&quot;</span>, <span class="hljs-string">&quot;root@123&quot;</span>, <span class="hljs-string">&quot;192.168.1.101:1433/STG&quot;</span>)
-<span class="hljs-comment">// &#x7528;&#x6237;&#x540D;&#xFF0C; &#x5BC6;&#x7801;&#xFF0C;(ip/&#x57DF;&#x540D;):&#x7AEF;&#x53E3;/&#x6570;&#x636E;&#x5E93;&#x540D;</span>
-db = pg(<span class="hljs-string">&quot;postgres&quot;</span>, <span class="hljs-string">&quot;123456&quot;</span>, <span class="hljs-string">&quot;192.168.1.101:5432/postgres?sslmode=disable&quot;</span>)
-<span class="hljs-comment">// &#x7528;&#x6237;&#x540D;&#xFF0C; &#x5BC6;&#x7801;&#xFF0C;(ip/&#x57DF;&#x540D;):&#x7AEF;&#x53E3;/&#x6570;&#x636E;&#x5E93;&#x540D;</span>
-db = oracle(<span class="hljs-string">&quot;system&quot;</span>, <span class="hljs-string">&quot;oracle&quot;</span>, <span class="hljs-string">&quot;192.168.1.101:1521/xe&quot;</span>)
+</tbody></table>
+<p>示例</p>
+<pre><code class="hljs language-javascript"><span class="hljs-comment">// 数据库文件名</span>
+db = <span class="hljs-title function_">sqlite</span>(<span class="hljs-string">&quot;d:/db3&quot;</span>)
+<span class="hljs-comment">// 用户名， 密码，(ip/域名):端口/数据库名</span>
+db = <span class="hljs-title function_">mysql</span>(<span class="hljs-string">&quot;root&quot;</span>, <span class="hljs-string">&quot;123456&quot;</span>, <span class="hljs-string">&quot;192.168.1.101:3306/iot&quot;</span>)
+<span class="hljs-comment">// 用户名， 密码，(ip/域名):端口/数据库名</span>
+db = <span class="hljs-title function_">sqlserver</span>(<span class="hljs-string">&quot;SA&quot;</span>, <span class="hljs-string">&quot;root@123&quot;</span>, <span class="hljs-string">&quot;192.168.1.101:1433/STG&quot;</span>)
+<span class="hljs-comment">// 用户名， 密码，(ip/域名):端口/数据库名</span>
+db = <span class="hljs-title function_">pg</span>(<span class="hljs-string">&quot;postgres&quot;</span>, <span class="hljs-string">&quot;123456&quot;</span>, <span class="hljs-string">&quot;192.168.1.101:5432/postgres?sslmode=disable&quot;</span>)
+<span class="hljs-comment">// 用户名， 密码，(ip/域名):端口/数据库名</span>
+db = <span class="hljs-title function_">oracle</span>(<span class="hljs-string">&quot;system&quot;</span>, <span class="hljs-string">&quot;oracle&quot;</span>, <span class="hljs-string">&quot;192.168.1.101:1521/xe&quot;</span>)
 </code></pre>
-<h3 id="db&#x5BF9;&#x8C61;&#x5E38;&#x7528;&#x65B9;&#x6CD5;">db&#x5BF9;&#x8C61;&#x5E38;&#x7528;&#x65B9;&#x6CD5;</h3>
+<h3 id="db对象常用方法">db对象常用方法</h3>
 <table>
 <thead>
 <tr>
-<th>&#x65B9;&#x6CD5;&#x540D;</th>
-<th>&#x63CF;&#x8FF0;</th>
+<th>方法名</th>
+<th>描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>tables()</td>
-<td>&#x67E5;&#x627E;&#x5F53;&#x524D;&#x6570;&#x636E;&#x5E93;&#x7684;&#x6240;&#x6709;&#x8868;&#x540D;&#x79F0;</td>
+<td>查找当前数据库的所有表名称</td>
 </tr>
 <tr>
 <td>exists(tableName)</td>
-<td>&#x5224;&#x65AD;&#x67D0;&#x4E2A;&#x8868;&#x662F;&#x5426;&#x5B58;&#x5728;</td>
+<td>判断某个表是否存在</td>
 </tr>
 <tr>
 <td>fields(tableName)</td>
-<td>&#x67E5;&#x627E;&#x6307;&#x5B9A;&#x8868;&#x7684;&#x6240;&#x6709;&#x5B57;&#x6BB5;&#x540D;&#x79F0;</td>
+<td>查找指定表的所有字段名称</td>
 </tr>
 <tr>
 <td>count(tableName)</td>
-<td>&#x7EDF;&#x8BA1;&#x8868;&#x7684;&#x603B;&#x8BB0;&#x5F55;&#x6570;</td>
+<td>统计表的总记录数</td>
 </tr>
 <tr>
 <td>exec(sql, args...)</td>
-<td>&#x6267;&#x884C;&#x5EFA;&#x8868;&#xFF0C;&#x5220;&#x8868;&#x7B49;sql</td>
+<td>执行建表，删表等sql</td>
 </tr>
 <tr>
 <td>insert(sql, args...)</td>
-<td>&#x8BB0;&#x5F55;&#x65B0;&#x589E;</td>
+<td>记录新增</td>
 </tr>
 <tr>
 <td>update(sql, args...)</td>
-<td>&#x8BB0;&#x5F55;&#x66F4;&#x65B0;</td>
+<td>记录更新</td>
 </tr>
 <tr>
 <td>getRows(sql, args...)</td>
-<td>&#x83B7;&#x53D6;&#x591A;&#x884C;&#x8BB0;&#x5F55;&#x6570;&#x636E;</td>
+<td>获取多行记录数据</td>
 </tr>
 <tr>
 <td>getRow(sql, args...)</td>
-<td>&#x83B7;&#x53D6;&#x5355;&#x884C;&#x8BB0;&#x5F55;&#x6570;&#x636E;</td>
+<td>获取单行记录数据</td>
 </tr>
 <tr>
 <td>getValue(sql, args...)</td>
-<td>&#x83B7;&#x53D6;&#x5355;&#x4E2A;&#x503C;&#x3002;e.g. &#x67E5;&#x8BE2;&#x8BB0;&#x5F55;&#x6570;&#x91CF;</td>
+<td>获取单个值。e.g. 查询记录数量</td>
 </tr>
-</tbody>
-</table>
-<h3 id="&#x793A;&#x4F8B;&#xFF1A;">&#x793A;&#x4F8B;&#xFF1A;</h3>
-<pre><code class="lang-js">db = oracle(<span class="hljs-string">&quot;system&quot;</span>, <span class="hljs-string">&quot;oracle&quot;</span>, <span class="hljs-string">&quot;127.0.0.1:1521/xe&quot;</span>)
+</tbody></table>
+<h3 id="示例：">示例：</h3>
+<pre><code class="hljs language-javascript">db = <span class="hljs-title function_">oracle</span>(<span class="hljs-string">&quot;system&quot;</span>, <span class="hljs-string">&quot;oracle&quot;</span>, <span class="hljs-string">&quot;127.0.0.1:1521/xe&quot;</span>)
 
 studentTable = <span class="hljs-string">`
 create table student (
@@ -661,102 +100,22 @@ name varchar(50),
 age number
 )
 `</span>
-db.exec(studentTable)
+db.<span class="hljs-title function_">exec</span>(studentTable)
 
-rows = db.getRows(<span class="hljs-string">&quot;select table_name from user_tables&quot;</span>)
+rows = db.<span class="hljs-title function_">getRows</span>(<span class="hljs-string">&quot;select table_name from user_tables&quot;</span>)
 forv row : rows {
-  println(<span class="hljs-string">&quot;name -&gt; &quot;</span>, row)
+  <span class="hljs-title function_">println</span>(<span class="hljs-string">&quot;name -&gt; &quot;</span>, row)
 }
-println(<span class="hljs-string">&quot;total -&gt; &quot;</span>, rows.size())
+<span class="hljs-title function_">println</span>(<span class="hljs-string">&quot;total -&gt; &quot;</span>, rows.<span class="hljs-title function_">size</span>())
 
-println(<span class="hljs-string">&quot;--------------------&quot;</span>)
+<span class="hljs-title function_">println</span>(<span class="hljs-string">&quot;--------------------&quot;</span>)
 
-db.insert(<span class="hljs-string">&quot;insert into student values(64, &apos;lisi&apos;, 123)&quot;</span>)
-db.insert(<span class="hljs-string">&quot;insert into student values(23, &apos;zhangsan&apos;, 56)&quot;</span>)
-db.insert(<span class="hljs-string">&quot;insert into student values(11, &apos;changlie&apos;, 9)&quot;</span>)
+db.<span class="hljs-title function_">insert</span>(<span class="hljs-string">&quot;insert into student values(64, &#x27;lisi&#x27;, 123)&quot;</span>)
+db.<span class="hljs-title function_">insert</span>(<span class="hljs-string">&quot;insert into student values(23, &#x27;zhangsan&#x27;, 56)&quot;</span>)
+db.<span class="hljs-title function_">insert</span>(<span class="hljs-string">&quot;insert into student values(11, &#x27;changlie&#x27;, 9)&quot;</span>)
 
-rows = db.getRows(<span class="hljs-string">&quot;select * from student&quot;</span>)
+rows = db.<span class="hljs-title function_">getRows</span>(<span class="hljs-string">&quot;select * from student&quot;</span>)
 forv row : rows {
-  println(<span class="hljs-string">&quot;stu =&gt; &quot;</span>, row)
+  <span class="hljs-title function_">println</span>(<span class="hljs-string">&quot;stu =&gt; &quot;</span>, row)
 }
 </code></pre>
-
-                                
-                                </section>
-                            
-    </div>
-    <div class="search-results">
-        <div class="has-results">
-            
-            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
-            <ul class="search-results-list"></ul>
-            
-        </div>
-        <div class="no-results">
-            
-            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
-            
-        </div>
-    </div>
-</div>
-
-                        </div>
-                    </div>
-                
-            </div>
-
-            
-                
-                <a href="200-excel.html" class="navigation navigation-prev " aria-label="Previous page: Excel操作">
-                    <i class="fa fa-angle-left"></i>
-                </a>
-                
-                
-                <a href="300-http-client.html" class="navigation navigation-next " aria-label="Next page: Http Client">
-                    <i class="fa fa-angle-right"></i>
-                </a>
-                
-            
-        
-    </div>
-
-    <script>
-        var gitbook = gitbook || [];
-        gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"数据库操作","level":"1.10","depth":1,"next":{"title":"Http Client","level":"1.11","depth":1,"path":"chapter/300-http-client.md","ref":"chapter/300-http-client.md","articles":[]},"previous":{"title":"Excel操作","level":"1.9","depth":1,"path":"chapter/200-excel.md","ref":"chapter/200-excel.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter/250-db.md","mtime":"2021-11-16T10:42:09.581Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2021-12-27T08:49:09.693Z"},"basePath":"..","book":{"language":""}});
-        });
-    </script>
-</div>
-
-        
-    <script src="../gitbook/gitbook.js"></script>
-    <script src="../gitbook/theme.js"></script>
-    
-        
-        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
-        
-    
-
-    </body>
-</html>
-
