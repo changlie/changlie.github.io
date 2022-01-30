@@ -12,6 +12,9 @@ body {
     background-color: #F2F9D5;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+#content-container img {
+    max-width: 90vw;
+}
 
 #content-container {
     height: 100%;

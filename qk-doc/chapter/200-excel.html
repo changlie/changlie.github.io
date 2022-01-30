@@ -6,7 +6,7 @@
 <li><a href="#xlsx-%E7%9B%B8%E5%85%B3%E5%AF%B9%E8%B1%A1">Excel - Xlsx</a></li>
 </ul>
 <h3 id="xls-数据读取">xls 数据读取</h3>
-<p><code>tab1.xls</code>文件内容如下：<br><img src="img/xls-src.png" alt="illustration"><br><a href="static/tab1.xls">源文件</a></p>
+<p><code>tab1.xls</code>文件内容如下：<br><a href="img/xls-src.png" data-fancybox="images"><img src="img/xls-src.png" alt="illustration"></a><br><a href="static/tab1.xls">源文件</a></p>
 <pre><code class="hljs language-javascript">f = <span class="hljs-title function_">xls</span>(<span class="hljs-string">&quot;d:/tab1.xls&quot;</span>)
 <span class="hljs-title function_">println</span>(<span class="hljs-string">&quot;xlsSheetNumber:&quot;</span>, f.<span class="hljs-title function_">sheetNumber</span>())
 sheet = f.<span class="hljs-title function_">sheet</span>(<span class="hljs-number">0</span>)
@@ -46,7 +46,7 @@ ww, 16, m, xx,
 </code></pre>
 <h3 id="xlsx-读取">xlsx 读取</h3>
 <p><code>tab2.xlsx</code>文件内容：
-<img src="img/xlsx-src.png" alt="illustraction"><br><a href="static/tab2.xlsx">源文件</a>
+<a href="img/xlsx-src.png" data-fancybox="images"><img src="img/xlsx-src.png" alt="illustraction"></a><br><a href="static/tab2.xlsx">源文件</a>
 方式1：</p>
 <pre><code class="hljs language-javascript">f = <span class="hljs-title function_">xlsx</span>(<span class="hljs-string">&quot;d:/tab2.xlsx&quot;</span>)
 sheet = f.<span class="hljs-title function_">sheet</span>(<span class="hljs-number">0</span>)
@@ -103,7 +103,7 @@ sheet.<span class="hljs-title function_">setCellValue</span>(<span class="hljs-s
 f.<span class="hljs-title function_">saveAs</span>(<span class="hljs-string">&quot;d:/test.xlsx&quot;</span>)
 <span class="hljs-title function_">println</span>(<span class="hljs-string">&quot;write successfully&quot;</span>)
 </code></pre>
-<p>写出的文件数据如下：<br><img src="img/xlsx-res.png" alt="illustration"></p>
+<p>写出的文件数据如下：<br><a href="img/xlsx-res.png" data-fancybox="images"><img src="img/xlsx-res.png" alt="illustration"></a></p>
 <h1 id="xls-相关对象">Xls 相关对象</h1>
 <h3 id="xls">Xls</h3>
 <p>调用xls(path)后返回的对象类型</p>
