@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <link rel="shortcut icon" href="/resource/fav.ico" type="image/x-icon">
+   <link rel="stylesheet" href="../lib/blog-pc.css" media="all and (min-width:901px)">
+   <link rel="stylesheet" href="../lib/blog-mobile.css" media="all and (max-width:900px)">
+   <link rel="stylesheet" href="../lib/highlight.min.css">
+   <link rel="stylesheet" href="../lib/highlight-oceanicnext.css">
+</head>
+<body>
+    <div id="content-container"></div>
+    <div id="page-nav"></div>
+    <div id="site-nav"></div>
+    <div id="page-nav-shower" onclick="pageNavShow()" class="divHide">大纲</div>
+    <div id="site-nav-shower" onclick="siteNavShow()" class="divHide">目录</div>
+<script>
+    const isMobile = document.body.clientWidth < 800
+    if (isMobile) {
+        pageNavHide()
+        siteNavHide()
+    }
+    
+    // 加载主题目录
+    fetch('SUMMARY.html')
+    .then(resp => {
+        if (!resp.ok)  return
+        return resp.text()
+    }).then(txt => {
+        setTitle(txt)
+        txt = '<div id="site-nav-hider" onclick="siteNavHide()">隐藏</div>\n' + txt
+        var cc = document.querySelector('#site-nav')
+        cc.innerHTML = txt
+    })
+    function setTitle(txt) {
+        try{
+            var reg = /<h\d[^<]*>(.+)<\/h\d>/
+            var tmp = reg.exec(txt)
+            console.log(tmp, 'for title')
+            document.title = tmp[1]
+        }catch{
+            console.log('failed to set title')
+        }
+    }
+    
+    // 首次加载
+    loadPageContent_Nav('README')
+    
+    function gotoArch() {
+        if (isMobile) {
+            pageNavHide()
+        }
+    }
+
+    function gotoPage(pageNum, elem) {
+        gotoTop()
+
+        if (isMobile) {
+            siteNavHide()
+        }
+        
+        var nextP = ''
+        var base = location.pathname
+        if (base.endsWith('/')) {
+            nextP = base + pageNum
+        } else {
+            nextP = base + '/' + pageNum
+        }
+        loadPageContent_Nav(nextP)
+
+        // 当前目录高亮
+        var items = document.querySelectorAll("#site-nav span");
+        items.forEach(function(item) {
+            item.setAttribute('class', '')
+        });
+        elem.setAttribute('class', 'current')
+    }
+
+    function loadPageContent_Nav(nextPage) {
+        location.hash = ''
+        // load page content
+        fetch(nextPage+'.html')
+        .then(resp => {
+            if (!resp.ok)  return
+            return resp.text()
+        }).then(txt => {
+            var cc = document.querySelector('#content-container')
+            cc.innerHTML = txt
+        })
+        // load nav
+        fetch(nextPage+"_title.html")
+        .then(resp => {
+            if (!resp.ok)  return
+            return resp.text()
+        }).then(txt => {
+            txt = '<div id="page-nav-hider" onclick="pageNavHide()">隐藏</div>\n' + txt
+            var cc = document.querySelector('#page-nav')
+            cc.innerHTML = txt
+        })
+    }
+    // 返回页面顶部
+    function gotoTop() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+
+    function siteNavHide() {
+        var nav = document.querySelector('#site-nav')
+        var navShower = document.querySelector('#site-nav-shower')
+        nav.setAttribute('class', 'divHide')
+        navShower.setAttribute('class', 'divShow')
+        if (isMobile) {
+            var navShower = document.querySelector('#page-nav-shower')
+            navShower.setAttribute('class', 'divShow')
+        }
+    }
+    function siteNavShow() {
+        var nav = document.querySelector('#site-nav')
+        var navShower = document.querySelector('#site-nav-shower')
+        nav.setAttribute('class', 'divShow')
+        navShower.setAttribute('class', 'divHide')
+        if (isMobile) {
+            var navShower = document.querySelector('#page-nav-shower')
+            navShower.setAttribute('class', 'divHide')
+        }
+    }
+    function pageNavHide() {
+        var nav = document.querySelector('#page-nav')
+        var navShower = document.querySelector('#page-nav-shower')
+        nav.setAttribute('class', 'divHide')
+        navShower.setAttribute('class', 'divShow')
+        if (isMobile) {
+            var navShower = document.querySelector('#site-nav-shower')
+            navShower.setAttribute('class', 'divShow')
+        }
+    }
+    function pageNavShow() {
+        var nav = document.querySelector('#page-nav')
+        var navShower = document.querySelector('#page-nav-shower')
+        nav.setAttribute('class', 'divShow')
+        navShower.setAttribute('class', 'divHide')
+
+        if (isMobile) {
+            var navShower = document.querySelector('#site-nav-shower')
+            navShower.setAttribute('class', 'divHide')
+        }
+    }
+</script>
+</body>
+</html>
