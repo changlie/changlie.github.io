@@ -326,12 +326,9 @@
             }
         }
         initNavPanel()
-    </script>
-    <script src="resource/dialog.js"></script>
-</body>
-</html>
 
-<script>
+
+            // css 修正 -------start
     function modifyStyle(styleId, cssSelector, attrName, attrVal) {
         var styleElem = document.getElementById(styleId)
         if (!styleElem) {
@@ -366,9 +363,10 @@
     function toBlog() {
         window.open("/dev-log/index.html", "_blank")
     }
-</script>
+    // css 修正 -------end
 
-<script>
+
+        // 雪花背景 -------start
     function generateSnow() {
         window.onload = function() {
             // 添加200个　<div class="snow"></div>
@@ -476,5 +474,9 @@
         }
     }
     generateSnow()
-</script>
+    // 雪花背景 -------end
+    </script>
+    <script src="resource/dialog.js"></script>
+</body>
+</html>
 
