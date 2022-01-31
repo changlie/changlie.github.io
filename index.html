@@ -2,21 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>尘墨似金</title>
     <link rel="shortcut icon" href="resource/fav.ico" type="image/x-icon">
     <style id="indexPageStyle">
         *{padding:0px;margin:0px; }
-        html, body, .main {
+        html, body{
             height: 100%;
             width: 100%;
-            overflow: hidden;
         }
         body {
             background: #000;
         }
+        #snow-container{
+            z-index: -99;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100%;
+            overflow: hidden;
+        }
         .main {
+            position: relative;
+            top: 0;
+            left: 0;
             z-index: 0;
+            width: 100%;
+            overflow-x: hidden;
+            overflow-y: auto;
         }
         .header {
             position: relative;
@@ -118,7 +133,6 @@
             justify-content: flex-start;
             align-content: flex-start;
             box-sizing: border-box;
-            width: 1050px;
             min-height: 300px;
             max-height: 360px;
             overflow-y: scroll;
@@ -128,20 +142,12 @@
             height: 0px;
         }
         .tag {
-            width: 200px;
-            height: 100px;
             box-sizing: border-box;
-            line-height: 100px;
-            margin-top: 8px;
-            margin-left: 3px;
-            margin-right: 4px;
-            font-size: 28px;
-            color: #fff;
-            border-radius: 13px;
             text-align: center;
-            background-color: royalblue;
             user-select: none;
             cursor: pointer;
+            color: #fff;
+            border: 1px solid #fff;
         }
         .tag:hover {
             background-color: #fc5531;
@@ -156,7 +162,6 @@
             background-color: #0f52ba;
             border-radius:50%;
             z-index: 0;
-            
             visibility: hidden;
             animation: wave 0s ease-out 0.2s infinite;
         }
@@ -166,6 +171,105 @@
 
             80%,
             100% {opacity: 0;}
+        }
+        div.modal {
+            width: 400px;
+            height: 300px;
+        }
+        /* 响应式 */
+        @media screen and (min-width: 1050px) {
+            .main {
+                height: 750px;
+            }
+            .header {
+                height: 300px;
+            }
+            .content {
+                height: 400px;
+            }
+            .nav-block {
+                width: 1050px;
+            }
+            .tag {
+                width: 200px;
+                height: 100px;
+                line-height: 100px;
+                margin-top: 8px;
+                margin-left: 3px;
+                margin-right: 4px;
+                font-size: 28px;
+                border-radius: 13px;
+            }
+        }
+        @media screen and (min-width: 800px) and (max-width: 1049px) {
+            .main {
+                height: 690px;
+            }
+            .header {
+                height: 250px;
+            }
+            .content {
+                height: 400px;
+            }
+            .nav-block {
+                width: 100%;
+            }
+            .tag {
+                width: 21vw;
+                height: 50px;
+                line-height: 50px;
+                margin-left: 5.5vw;
+                margin-right: 5.5vw;
+                margin-bottom: 16px;
+                border-radius: 9px;
+            }
+        }
+        @media screen and (max-width: 799px) {
+            .main {
+                height: 690px;
+            }
+            .header {
+                height: 250px;
+            }
+            .content {
+                height: 400px;
+            }
+            .nav-block {
+                width: 100%;
+            }
+            .tag {
+                width: 40vw;
+                height: 50px;
+                line-height: 50px;
+                margin-left: 4.5vw;
+                margin-right: 4.5vw;
+                margin-bottom: 16px;
+                border-radius: 9px;
+            }
+            .logo {
+                display: block;
+                width: 100px;
+                height: 100px;
+                margin: 0 auto;
+                position: absolute;
+                top: 21px;
+                left: calc(100vw/2 - 50px);
+            }
+            .motto {
+                font-size: 21px;
+            }
+            .footer {
+                display: none;
+            }
+            @keyframes mottoShow {
+                0% {font-size: 1px; top: -1px;}
+                80% {font-size: 28px; top: 155px;}
+                100% {font-size: 21px; top: 155px;}
+            }
+            div.modal {
+                width: 80vw;
+                height: 300px;
+            }
         }
     
     </style>

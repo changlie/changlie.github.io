@@ -1,8 +1,8 @@
 function dialogOpen() {
     var modalStyle = document.getElementById("confirm-modal").style
     modalStyle.display = 'block'
-    modalStyle.height = '300px'
-    modalStyle.width = '400px'
+    // modalStyle.height = '300px'
+    // modalStyle.width = '400px'
 }
 function dialogClose() {
     var modalStyle = document.getElementById("confirm-modal").style
@@ -41,8 +41,6 @@ dialogStyle.sheet.insertRule(`:root {
 }`, 0)
 dialogStyle.sheet.insertRule(`.modal {
     display: none;
-    height: 300px;
-    width: 400px;
     border-radius: 12px;
     border: transparent;
     z-index: 999;
