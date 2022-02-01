@@ -26,6 +26,10 @@ body {
     overflow-x: hidden;
 }
 
+.copyer {
+    display: none;
+}
+
 :not(pre) > code {
     color: #C71D23;
     background-color: #eee;
