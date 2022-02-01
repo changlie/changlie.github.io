@@ -42,7 +42,6 @@
         try{
             var reg = /<h\d[^<]*>(.+)<\/h\d>/
             var tmp = reg.exec(txt)
-            console.log(tmp, 'for title')
             document.title = tmp[1]
         }catch{
             console.log('failed to set title')
@@ -82,6 +81,7 @@
         elem.setAttribute('class', 'current')
     }
 
+    const copyDiv = '<div class="copyer" onclick="toClipboard(this)"><svg viewBox="64 64 896 896" focusable="false" class="" data-icon="copy" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z"></path></svg></div>'
     function loadPageContent_Nav(nextPage) {
         location.hash = ''
         // load page content
@@ -91,6 +91,13 @@
             return resp.text()
         }).then(txt => {
             var cc = document.querySelector('#content-container')
+            $(cc).ready(function() {
+                $('pre code.hljs').parent('pre').hover(function() {
+                    $(this).append(copyDiv)
+                }, function() {
+                    $('pre .copyer').remove()
+                })
+            })
             cc.innerHTML = txt
         })
         // load nav
@@ -108,6 +115,43 @@
     function gotoTop() {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
+    }
+    function toClipboard(elem) {
+        // 复制代码至粘贴板
+        const txt = $(elem).siblings('code').text()
+        navigator.clipboard.writeText(txt).then(function() {
+            successTip('内容已复制至粘贴板')
+        }, function() {
+            failTip('内容复制失败')
+        });
+    }
+
+    // 提示
+    function successTip(msg) {
+        showTips(msg, true)
+    }
+    function failTip(msg) {
+        showTips(msg, false)
+    }
+    var tipIndex = 2000
+    function showTips(msg, flag) {
+        var divId = 'tipBoard'+tipIndex
+        var colorVal = flag ? 'green' : 'tomato'
+        var content = `<div class="tip-board" id="${divId}" style="z-index: ${tipIndex}">
+                    <div class="tip-board-head" style="background-color: ${colorVal}"></div>
+                    <div class="tip-board-content">${msg}</div>
+                    </div>`
+        tipIndex++
+        
+        $('body').ready(function() {
+            setTimeout(() => {
+                $('#'+divId).fadeOut("slow")
+            }, 666)
+            setTimeout(() => {
+                $('#'+divId).remove()
+            }, 1200)
+        })
+        $('body').append(content)
     }
 
     function siteNavHide() {
